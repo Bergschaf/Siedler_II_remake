@@ -15,13 +15,16 @@ public class GameHandler : MonoBehaviour
     public GameObject buildableHouse3;
     public GameObject buildableHarbour;
 
+    // Building Prefabs
+    public GameObject flagPrefab;
+
     // Terrain
     public Terrain activeTerrain;
 
     // Textures
     public Texture roadTexture;
-
-
+    
+    
     // static global variables
     // Buildable Prefabs
     public static GameObject BuildableFlag;
@@ -29,6 +32,9 @@ public class GameHandler : MonoBehaviour
     public static GameObject BuildableHouse2;
     public static GameObject BuildableHouse3;
     public static GameObject BuildableHarbour;
+    
+    // Building Prefabs
+    public static GameObject FlagPrefab;
 
     // Terrain
     public static Terrain ActiveTerrain;
@@ -46,6 +52,9 @@ public class GameHandler : MonoBehaviour
         BuildableHouse3 = buildableHouse3;
         BuildableHarbour = buildableHarbour;
 
+        // Building Prefabs
+        FlagPrefab = flagPrefab;
+        
         // Terrain
         ActiveTerrain = activeTerrain;
         ActiveTerrainTerrainData = ActiveTerrain.terrainData;

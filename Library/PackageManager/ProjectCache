@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637827010797908598
-    m_Hash: 228985270
+      ticks: 637827048702282958
+    m_Hash: 1057529631
   m_LockFileStatus:
     m_FilePath: C:/Users/Christian/Unity/Siedler_II_Remake/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637827010852649583
-    m_Hash: 1587512919
+      ticks: 637827048702292962
+    m_Hash: 1165375285
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

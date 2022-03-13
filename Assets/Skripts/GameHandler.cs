@@ -42,6 +42,7 @@ public class GameHandler : MonoBehaviour
 
     // Textures
     public static Texture RoadTexture;
+    
 
     private void Awake()
     {

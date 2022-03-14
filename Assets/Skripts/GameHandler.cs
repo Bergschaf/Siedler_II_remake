@@ -24,8 +24,12 @@ public class GameHandler : MonoBehaviour
     // Textures
     public Texture roadTexture;
     
+    // Building Paramters
+    public float flagBuildableYOffset;
+    
     
     // static global variables
+    
     // Buildable Prefabs
     public static GameObject BuildableFlag;
     public static GameObject BuildableHouse1;
@@ -43,6 +47,8 @@ public class GameHandler : MonoBehaviour
     // Textures
     public static Texture RoadTexture;
     
+    // Building Parameters
+    public static float FlagBuildableYOffset;
 
     private void Awake()
     {
@@ -62,5 +68,8 @@ public class GameHandler : MonoBehaviour
 
         // Textures
         RoadTexture = roadTexture;
+        
+        // Building Parameters
+        FlagBuildableYOffset = flagBuildableYOffset;
     }
 }

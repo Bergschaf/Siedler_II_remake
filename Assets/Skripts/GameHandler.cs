@@ -64,6 +64,9 @@ public class GameHandler : MonoBehaviour
     public static Canvas MainCanvas;
     public static bool GUIActive;
     
+    // Variables
+    public static GameObject ClickedBuildableFlag;
+    
 
     private void Awake()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class FlagBuildableSkript : MonoBehaviour
@@ -36,6 +37,8 @@ public class FlagBuildableSkript : MonoBehaviour
 
     public void ReplaceWithFlag()
     {
+        Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnMouseDown()
@@ -48,6 +51,7 @@ public class FlagBuildableSkript : MonoBehaviour
                 GameHandler.MainCanvas.transform);
             guiActive = true;
             GameHandler.GUIActive = true;
+            GameHandler.ClickedBuildableFlag = gameObject;
         }
     }
 

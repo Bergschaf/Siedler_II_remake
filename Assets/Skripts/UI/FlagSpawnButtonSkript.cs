@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FlagSpawnButtonSkript : MonoBehaviour
 {
-    void click()
+    public void click()
     {
         GameHandler.ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+        
     }
 }

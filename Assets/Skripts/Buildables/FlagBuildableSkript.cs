@@ -38,6 +38,11 @@ public class FlagBuildableSkript : MonoBehaviour
     public void ReplaceWithFlag()
     {
         Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
+        if (guiActive)
+        {
+            Destroy(gui);
+            GameHandler.GUIActive = false;
+        }
         Destroy(gameObject);
     }
 

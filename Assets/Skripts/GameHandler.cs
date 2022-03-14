@@ -27,7 +27,13 @@ public class GameHandler : MonoBehaviour
     // Building Paramters
     public float flagBuildableYOffset;
     
+    // GUI Prefabs
+    public GameObject fahnenerzeugungGUIPrefab;
+    public GameObject straßenbaumenuGUIPrefab;
     
+    // GUI
+    public Canvas mainCanvas;
+
     // static global variables
     
     // Buildable Prefabs
@@ -49,6 +55,15 @@ public class GameHandler : MonoBehaviour
     
     // Building Parameters
     public static float FlagBuildableYOffset;
+    
+    // GUI Prefabs
+    public static GameObject FahnenerzeugungGUIPrefab;
+    public static GameObject StraßenbaumenuGUIPrefab;
+    
+    // GUI
+    public static Canvas MainCanvas;
+    public static bool GUIActive;
+    
 
     private void Awake()
     {
@@ -71,5 +86,13 @@ public class GameHandler : MonoBehaviour
         
         // Building Parameters
         FlagBuildableYOffset = flagBuildableYOffset;
+        
+        // GUI Prefabs
+        FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;
+        StraßenbaumenuGUIPrefab = straßenbaumenuGUIPrefab;
+        
+        // GUI
+        MainCanvas = mainCanvas;
+        GUIActive = false;
     }
 }

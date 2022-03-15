@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
     // GUI Prefabs
     public GameObject fahnenerzeugungGUIPrefab;
     public GameObject straßenbaumenuGUIPrefab;
+    public GameObject fahenmenuPrefab;
     
     // GUI
     public Canvas mainCanvas;
@@ -59,6 +60,7 @@ public class GameHandler : MonoBehaviour
     // GUI Prefabs
     public static GameObject FahnenerzeugungGUIPrefab;
     public static GameObject StraßenbaumenuGUIPrefab;
+    public static GameObject FahnenmenuPrefab;
     
     // GUI
     public static Canvas MainCanvas;
@@ -93,6 +95,7 @@ public class GameHandler : MonoBehaviour
         // GUI Prefabs
         FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;
         StraßenbaumenuGUIPrefab = straßenbaumenuGUIPrefab;
+        FahnenmenuPrefab = fahenmenuPrefab;
         
         // GUI
         MainCanvas = mainCanvas;

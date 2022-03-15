@@ -101,27 +101,5 @@ public class Grid : MonoBehaviour
 
         return NodeGrid[x, y];
     }
-
-    /* 
-    public static void AddRoad(Road road)
-    {
-        try
-        {
-            road_grid.Add(road.pos1, new List<Road>());
-        }
-        catch (ArgumentException)
-        {
-        }
-
-        road_grid[road.pos1].Add(road);
-        try
-        {
-            road_grid.Add(road.pos2, new List<Road>());
-        }
-        catch (ArgumentException)
-        {
-        }
-
-        road_grid[road.pos2].Add(road);
-    } */
+    
 }

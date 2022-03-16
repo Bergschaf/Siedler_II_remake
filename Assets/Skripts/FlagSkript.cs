@@ -16,8 +16,8 @@ public class FlagSkript : MonoBehaviour
             GameHandler.ActiveTerrain.SampleHeight(transform.position),
             transform.position.z);
     }
-    
-    
+
+
     private void Update()
     {
         if (guiActive)
@@ -36,14 +36,19 @@ public class FlagSkript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameHandler.GUIActive)
+        if (GameHandler.CurrentlyBuildingRoad)
+        {
+            GameHandler.CurrentRoad.add_point(transform.position);
+            GameHandler.EndBuildingRoad(false);
+        }
+        else if (!GameHandler.GUIActive)
         {
             gui = Instantiate(GameHandler.FahnenmenuPrefab,
                 Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0), Quaternion.identity,
                 GameHandler.MainCanvas.transform);
+            GameHandler.LastClickedFlag = gameObject;
             guiActive = true;
             GameHandler.GUIActive = true;
         }
     }
-
 }

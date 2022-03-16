@@ -56,8 +56,6 @@ public class Grid : MonoBehaviour
 
             }
         }
-
-        Debug.Log("Created Grid: " + (GridSizeX, GridSizeY));
     }
 
     // Get Neighbours around a Node in a 3x3 Grid
@@ -90,15 +88,13 @@ public class Grid : MonoBehaviour
     // Get the node for a World Position
     public static Node NodeFromWorldPoint(Vector3 worldPos)
     {
-        float percentX = (worldPos.x + GridWorldSize.x / 2) / GridWorldSize.x;
-        float percentY = (worldPos.z + GridWorldSize.y / 2) / GridWorldSize.y;
-
+        float percentX = (worldPos.x) / GridWorldSize.x;
+        float percentY = (worldPos.z) / GridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
         int x = Mathf.RoundToInt((GridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((GridSizeY - 1) * percentY);
-
         return NodeGrid[x, y];
     }
     

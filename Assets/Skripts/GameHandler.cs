@@ -18,8 +18,7 @@ public class GameHandler : MonoBehaviour
     // Building Prefabs
     public GameObject flagPrefab;
     public  GameObject roadPrefab;
-
-
+    
     // Terrain
     public Terrain activeTerrain;
 
@@ -60,7 +59,8 @@ public class GameHandler : MonoBehaviour
     
     // Building Parameters
     public static float FlagBuildableYOffset;
-    public static float RoadWidth;
+    public static float RoadWidth ;
+    private static int _numberOfPoints = 10;
     
     // GUI Prefabs
     public static GameObject FahnenerzeugungGUIPrefab;
@@ -72,7 +72,14 @@ public class GameHandler : MonoBehaviour
     public static bool GUIActive;
     
     // Variables
-    public static GameObject ClickedBuildableFlag;
+    public static GameObject ClickedBuildableFlag; // Important for RoadBuilding
+    public static bool CurrentlyBuildingRoad;
+    public static GameObject LastClickedFlag;
+
+    // Roads
+    public static List<Road> RoadGrid;
+    public static Road CurrentRoad;
+    
     
 
     private void Awake()
@@ -86,6 +93,7 @@ public class GameHandler : MonoBehaviour
 
         // Building Prefabs
         FlagPrefab = flagPrefab;
+        RoadPrefab = roadPrefab;
         
         // Terrain
         ActiveTerrain = activeTerrain;
@@ -106,5 +114,86 @@ public class GameHandler : MonoBehaviour
         // GUI
         MainCanvas = mainCanvas;
         GUIActive = false;
+        
+        // Roads
+        RoadGrid = new List<Road>();
+        CurrentlyBuildingRoad = false;
+
     }
+
+    public static void StartBuildingRoad(Vector3 position)
+    {
+        Vector3[] temp = {position};
+        CurrentRoad = new Road(temp, position, position);
+        CurrentlyBuildingRoad = true;
+    }
+
+    public static void EndBuildingRoad(bool from_buildable_flag)
+    {
+        // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
+        if (from_buildable_flag)
+        {
+            ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+        }
+        RoadGrid.Add(CurrentRoad);
+        CurrentlyBuildingRoad = false;
+        GUIActive = false;
+    }
+    
+    public static Vector3[] MakeSmoothCurve(Vector3[] points)
+    {
+        Vector3 p0, p1, m0, m1;
+        Vector3[] final_points = new Vector3[_numberOfPoints * (points.Length-1)];
+        for (int j = 0; j < points.Length - 1; j++)
+        {
+            // determine control points of segment
+            p0 = points[j];
+            p1 = points[j + 1];
+
+            if (j > 0)
+            {
+                m0 = 0.5f * (points[j + 1]
+                             - points[j - 1]);
+            }
+            else
+            {
+                m0 = points[j + 1]
+                     - points[j];
+            }
+
+            if (j < points.Length - 2)
+            {
+                m1 = 0.5f * (points[j + 2]
+                             - points[j]);
+            }
+            else
+            {
+                m1 = points[j + 1]
+                     - points[j];
+            }
+
+            // set points of Hermite curve
+            Vector3 position;
+            float t;
+            float pointStep = 1.0f / _numberOfPoints;
+
+            if (j == points.Length - 2)
+            {
+                pointStep = 1.0f / (_numberOfPoints - 1.0f);
+                // last point of last segment should reach p1
+            }  
+            for(int i = 0; i < _numberOfPoints; i++) 
+            {
+                t = i * pointStep;
+                position = (2.0f * t * t * t - 3.0f * t * t + 1.0f) * p0 
+                           + (t * t * t - 2.0f * t * t + t) * m0 
+                           + (-2.0f * t * t * t + 3.0f * t * t) * p1 
+                           + (t * t * t - t * t) * m1;
+                final_points[i + j * _numberOfPoints] = position;
+            }
+        }
+
+        return final_points;
+    }
+    
 }

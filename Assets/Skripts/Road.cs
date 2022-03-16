@@ -21,20 +21,21 @@ public class Road
     {
         // Initialisation
         RoadPoints = _road_points;
-        Pos1 = _pos1;
-        Pos2 = _pos2;
+        Pos1 = _pos1; // First Point of the Road
+        Pos2 = _pos2; // last Point of the Road
         for (int i = 1; i < RoadPoints.Length; i++)
         {
             Len += Vector3.Distance(RoadPoints[i - 1], RoadPoints[i]);
         }
 
-        _road = GameObject.Instantiate(GameHandler.RoadPrefab);
+        _road = Object.Instantiate(GameHandler.RoadPrefab,Vector3.zero,Quaternion.identity);
         _roadMesh = _road.GetComponent<RoadMesh>();
     }
 
     public void add_point(Vector3 point)
     {
-        List<Node> path = Road_Pathfinding.FindPath(Pos2, point);
+        List<Node> path = RoadPathfinding.FindPath(Pos2, point);
+
 
         Vector3[] temp = new Vector3[RoadPoints.Length + path.Count];
         for (int i = 0; i < RoadPoints.Length; i++)
@@ -57,23 +58,29 @@ public class Road
 
     private void draw_road()
     {
-        _roadPointsLeft = new Vector3[RoadPoints.Length - 1];
-        _roadPointsRight = new Vector3[RoadPoints.Length - 1];
 
-        for (int i = 0; i < RoadPoints.Length - 1; i++)
+        Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
+        _roadPointsLeft = new Vector3[tempRoadPoints.Length - 1];
+        _roadPointsRight = new Vector3[tempRoadPoints.Length - 1];
+
+        for (int i = 1; i < tempRoadPoints.Length - 1; i++)
         {
-            float angle = Mathf.Rad2Deg * Mathf.Atan2(RoadPoints[i - 1].x - RoadPoints[i].x,
-                RoadPoints[i - 1].z - RoadPoints[i].z);
-            Vector3 pos1 = RoadPoints[i] +
-                           Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward *
+            float angle = (Mathf.Rad2Deg * Mathf.Atan2(tempRoadPoints[i - 1].x - tempRoadPoints[i].x,
+                tempRoadPoints[i - 1].z - tempRoadPoints[i].z)) ;
+            
+            Vector3 pos1 = tempRoadPoints[i] +
+                           Quaternion.AngleAxis(angle + 90, Vector3.up) * Vector3.forward *
                            GameHandler.RoadWidth / 2;
-            Vector3 pos2 = RoadPoints[i] +
-                           Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward *
+            Vector3 pos2 = tempRoadPoints[i] +
+                           Quaternion.AngleAxis(angle +90, Vector3.up) * Vector3.forward *
                            GameHandler.RoadWidth / -2;
-            _roadPointsLeft[i] = pos1;
-            _roadPointsRight[i] = pos2;
+            
+
+            _roadPointsLeft[i] = new Vector3(pos1.x,GameHandler.ActiveTerrain.SampleHeight(pos1) + 0.1f,pos1.z);
+            _roadPointsRight[i] = new Vector3(pos2.x,GameHandler.ActiveTerrain.SampleHeight(pos2) + 0.1f,pos2.z);;
         }
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
+        
     }
 }

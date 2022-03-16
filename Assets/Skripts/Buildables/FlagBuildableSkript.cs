@@ -43,13 +43,20 @@ public class FlagBuildableSkript : MonoBehaviour
             Destroy(gui);
             GameHandler.GUIActive = false;
         }
+
         Destroy(gameObject);
     }
 
     private void OnMouseDown()
     {
-        if(!GameHandler.GUIActive)
+        if (GameHandler.CurrentlyBuildingRoad)
         {
+            GameHandler.ClickedBuildableFlag = gameObject;
+            GameHandler.CurrentRoad.add_point(transform.position);
+        }
+        else if (!GameHandler.GUIActive)
+        {
+
             gui = Instantiate(GameHandler.FahnenerzeugungGUIPrefab, Camera.main.WorldToScreenPoint(transform.position) +
                                                                     new Vector3(
                                                                         150, 80, 0), Quaternion.identity,

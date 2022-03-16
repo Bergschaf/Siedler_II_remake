@@ -26,7 +26,7 @@ public class RoadMesh : MonoBehaviour
 
     public void SetVertices(Vector3[] verticesLeft, Vector3[] verticesRight)
     {
-        // TODO Calculate UVS Based on the space a triangel takes 
+        // TODO Calculate UVS Based on the space a triangle takes 
         _mesh.Clear();
         _mesh.vertices = verticesLeft.Concat(verticesRight).ToArray();
 

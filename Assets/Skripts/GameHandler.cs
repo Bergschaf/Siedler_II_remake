@@ -17,6 +17,8 @@ public class GameHandler : MonoBehaviour
 
     // Building Prefabs
     public GameObject flagPrefab;
+    public  GameObject roadPrefab;
+
 
     // Terrain
     public Terrain activeTerrain;
@@ -26,6 +28,7 @@ public class GameHandler : MonoBehaviour
     
     // Building Paramters
     public float flagBuildableYOffset;
+    public float roadWidth;
     
     // GUI Prefabs
     public GameObject fahnenerzeugungGUIPrefab;
@@ -46,6 +49,7 @@ public class GameHandler : MonoBehaviour
     
     // Building Prefabs
     public static GameObject FlagPrefab;
+    public static GameObject RoadPrefab;
 
     // Terrain
     public static Terrain ActiveTerrain;
@@ -56,6 +60,7 @@ public class GameHandler : MonoBehaviour
     
     // Building Parameters
     public static float FlagBuildableYOffset;
+    public static float RoadWidth;
     
     // GUI Prefabs
     public static GameObject FahnenerzeugungGUIPrefab;
@@ -91,6 +96,7 @@ public class GameHandler : MonoBehaviour
         
         // Building Parameters
         FlagBuildableYOffset = flagBuildableYOffset;
+        RoadWidth = roadWidth;
         
         // GUI Prefabs
         FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;

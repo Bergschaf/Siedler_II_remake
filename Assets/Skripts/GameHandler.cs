@@ -21,8 +21,8 @@ public class GameHandler : MonoBehaviour
     // Terrain
     public Terrain activeTerrain;
 
-    // Textures
-    public Texture roadTexture;
+    // Materials
+    public Material roadMaterial;
     
     // Building Paramters
     public float flagBuildableYOffset;
@@ -51,8 +51,8 @@ public class GameHandler : MonoBehaviour
     public static Terrain ActiveTerrain;
     public static TerrainData ActiveTerrainTerrainData;
 
-    // Textures
-    public static Texture RoadTexture;
+    // Materials
+    public static Material RoadMaterial;
     
     // Building Parameters
     public static float FlagBuildableYOffset;
@@ -86,8 +86,8 @@ public class GameHandler : MonoBehaviour
         ActiveTerrain = activeTerrain;
         ActiveTerrainTerrainData = ActiveTerrain.terrainData;
 
-        // Textures
-        RoadTexture = roadTexture;
+        // Materials
+        RoadMaterial = roadMaterial;
         
         // Building Parameters
         FlagBuildableYOffset = flagBuildableYOffset;

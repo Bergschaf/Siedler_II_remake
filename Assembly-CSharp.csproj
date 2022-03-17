@@ -100,6 +100,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+     <Compile Include="Assets\Skripts\UI\Buttons\AbortRoadBuildButtonSkript.cs" />
+     <Compile Include="Assets\Skripts\DirtCrossingMeshSkript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\fonts\editor.fnt" />

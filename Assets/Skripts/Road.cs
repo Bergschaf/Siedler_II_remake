@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Road
 {
@@ -28,7 +30,7 @@ public class Road
             Len += Vector3.Distance(RoadPoints[i - 1], RoadPoints[i]);
         }
 
-        _road = Object.Instantiate(GameHandler.RoadPrefab,Vector3.zero,Quaternion.identity);
+        _road = Object.Instantiate(GameHandler.DirtRoadPrefab,Vector3.zero,Quaternion.identity);
         _roadMesh = _road.GetComponent<RoadMesh>();
     }
 
@@ -60,8 +62,8 @@ public class Road
     {
 
         Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
-        _roadPointsLeft = new Vector3[tempRoadPoints.Length - 1];
-        _roadPointsRight = new Vector3[tempRoadPoints.Length - 1];
+        _roadPointsLeft = new Vector3[tempRoadPoints.Length - 2];
+        _roadPointsRight = new Vector3[tempRoadPoints.Length - 2];
 
         for (int i = 1; i < tempRoadPoints.Length - 1; i++)
         {
@@ -76,11 +78,16 @@ public class Road
                            GameHandler.RoadWidth / -2;
             
 
-            _roadPointsLeft[i] = new Vector3(pos1.x,GameHandler.ActiveTerrain.SampleHeight(pos1) + 0.1f,pos1.z);
-            _roadPointsRight[i] = new Vector3(pos2.x,GameHandler.ActiveTerrain.SampleHeight(pos2) + 0.1f,pos2.z);;
+            _roadPointsLeft[i - 1] = new Vector3(pos1.x,GameHandler.ActiveTerrain.SampleHeight(pos1) + 0.1f,pos1.z);
+            _roadPointsRight[i - 1] = new Vector3(pos2.x,GameHandler.ActiveTerrain.SampleHeight(pos2) + 0.1f,pos2.z);;
         }
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
         
+    }
+
+    public void destroy()
+    {
+        _roadMesh.destroy();
     }
 }

@@ -17,13 +17,15 @@ public class GameHandler : MonoBehaviour
 
     // Building Prefabs
     public GameObject flagPrefab;
-    public  GameObject roadPrefab;
+    public  GameObject dirtRoadPrefab;
+    public GameObject dirtCrossingPrefab;
     
     // Terrain
     public Terrain activeTerrain;
 
     // Materials
-    public Material roadMaterial;
+    public Material dirtRoadMaterial;
+    public Material dirtCrossingMaterial;
     
     // Building Paramters
     public float flagBuildableYOffset;
@@ -48,14 +50,16 @@ public class GameHandler : MonoBehaviour
     
     // Building Prefabs
     public static GameObject FlagPrefab;
-    public static GameObject RoadPrefab;
+    public static GameObject DirtRoadPrefab;
+    public static GameObject DirtCrossingPrefab;
 
     // Terrain
     public static Terrain ActiveTerrain;
     public static TerrainData ActiveTerrainTerrainData;
 
     // Materials
-    public static Material RoadMaterial;
+    public static Material DirtRoadMaterial;
+    public static Material DirtCrossingMaterial;
     
     // Building Parameters
     public static float FlagBuildableYOffset;
@@ -75,6 +79,7 @@ public class GameHandler : MonoBehaviour
     public static GameObject ClickedBuildableFlag; // Important for RoadBuilding
     public static bool CurrentlyBuildingRoad;
     public static GameObject LastClickedFlag;
+    public static GameObject RoadBuildingGUI;
 
     // Roads
     public static List<Road> RoadGrid;
@@ -93,19 +98,21 @@ public class GameHandler : MonoBehaviour
 
         // Building Prefabs
         FlagPrefab = flagPrefab;
-        RoadPrefab = roadPrefab;
+        DirtRoadPrefab = dirtRoadPrefab;
+        DirtCrossingPrefab = dirtCrossingPrefab;
         
         // Terrain
         ActiveTerrain = activeTerrain;
         ActiveTerrainTerrainData = ActiveTerrain.terrainData;
 
         // Materials
-        RoadMaterial = roadMaterial;
-        
+        DirtRoadMaterial = dirtRoadMaterial;
+        DirtCrossingMaterial = dirtCrossingMaterial;
+
         // Building Parameters
         FlagBuildableYOffset = flagBuildableYOffset;
         RoadWidth = roadWidth;
-        
+
         // GUI Prefabs
         FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;
         StraßenbaumenuGUIPrefab = straßenbaumenuGUIPrefab;
@@ -126,18 +133,30 @@ public class GameHandler : MonoBehaviour
         Vector3[] temp = {position};
         CurrentRoad = new Road(temp, position, position);
         CurrentlyBuildingRoad = true;
+        RoadBuildingGUI = Instantiate(StraßenbaumenuGUIPrefab,Camera.main.WorldToScreenPoint(position),Quaternion.identity,MainCanvas.transform);
+        
+
     }
 
-    public static void EndBuildingRoad(bool from_buildable_flag)
+    public static void EndBuildingRoad(bool from_buildable_flag,bool succesfull=true)
     {
         // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
-        if (from_buildable_flag)
+        if (succesfull)
         {
-            ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+            if (from_buildable_flag)
+            {
+                ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+            }
+
+            RoadGrid.Add(CurrentRoad);
         }
-        RoadGrid.Add(CurrentRoad);
+        else
+        {
+            CurrentRoad.destroy();
+        }
         CurrentlyBuildingRoad = false;
         GUIActive = false;
+        Destroy(RoadBuildingGUI);
     }
     
     public static Vector3[] MakeSmoothCurve(Vector3[] points)

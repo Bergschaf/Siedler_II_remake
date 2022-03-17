@@ -6,7 +6,7 @@ using UnityEngine;
 public class FlagSkript : MonoBehaviour
 {
     private bool guiActive;
-
+    private GameObject dirtCrossing;
     private GameObject gui;
 
     // Start is called before the first frame update
@@ -50,5 +50,12 @@ public class FlagSkript : MonoBehaviour
             guiActive = true;
             GameHandler.GUIActive = true;
         }
+        GenerateDirtCrossing();
+    }
+
+    public void GenerateDirtCrossing()
+    {
+        dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab,transform.position,Quaternion.identity);
+        dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
     }
 }

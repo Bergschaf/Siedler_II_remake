@@ -7,6 +7,6 @@ public class FlagSpawnButtonSkript : MonoBehaviour
     public void click()
     {
         GameHandler.ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
-        
+        GameHandler.EndBuildingRoad(false);
     }
 }

@@ -2,13 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class RoadMesh : MonoBehaviour
 {
     private Mesh _mesh;
     private Vector2[] _uvMap;
-    private Vector3[] _normals;
     private int[] _triangles;
 
 
@@ -19,13 +19,15 @@ public class RoadMesh : MonoBehaviour
         gameObject.AddComponent<MeshRenderer>();
         _mesh = GetComponent<MeshFilter>().mesh;
 
-        GetComponent<MeshRenderer>().material = GameHandler.RoadMaterial;
+        GetComponent<MeshRenderer>().material = GameHandler.DirtRoadMaterial;
     }
 
     public void SetVertices(Vector3[] verticesLeft, Vector3[] verticesRight)
     {
         // TODO Calculate UVS Based on the space a triangle takes 
-
+        
+        
+        
         _mesh.Clear();
         _mesh.vertices = verticesLeft.Concat(verticesRight).ToArray();
 
@@ -49,13 +51,17 @@ public class RoadMesh : MonoBehaviour
         _uvMap = new Vector2[verticesLen * 2];
         for (int i = 0; i < verticesLen; i++)
         {
-            _uvMap[i] = new Vector2(0, i % 2);
-            _uvMap[i + verticesLen] = new Vector2(1, i % 2);
+            _uvMap[i] = new Vector2(0, (i % 2));
+            _uvMap[i + verticesLen] = new Vector2(1, (i % 2));
         }
 
         _mesh.triangles = _triangles;
         _mesh.uv = _uvMap;
+        _mesh.RecalculateNormals();
+    }
 
-
+    public void destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -9,6 +9,7 @@ public class FlagBuildableSkript : MonoBehaviour
     private bool mouseOver;
     private GameObject gui;
     private bool guiActive;
+    private bool roadBuidlingGUIActive;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class FlagBuildableSkript : MonoBehaviour
             GameHandler.ActiveTerrain.SampleHeight(transform.position) + GameHandler.FlagBuildableYOffset,
             transform.position.z);
         guiActive = false;
+        roadBuidlingGUIActive = false;
     }
 
     private void Update()
@@ -33,6 +35,15 @@ public class FlagBuildableSkript : MonoBehaviour
                 guiActive = false;
             }
         }
+        if (roadBuidlingGUIActive)
+        {
+            GameHandler.RoadBuildingGUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+
+            if (GameHandler.ClickedBuildableFlag != gameObject || GameHandler.CurrentlyBuildingRoad == false)
+            {
+                roadBuidlingGUIActive = false;
+            }
+        }
     }
 
     public void ReplaceWithFlag()
@@ -44,6 +55,8 @@ public class FlagBuildableSkript : MonoBehaviour
             GameHandler.GUIActive = false;
         }
 
+
+
         Destroy(gameObject);
     }
 
@@ -53,6 +66,8 @@ public class FlagBuildableSkript : MonoBehaviour
         {
             GameHandler.ClickedBuildableFlag = gameObject;
             GameHandler.CurrentRoad.add_point(transform.position);
+            GameHandler.RoadBuildingGUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            roadBuidlingGUIActive = true;
         }
         else if (!GameHandler.GUIActive)
         {

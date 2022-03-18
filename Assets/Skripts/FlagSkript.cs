@@ -55,7 +55,7 @@ public class FlagSkript : MonoBehaviour
 
     public void GenerateDirtCrossing()
     {
-        dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab,transform.position,Quaternion.identity);
+        dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab);
         dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
     }
 }

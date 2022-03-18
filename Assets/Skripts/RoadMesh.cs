@@ -49,10 +49,32 @@ public class RoadMesh : MonoBehaviour
         }
 
         _uvMap = new Vector2[verticesLen * 2];
+        float count = 0;
+        bool count_up = true;
         for (int i = 0; i < verticesLen; i++)
         {
-            _uvMap[i] = new Vector2(0, (i % 2));
-            _uvMap[i + verticesLen] = new Vector2(1, (i % 2));
+            
+            _uvMap[i] = new Vector2(0, count);
+            _uvMap[i + verticesLen] = new Vector2(1, count);
+
+            if (count_up)
+            {
+                count += 0.5f;
+
+            }
+            else
+            {
+                count -= 0.5f;
+            }
+            if(count >= 1)
+            {
+                count_up = false;
+            }
+            else if(count <= 0)
+            {
+                count_up = true;
+            }
+
         }
 
         _mesh.triangles = _triangles;

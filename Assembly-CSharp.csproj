@@ -55,6 +55,7 @@
      <Compile Include="Assets\Skripts\FlagSkript.cs" />
      <Compile Include="Assets\Skripts\RoadPathfinding.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\Skripts\DirtCrossingMeshSkript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
      <Compile Include="Assets\Skripts\GameHandler.cs" />
      <Compile Include="Assets\Skripts\UI\FontConverter.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\Skripts\UI\Buttons\AbortRoadBuildButtonSkript.cs" />
      <Compile Include="Assets\Skripts\CameraHandlerSkript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\Skripts\Grid.cs" />
@@ -100,8 +102,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Skripts\UI\Buttons\AbortRoadBuildButtonSkript.cs" />
-     <Compile Include="Assets\Skripts\DirtCrossingMeshSkript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\fonts\editor.fnt" />

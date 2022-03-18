@@ -6,8 +6,8 @@ public class ClosingButton : MonoBehaviour
 {
     public void click(GameObject parent)
     {
-        Destroy(parent);
         GameHandler.GUIActive = false;
-        GameHandler.EndBuildingRoad(false,false);
+        GameHandler.EndBuildingRoad(succesfull:false);
+        Destroy(parent);
     }
     }

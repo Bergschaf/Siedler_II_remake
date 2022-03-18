@@ -8,6 +8,7 @@ public class FlagSkript : MonoBehaviour
     private bool guiActive;
     private GameObject dirtCrossing;
     private GameObject gui;
+    public List<(Road,FlagSkript)> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class FlagSkript : MonoBehaviour
         if (GameHandler.CurrentlyBuildingRoad)
         {
             GameHandler.CurrentRoad.add_point(transform.position);
-            GameHandler.EndBuildingRoad(false);
+            GameHandler.EndBuildingRoad(gameObject.GetComponent<FlagSkript>());
         }
         else if (!GameHandler.GUIActive)
         {
@@ -50,12 +51,21 @@ public class FlagSkript : MonoBehaviour
             guiActive = true;
             GameHandler.GUIActive = true;
         }
-        GenerateDirtCrossing();
     }
 
-    public void GenerateDirtCrossing()
+    private void GenerateDirtCrossing()
     {
         dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab);
         dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
+    }
+
+    public void AddRoad(Road road,FlagSkript targetFlagSkript)
+    {
+        GenerateDirtCrossing();
+        if (AttachedRoads == null)
+        {
+            AttachedRoads = new List<(Road, FlagSkript)>();
+        }
+        AttachedRoads.Add((road,targetFlagSkript));
     }
 }

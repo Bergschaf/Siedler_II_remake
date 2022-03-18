@@ -17,37 +17,37 @@ public class GameHandler : MonoBehaviour
 
     // Building Prefabs
     public GameObject flagPrefab;
-    public  GameObject dirtRoadPrefab;
+    public GameObject dirtRoadPrefab;
     public GameObject dirtCrossingPrefab;
-    
+
     // Terrain
     public Terrain activeTerrain;
 
     // Materials
     public Material dirtRoadMaterial;
     public Material dirtCrossingMaterial;
-    
+
     // Building Paramters
     public float flagBuildableYOffset;
     public float roadWidth;
-    
+
     // GUI Prefabs
     public GameObject fahnenerzeugungGUIPrefab;
     public GameObject straßenbaumenuGUIPrefab;
     public GameObject fahenmenuPrefab;
-    
+
     // GUI
     public Canvas mainCanvas;
 
     // static global variables
-    
+
     // Buildable Prefabs
     public static GameObject BuildableFlag;
     public static GameObject BuildableHouse1;
     public static GameObject BuildableHouse2;
     public static GameObject BuildableHouse3;
     public static GameObject BuildableHarbour;
-    
+
     // Building Prefabs
     public static GameObject FlagPrefab;
     public static GameObject DirtRoadPrefab;
@@ -60,32 +60,31 @@ public class GameHandler : MonoBehaviour
     // Materials
     public static Material DirtRoadMaterial;
     public static Material DirtCrossingMaterial;
-    
+
     // Building Parameters
     public static float FlagBuildableYOffset;
-    public static float RoadWidth ;
+    public static float RoadWidth;
     private static int _numberOfPoints = 10;
-    
+
     // GUI Prefabs
     public static GameObject FahnenerzeugungGUIPrefab;
     public static GameObject StraßenbaumenuGUIPrefab;
     public static GameObject FahnenmenuPrefab;
-    
+
     // GUI
     public static Canvas MainCanvas;
     public static bool GUIActive;
-    
+
     // Variables
     public static GameObject ClickedBuildableFlag; // Important for RoadBuilding
     public static bool CurrentlyBuildingRoad;
     public static GameObject LastClickedFlag;
     public static GameObject RoadBuildingGUI;
+    public static GameObject RoadBuildStartFlag;
 
     // Roads
-    public static List<Road> RoadGrid;
     public static Road CurrentRoad;
-    
-    
+
 
     private void Awake()
     {
@@ -100,7 +99,7 @@ public class GameHandler : MonoBehaviour
         FlagPrefab = flagPrefab;
         DirtRoadPrefab = dirtRoadPrefab;
         DirtCrossingPrefab = dirtCrossingPrefab;
-        
+
         // Terrain
         ActiveTerrain = activeTerrain;
         ActiveTerrainTerrainData = ActiveTerrain.terrainData;
@@ -117,15 +116,13 @@ public class GameHandler : MonoBehaviour
         FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;
         StraßenbaumenuGUIPrefab = straßenbaumenuGUIPrefab;
         FahnenmenuPrefab = fahenmenuPrefab;
-        
+
         // GUI
         MainCanvas = mainCanvas;
         GUIActive = false;
-        
-        // Roads
-        RoadGrid = new List<Road>();
-        CurrentlyBuildingRoad = false;
 
+        // Roads
+        CurrentlyBuildingRoad = false;
     }
 
     public static void StartBuildingRoad(Vector3 position)
@@ -133,36 +130,35 @@ public class GameHandler : MonoBehaviour
         Vector3[] temp = {position};
         CurrentRoad = new Road(temp, position, position);
         CurrentlyBuildingRoad = true;
-        RoadBuildingGUI = Instantiate(StraßenbaumenuGUIPrefab,Camera.main.WorldToScreenPoint(position),Quaternion.identity,MainCanvas.transform);
-        
-
+        RoadBuildingGUI = Instantiate(StraßenbaumenuGUIPrefab, Camera.main.WorldToScreenPoint(position),
+            Quaternion.identity, MainCanvas.transform);
+        RoadBuildStartFlag = LastClickedFlag;
     }
 
-    public static void EndBuildingRoad(bool from_buildable_flag,bool succesfull=true)
+    public static void EndBuildingRoad(FlagSkript endFlag = null, bool succesfull = true)
     {
-        // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
-        if (succesfull)
-        {
-            if (from_buildable_flag)
+
+            // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
+            if (succesfull && CurrentlyBuildingRoad && endFlag != null)
             {
-                ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+                endFlag.AddRoad(CurrentRoad,RoadBuildStartFlag.GetComponent<FlagSkript>());
+                RoadBuildStartFlag.GetComponent<FlagSkript>().AddRoad(CurrentRoad,endFlag);
+            }
+            else
+            {
+                if (CurrentRoad != null) CurrentRoad.destroy();
             }
 
-            RoadGrid.Add(CurrentRoad);
-        }
-        else
-        {
-            CurrentRoad.destroy();
-        }
-        CurrentlyBuildingRoad = false;
-        GUIActive = false;
-        Destroy(RoadBuildingGUI);
+            CurrentlyBuildingRoad = false;
+            GUIActive = false;
+            Destroy(RoadBuildingGUI);
+        
     }
-    
+
     public static Vector3[] MakeSmoothCurve(Vector3[] points)
     {
         Vector3 p0, p1, m0, m1;
-        Vector3[] final_points = new Vector3[_numberOfPoints * (points.Length-1)];
+        Vector3[] final_points = new Vector3[_numberOfPoints * (points.Length - 1)];
         for (int j = 0; j < points.Length - 1; j++)
         {
             // determine control points of segment
@@ -200,13 +196,14 @@ public class GameHandler : MonoBehaviour
             {
                 pointStep = 1.0f / (_numberOfPoints - 1.0f);
                 // last point of last segment should reach p1
-            }  
-            for(int i = 0; i < _numberOfPoints; i++) 
+            }
+
+            for (int i = 0; i < _numberOfPoints; i++)
             {
                 t = i * pointStep;
-                position = (2.0f * t * t * t - 3.0f * t * t + 1.0f) * p0 
-                           + (t * t * t - 2.0f * t * t + t) * m0 
-                           + (-2.0f * t * t * t + 3.0f * t * t) * p1 
+                position = (2.0f * t * t * t - 3.0f * t * t + 1.0f) * p0
+                           + (t * t * t - 2.0f * t * t + t) * m0
+                           + (-2.0f * t * t * t + 3.0f * t * t) * p1
                            + (t * t * t - t * t) * m1;
                 final_points[i + j * _numberOfPoints] = position;
             }
@@ -214,5 +211,4 @@ public class GameHandler : MonoBehaviour
 
         return final_points;
     }
-    
 }

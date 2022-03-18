@@ -73,7 +73,6 @@ public class DirtCrossingMeshSkript : MonoBehaviour
         for (int i = 1; i < verticesLen; i++)
         {
             dif =  middlePoint - vertices[i];
-            Debug.Log(dif);
             
             _uvMap[i] = new Vector2(dif.x/ (radius * 2) + 0.5f, dif.z/ (radius * 2) + 0.5f);
         }

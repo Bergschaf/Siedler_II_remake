@@ -37,27 +37,30 @@ public class FlagBuildableSkript : MonoBehaviour
         }
         if (roadBuidlingGUIActive)
         {
-            GameHandler.RoadBuildingGUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
 
-            if (GameHandler.ClickedBuildableFlag != gameObject || GameHandler.CurrentlyBuildingRoad == false)
+            if (GameHandler.ClickedBuildableFlag != gameObject || GameHandler.CurrentlyBuildingRoad == false || GameHandler.RoadBuildingGUI == null)
             {
                 roadBuidlingGUIActive = false;
+            }
+            else
+            {
+                GameHandler.RoadBuildingGUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
             }
         }
     }
 
-    public void ReplaceWithFlag()
+    public FlagSkript ReplaceWithFlag()
     {
-        Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
+        GameObject temp = Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
         if (guiActive)
         {
             Destroy(gui);
             GameHandler.GUIActive = false;
         }
 
-
-
         Destroy(gameObject);
+
+        return temp.GetComponent<FlagSkript>();
     }
 
     private void OnMouseDown()

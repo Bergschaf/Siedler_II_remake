@@ -39,7 +39,10 @@ public class GameHandler : MonoBehaviour
 
     // GUI
     public Canvas mainCanvas;
-
+    
+    // Settlers
+    public GameObject homeFlag;
+    
     // static global variables
 
     // Buildable Prefabs
@@ -86,7 +89,9 @@ public class GameHandler : MonoBehaviour
 
     // Roads
     public static Road CurrentRoad;
-
+    
+    // Settlers
+    public static FlagSkript HomeFlag;
 
     private void Awake()
     {
@@ -128,6 +133,9 @@ public class GameHandler : MonoBehaviour
 
         // Roads
         CurrentlyBuildingRoad = false;
+        
+        // Settlers
+        HomeFlag = homeFlag.GetComponent<FlagSkript>();
     }
 
     public static void StartBuildingRoad(Vector3 position)
@@ -233,10 +241,12 @@ public class GameHandler : MonoBehaviour
         }
 
         Distance[startPos] = 0;
-
+        Debug.Log("Hier");
         while (qList.Count > 0)
         {
-            foreach (var k in Distance.Keys)
+            Debug.Log("Hier2");
+            currentFlag = qList[0];
+            foreach (var k in qList)
             {
                 if (Distance[k] < Distance[currentFlag])
                 {
@@ -269,9 +279,11 @@ public class GameHandler : MonoBehaviour
                         }
                     }
                 }
+                Debug.Log("GridPathfind fertig");
 
                 path.Reverse();
                 return path.ToArray();
+                
             }
 
             qList.Remove(currentFlag);

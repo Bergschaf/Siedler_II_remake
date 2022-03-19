@@ -74,5 +74,6 @@ public class FlagSkript : MonoBehaviour
         }
         AttachedRoads.Add(new Tuple<Road, FlagSkript>(road,targetFlagSkript));
         
+        
     }
 }

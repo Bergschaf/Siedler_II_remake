@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637827048702282958
-    m_Hash: 1057529631
+      ticks: 637833012074813696
+    m_Hash: 728776223
   m_LockFileStatus:
     m_FilePath: C:/Users/Christian/Unity/Siedler_II_Remake/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637827048702292962
-    m_Hash: 1165375285
+      ticks: 637833012153443615
+    m_Hash: 2249468046
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.collab-proxy@1.15.12
+    - packageId: com.unity.collab-proxy@1.15.13
       testable: 0
       isDirectDependency: 1
-      version: 1.15.12
+      version: 1.15.13
       source: 1
-      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.collab-proxy@1.15.12
+      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.collab-proxy@1.15.13
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -93,7 +93,6 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
-        - 1.15.12
         - 1.15.13
         - 2.0.0-preview.6
         - 2.0.0-preview.8
@@ -140,13 +139,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637789721280000000
+      datePublishedTicks: 637807003040000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-        revision: 5ca1fd4ca9f999e087d19e98afaf99905a582771
+        revision: 825774911ad2d1440ac844c9be1ae2c9b5dc7966
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
@@ -233,7 +232,7 @@ m_PackageAssets:
         version: 1.1.1
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.29
+        version: 1.1.31
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -324,7 +323,7 @@ m_PackageAssets:
         version: 1.1.9
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.29
+        version: 1.1.31
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -352,12 +351,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.ide.vscode@1.2.4
+    - packageId: com.unity.ide.vscode@1.2.5
       testable: 0
       isDirectDependency: 1
-      version: 1.2.4
+      version: 1.2.5
       source: 1
-      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.ide.vscode@1.2.4
+      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.ide.vscode@1.2.5
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -417,20 +416,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637660806170000000
+      datePublishedTicks: 637800255360000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/com.unity.ide.vscode.git
-        revision: 1f4f605d5c988cb610c372b5c5216c46cc8f5d30
+        url: https://github.com/Unity-Technologies/com.unity.ide.vscode.git
+        revision: b0740c80bfc2440527c317109f7c3d9100132722
         path: 
-    - packageId: com.unity.test-framework@1.1.29
+    - packageId: com.unity.test-framework@1.1.31
       testable: 0
       isDirectDependency: 1
-      version: 1.1.29
+      version: 1.1.31
       source: 1
-      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.test-framework@1.1.29
+      resolvedPath: C:\Users\Christian\Unity\Siedler_II_Remake\Library\PackageCache\com.unity.test-framework@1.1.31
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -481,8 +480,6 @@ m_PackageAssets:
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
-        - 1.1.29
-        - 1.1.30
         - 1.1.31
         - 2.0.1-pre.12
         - 2.0.1-pre.18
@@ -516,13 +513,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637647922650000000
+      datePublishedTicks: 637804266210000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: dac53542acdab7a12e9ebf111ac588d0e53cf483
+        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        revision: 438b0defc147c9be5c969ca79ff03a722b4590ed
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
       testable: 0
@@ -2756,6 +2753,7 @@ m_PackageAssets:
         - 1.1.0-pre.11
         - 1.1.0-pre.41
         - 1.1.0-pre.69
+        - 1.2.0
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -2765,6 +2763,7 @@ m_PackageAssets:
         - 1.1.0-pre.11
         - 1.1.0-pre.41
         - 1.1.0-pre.69
+        - 1.2.0
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -2796,4 +2795,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: C:/Users/Christian/Unity/Siedler_II_Remake/Packages
-m_EditorVersion: 2020.3.30f1 (1fb1bf06830e)
+m_EditorVersion: 2020.3.31f1 (6b54b7616050)

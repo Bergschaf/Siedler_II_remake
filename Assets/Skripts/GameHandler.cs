@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -81,6 +82,7 @@ public class GameHandler : MonoBehaviour
     public static GameObject LastClickedFlag;
     public static GameObject RoadBuildingGUI;
     public static GameObject RoadBuildStartFlag;
+    public static List<FlagSkript> AllFlags; // All Flags with Roads attached
 
     // Roads
     public static Road CurrentRoad;
@@ -121,6 +123,9 @@ public class GameHandler : MonoBehaviour
         MainCanvas = mainCanvas;
         GUIActive = false;
 
+        // Variables
+        AllFlags = new List<FlagSkript>();
+
         // Roads
         CurrentlyBuildingRoad = false;
     }
@@ -137,22 +142,20 @@ public class GameHandler : MonoBehaviour
 
     public static void EndBuildingRoad(FlagSkript endFlag = null, bool succesfull = true)
     {
+        // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
+        if (succesfull && CurrentlyBuildingRoad && endFlag != null)
+        {
+            endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagSkript>());
+            RoadBuildStartFlag.GetComponent<FlagSkript>().AddRoad(CurrentRoad, endFlag);
+        }
+        else
+        {
+            if (CurrentRoad != null && CurrentlyBuildingRoad) CurrentRoad.destroy();
+        }
 
-            // from_buildable_flag is this method called from a buildable flag, which has to be replaced by a real flag
-            if (succesfull && CurrentlyBuildingRoad && endFlag != null)
-            {
-                endFlag.AddRoad(CurrentRoad,RoadBuildStartFlag.GetComponent<FlagSkript>());
-                RoadBuildStartFlag.GetComponent<FlagSkript>().AddRoad(CurrentRoad,endFlag);
-            }
-            else
-            {
-                if (CurrentRoad != null) CurrentRoad.destroy();
-            }
-
-            CurrentlyBuildingRoad = false;
-            GUIActive = false;
-            Destroy(RoadBuildingGUI);
-        
+        CurrentlyBuildingRoad = false;
+        GUIActive = false;
+        Destroy(RoadBuildingGUI);
     }
 
     public static Vector3[] MakeSmoothCurve(Vector3[] points)
@@ -210,5 +213,83 @@ public class GameHandler : MonoBehaviour
         }
 
         return final_points;
+    }
+
+    // Road Graph Variables
+    public static Dictionary<FlagSkript, float> Distance; // Distance of the Nodes (Flags) from the start Node
+    public static Dictionary<FlagSkript, FlagSkript> Parent;
+
+    public static Road[] GetRoadGridPath(FlagSkript startPos, FlagSkript targetPos)
+    {
+        FlagSkript currentFlag = startPos;
+        List<FlagSkript> qList = AllFlags.ToList();
+
+        Parent = new Dictionary<FlagSkript, FlagSkript>();
+        Distance = new Dictionary<FlagSkript, float>();
+        foreach (var v in AllFlags)
+        {
+            Distance[v] = float.PositiveInfinity;
+            Parent[v] = null;
+        }
+
+        Distance[startPos] = 0;
+
+        while (qList.Count > 0)
+        {
+            foreach (var k in Distance.Keys)
+            {
+                if (Distance[k] < Distance[currentFlag])
+                {
+                    currentFlag = k;
+                }
+            }
+
+            if (currentFlag == targetPos)
+            {
+                List<Road> path = new List<Road>();
+                FlagSkript u = targetPos;
+                foreach (var x in u.AttachedRoads)
+                {
+                    if (x.Item2 == Parent[u])
+                    {
+                        path.Add(x.Item1);
+                        break;
+                    }
+                }
+
+                while (Parent[u] != null)
+                {
+                    u = Parent[u];
+                    foreach (var x in u.AttachedRoads)
+                    {
+                        if (x.Item2 == Parent[u])
+                        {
+                            path.Add(x.Item1);
+                            break;
+                        }
+                    }
+                }
+
+                path.Reverse();
+                return path.ToArray();
+            }
+
+            qList.Remove(currentFlag);
+
+            foreach (var n in currentFlag.AttachedRoads)
+            {
+                if (qList.Contains(n.Item2))
+                {
+                    float newDist = Distance[currentFlag] + n.Item1.Len;
+                    if (newDist < Distance[n.Item2])
+                    {
+                        Distance[n.Item2] = newDist;
+                        Parent[n.Item2] = currentFlag;
+                    }
+                }
+            }
+        }
+
+        return Array.Empty<Road>();
     }
 }

@@ -68,6 +68,7 @@ public class RoadPathfinding : MonoBehaviour
             path.Add(currentNode);
             currentNode = currentNode.parent;
         }
+        path.Add(currentNode);
 
         path.Reverse();
 

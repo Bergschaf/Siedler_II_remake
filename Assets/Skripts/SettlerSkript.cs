@@ -23,52 +23,60 @@ public class SettlerSkript : MonoBehaviour
 
     public void AssignRoad(FlagSkript flag, Road roadToAssign)
     {
-        Road[] roadPath = GameHandler.GetRoadGridPath(flag, currentFlag);
+        Road[] roadPath = GameHandler.GetRoadGridPath(currentFlag, flag);
         List<Vector3> tempPath = new List<Vector3>();
+        tempPath.Add(currentFlag.transform.position);
+        Vector3[] smoothRoadPoints;
+
         foreach (var road in roadPath)
         {
+            smoothRoadPoints = GameHandler.MakeSmoothCurve(road.RoadPoints);
             if (road == roadToAssign)
             {
-                if (Vector3.Distance(roadToAssign.Pos1, flag.transform.position) <
-                    Vector3.Distance(roadToAssign.Pos2, flag.transform.position))
+                if (Vector3.Distance(roadToAssign.Pos1, tempPath[tempPath.Count - 1]) <
+                    Vector3.Distance(roadToAssign.Pos2, tempPath[tempPath.Count - 1]))
                 {
-                    for (int i = 0; i < road.RoadPoints.Length / 2; i++)
+                    for (int i = 0; i < Mathf.RoundToInt(smoothRoadPoints.Length / 2); i++)
                     {
-                        tempPath.Add(road.RoadPoints[i]);
+                        tempPath.Add(smoothRoadPoints[i]);
                     }
                 }
+
                 else
                 {
-                    for (int i = Mathf.RoundToInt(road.RoadPoints.Length / 2); i > -1; i--)
+                    for (int i = smoothRoadPoints.Length - 1; i > Mathf.RoundToInt(smoothRoadPoints.Length / 2); i--)
                     {
-                        tempPath.Add(road.RoadPoints[i]);
+                        tempPath.Add(smoothRoadPoints[i]);
                     }
                 }
+
+                tempPath.Add(road.MiddlePos);
             }
             else
             {
                 if (Vector3.Distance(road.Pos1, tempPath[tempPath.Count - 1]) <
                     Vector3.Distance(road.Pos2, tempPath[tempPath.Count - 1]))
                 {
-                    for (int i = 0; i < road.RoadPoints.Length; i++)
+                    for (int i = 0; i < smoothRoadPoints.Length; i++)
                     {
-                        tempPath.Add(road.RoadPoints[i]);
+                        tempPath.Add(smoothRoadPoints[i]);
                     }
                 }
                 else
                 {
-                    for (int i =  road.RoadPoints.Length - 1; i > -1; i--)
+                    for (int i = smoothRoadPoints.Length - 1; i > -1; i--)
                     {
-                        tempPath.Add(road.RoadPoints[i]);
+                        tempPath.Add(smoothRoadPoints[i]);
                     }
                 }
             }
         }
+
         pathToTravel = tempPath.ToArray();
 
         _interpolationStepSize =
-            Vector3.Distance(pathToTravel[0], pathToTravel[1]) / _speed *
-            Time.deltaTime;
+            _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
+
         _pathToTravelIndex = 0;
         _interpolation = 0;
     }
@@ -90,20 +98,23 @@ public class SettlerSkript : MonoBehaviour
                 }
 
                 _interpolationStepSize =
-                    Vector3.Distance(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1]) / _speed *
-                    Time.deltaTime;
+                    _speed / Vector3.Distance(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1]);
             }
 
-            Vector3 tempPos =Vector3.Lerp(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1],
+            Vector3 tempPos = Vector3.Lerp(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1],
                 _interpolation);
+
+            Debug.Log(pathToTravel[_pathToTravelIndex + 1]);
+
             transform.position = new Vector3(tempPos.x, GameHandler.ActiveTerrain.SampleHeight(tempPos), tempPos.z);
-            
-            _interpolation += _interpolationStepSize;
+
+            _interpolation += _interpolationStepSize * Time.deltaTime;
         }
     }
 
     private void OnMouseDown()
     {
-        AssignRoad(GameHandler.AllFlags[GameHandler.AllFlags.Count - 1 ],GameHandler.AllFlags[GameHandler.AllFlags.Count - 1 ].AttachedRoads[0].Item1);
+        AssignRoad(GameHandler.AllFlags[GameHandler.AllFlags.Count - 1],
+            GameHandler.AllFlags[GameHandler.AllFlags.Count - 1].AttachedRoads[0].Item1);
     }
 }

@@ -640,6 +640,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1384989138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384989139}
+  - component: {fileID: 1384989140}
+  m_Layer: 0
+  m_Name: UIHanlder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1384989139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384989138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1822336796}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384989140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384989138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739dc617561755d448816509819f04dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fahnenerzeugungGUIPrefab: {fileID: 4210978094542084182, guid: 05439b58abf63d249a0c8de893f6f585, type: 3}
+  "stra\xDFenbaumenuGUIPrefab": {fileID: 2431808362182685125, guid: f1a224a07440b464b81978d4b8101547, type: 3}
+  fahenmenuPrefab: {fileID: 8424670560991179865, guid: 0169dd185ea5c8c49ad6761c84e5ccd2, type: 3}
+  mainCanvas: {fileID: 325663340}
 --- !u!1 &1501053647
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,10 +840,6 @@ MonoBehaviour:
   dirtCrossingMaterial: {fileID: 2100000, guid: b28d394f1cbd5964a888913131b84f2e, type: 2}
   flagBuildableYOffset: 3
   roadWidth: 2
-  fahnenerzeugungGUIPrefab: {fileID: 4210978094542084182, guid: 05439b58abf63d249a0c8de893f6f585, type: 3}
-  "stra\xDFenbaumenuGUIPrefab": {fileID: 2431808362182685125, guid: f1a224a07440b464b81978d4b8101547, type: 3}
-  fahenmenuPrefab: {fileID: 8424670560991179865, guid: 0169dd185ea5c8c49ad6761c84e5ccd2, type: 3}
-  mainCanvas: {fileID: 325663340}
   homeFlag: {fileID: 291908520}
 --- !u!4 &1822336796
 Transform:
@@ -810,6 +853,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 165370234}
+  - {fileID: 1384989139}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

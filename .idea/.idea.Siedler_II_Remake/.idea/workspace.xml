@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Settler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Game_handler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/7a/e4288ffe/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road_builder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Buildables/Flag_buildable_skript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Terrain_skript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/b2/eb7d8cde/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Flag.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26IHowFWG3gYlFhvw6G6Nidh2kT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="" />
+      <created>1647104361489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647104361489</updated>
+      <workItem from="1647104368297" duration="7873000" />
+      <workItem from="1647160019408" duration="7344000" />
+      <workItem from="1647182799389" duration="2363000" />
+      <workItem from="1647238094542" duration="1427000" />
+      <workItem from="1647270838793" duration="6863000" />
+      <workItem from="1647324422814" duration="2256000" />
+      <workItem from="1647364555177" duration="1033000" />
+      <workItem from="1647435641126" duration="12122000" />
+      <workItem from="1647449832601" duration="4600000" />
+      <workItem from="1647460011874" duration="1557000" />
+      <workItem from="1647519706879" duration="5977000" />
+      <workItem from="1647538743667" duration="883000" />
+      <workItem from="1647616648349" duration="9348000" />
+      <workItem from="1647704225822" duration="170000" />
+      <workItem from="1647704550836" duration="8623000" />
+      <workItem from="1647760908693" duration="9707000" />
+      <workItem from="1647799382594" duration="2849000" />
+      <workItem from="1647844077389" duration="1827000" />
+      <workItem from="1647876294785" duration="3320000" />
+      <workItem from="1647883903249" duration="1018000" />
+      <workItem from="1647884956125" duration="538000" />
+      <workItem from="1647885511368" duration="435000" />
+    </task>
+    <task id="LOCAL-00001" summary="Init">
+      <created>1647104464644</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647104464644</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Init2">
+      <created>1647104586172</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647104586172</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Gamehandler init">
+      <created>1647113216414</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647113216414</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Game Handler varibales + flag skript">
+      <created>1647114732730</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647114732730</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Camera Movement + Zoom">
+      <created>1647161041835</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647161041835</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Grid + Nodes + Camera y Offset from Terrain">
+      <created>1647163143401</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647163143401</updated>
+    </task>
+    <task id="LOCAL-00007" summary="UI">
+      <created>1647240599130</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1647240599130</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Flag Buildable GUi Setup">
+      <created>1647281375934</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1647281375934</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Spawn Flags">
+      <created>1647281658916</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647281658916</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Spawn Flags">
+      <created>1647281879413</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1647281879413</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Road mesh">
+      <created>1647442150081</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647442150081</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Road">
+      <created>1647444193648</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1647444193648</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Roads">
+      <created>1647461013831</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1647461013831</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Abort Road Build">
+      <created>1647532888843</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647532888843</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Road Building Stuff + additional files">
+      <created>1647619675534</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1647619675534</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Version Change to 2020.3.21f1 + Road Pathfinding beginning">
+      <created>1647709433173</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1647709433173</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Road Grid pathfinding">
+      <created>1647716836420</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1647716836420</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Settler walking Stuff">
+      <created>1647799875418</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1647799875418</updated>
+    </task>
+    <task id="LOCAL-00019" summary="UI Handler + DOK">
+      <created>1647801540534</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1647801540534</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Dok Gamehandler">
+      <created>1647845347170</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1647845347170</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Cleanup 1">
+      <created>1647884479482</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1647884479482</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Init" />
+    <MESSAGE value="Init2" />
+    <MESSAGE value="Gamehandler init" />
+    <MESSAGE value="Game Handler varibales + flag skript" />
+    <MESSAGE value="Camera Movement + Zoom" />
+    <MESSAGE value="Grid + Nodes + Camera y Offset from Terrain" />
+    <MESSAGE value="UI" />
+    <MESSAGE value="Flag Buildable GUi Setup" />
+    <MESSAGE value="Spawn Flags" />
+    <MESSAGE value="Road mesh" />
+    <MESSAGE value="Road" />
+    <MESSAGE value="Roads" />
+    <MESSAGE value="Abort Road Build" />
+    <MESSAGE value="Road Building Stuff + additional files" />
+    <MESSAGE value="Version Change to 2020.3.21f1 + Road Pathfinding beginning" />
+    <MESSAGE value="Raod Grid Pathfinding" />
+    <MESSAGE value="Road Grid pathfinding" />
+    <MESSAGE value="Settler walking Stuff" />
+    <MESSAGE value="UI Handler + DOK" />
+    <MESSAGE value="Dok Gamehandler" />
+    <MESSAGE value="Cleanup 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup 1" />
+  </component>
+</project>

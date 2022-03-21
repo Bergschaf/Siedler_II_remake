@@ -5,6 +5,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Custom road mesh on top of the terrain
+/// </summary>
 public class RoadMesh : MonoBehaviour
 {
     private Mesh _mesh;

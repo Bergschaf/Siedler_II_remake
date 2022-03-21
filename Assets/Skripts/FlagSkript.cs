@@ -8,17 +8,20 @@ using UnityEngine;
 /// </summary>
 public class FlagSkript : MonoBehaviour
 {
-    private bool guiActive; // TODO Migrate this to UIHandler
+    private bool _guiActive; // TODO Migrate this to UIHandler
+
     /// <summary>
     /// The GameObject of the crossing at the road
     /// </summary>
-    private GameObject dirtCrossing;
-    private GameObject gui; // TODO Migrate this to UIhHandler
+    private GameObject _dirtCrossing;
+
+    private GameObject _gui; // TODO Migrate this to UIHandler
+
     /// <summary>
     /// All road attached to the Flag
     /// </summary>
-    /// <code>List(Tuple(Road,FlagSkript): Road,TargetFlag</code>
-    public List<Tuple<Road,FlagSkript>> AttachedRoads; // (Road,Target)
+    /// <code>List(Tuple(Road,FlagScript): Road,TargetFlag</code>
+    public List<Tuple<Road, FlagSkript>> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +34,16 @@ public class FlagSkript : MonoBehaviour
 
     private void Update()
     {
-        if (guiActive)
+        if (_guiActive)
         {
-            if (gui == null)
+            if (_gui == null)
             {
-                guiActive = false;
+                _guiActive = false;
                 UIHandler.GUIActive = false;
             }
             else
             {
-                gui.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0);
+                _gui.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0);
             }
         }
     }
@@ -54,11 +57,11 @@ public class FlagSkript : MonoBehaviour
         }
         else if (!UIHandler.GUIActive)
         {
-            gui = Instantiate(UIHandler.FahnenmenuPrefab,
+            _gui = Instantiate(UIHandler.FahnenmenuPrefab,
                 Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0), Quaternion.identity,
                 UIHandler.MainCanvas.transform);
             UIHandler.LastClickedFlag = gameObject;
-            guiActive = true;
+            _guiActive = true;
             UIHandler.GUIActive = true;
         }
 
@@ -67,23 +70,22 @@ public class FlagSkript : MonoBehaviour
 
     private void GenerateDirtCrossing()
     {
-        dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab);
-        dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
+        _dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab);
+        _dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
         if (!GameHandler.AllFlags.Contains(this))
         {
             GameHandler.AllFlags.Add(this);
         }
     }
 
-    public void AddRoad(Road road,FlagSkript targetFlagSkript)
+    public void AddRoad(Road road, FlagSkript targetFlagSkript)
     {
         GenerateDirtCrossing();
         if (AttachedRoads == null)
         {
             AttachedRoads = new List<Tuple<Road, FlagSkript>>();
         }
-        AttachedRoads.Add(new Tuple<Road, FlagSkript>(road,targetFlagSkript));
-        
-        
+
+        AttachedRoads.Add(new Tuple<Road, FlagSkript>(road, targetFlagSkript));
     }
 }

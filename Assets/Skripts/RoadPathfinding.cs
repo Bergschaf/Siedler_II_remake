@@ -19,9 +19,9 @@ public class RoadPathfinding : MonoBehaviour
             Node node = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
-                if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost)
+                if (openSet[i].FCost < node.FCost || openSet[i].FCost == node.FCost)
                 {
-                    if (openSet[i].hCost < node.hCost)
+                    if (openSet[i].HCost < node.HCost)
                         node = openSet[i];
                 }
             }
@@ -36,17 +36,17 @@ public class RoadPathfinding : MonoBehaviour
 
             foreach (Node neighbour in Grid.GetNeighbours(node))
             {
-                if (!neighbour.walkable || closedSet.Contains(neighbour))
+                if (!neighbour.Buildable || closedSet.Contains(neighbour))
                 {
                     continue;
                 }
 
-                int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-                if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                int newCostToNeighbour = node.GCost + GetDistance(node, neighbour);
+                if (newCostToNeighbour < neighbour.GCost || !openSet.Contains(neighbour))
                 {
-                    neighbour.gCost = newCostToNeighbour;
-                    neighbour.hCost = GetDistance(neighbour, targetNode);
-                    neighbour.parent = node;
+                    neighbour.GCost = newCostToNeighbour;
+                    neighbour.HCost = GetDistance(neighbour, targetNode);
+                    neighbour.Parent = node;
 
                     if (!openSet.Contains(neighbour))
                         openSet.Add(neighbour);
@@ -66,7 +66,7 @@ public class RoadPathfinding : MonoBehaviour
         while (currentNode != startNode)
         {
             path.Add(currentNode);
-            currentNode = currentNode.parent;
+            currentNode = currentNode.Parent;
         }
         path.Add(currentNode);
 
@@ -78,8 +78,8 @@ public class RoadPathfinding : MonoBehaviour
     // Calculate the Distance between two Nodes
     static int GetDistance(Node nodeA, Node nodeB)
     {
-        int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-        int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);
+        int dstY = Mathf.Abs(nodeA.GridY - nodeB.GridY);
 
         if (dstX > dstY)
             return 14 * dstY + 10 * (dstX - dstY);

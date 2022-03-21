@@ -77,7 +77,7 @@ public class UIHandler : MonoBehaviour
         // GUI
         MainCanvas = mainCanvas;
         GUIActive = false;
-        RoadBuildingGUIActive = true;
+        RoadBuildingGUIActive = false;
 
     }
 
@@ -110,6 +110,7 @@ public class UIHandler : MonoBehaviour
     public static void EndRoadBuildingGUI()
     {
         GUIActive = false;
+        RoadBuildingGUIActive = false;
         Destroy(RoadBuildingGUI);
     }
 }

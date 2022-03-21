@@ -39,14 +39,13 @@ public class Road
     {
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
-
         Vector3[] temp = new Vector3[path.Count - 1];
 
 
         for (int i = 1; i < path.Count; i++)
         {
-            temp[i-1] = path[i].worldPosition;
-            Len += Vector3.Distance(path[i-1].worldPosition, path[i].worldPosition);
+            temp[i-1] = path[i].WorldPosition;
+            Len += Vector3.Distance(path[i-1].WorldPosition, path[i].WorldPosition);
 
         }
         RoadPoints = RoadPoints.Concat(temp).ToArray();

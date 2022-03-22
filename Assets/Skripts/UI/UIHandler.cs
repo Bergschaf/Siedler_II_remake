@@ -14,17 +14,17 @@ public class UIHandler : MonoBehaviour
     /// <summary>
     /// The prefab of the flag spawning menu
     /// </summary>
-    public GameObject fahnenerzeugungGUIPrefab;
+    public GameObject flagCreationMenuPrefab;
 
     /// <summary>
     /// The prefab of the road building menu
     /// </summary>
-    public GameObject straßenbaumenuGUIPrefab;
+    public GameObject roadMenuPrefab;
 
     /// <summary>
     /// The prefab of the flag menu
     /// </summary>
-    public GameObject fahenmenuPrefab;
+    public GameObject flagMenuPrefab;
 
     // GUI
     public Canvas mainCanvas;
@@ -32,9 +32,9 @@ public class UIHandler : MonoBehaviour
     // Static Variables
 
     // GUI Prefabs
-    public static GameObject FahnenerzeugungGUIPrefab;
-    public static GameObject StraßenbaumenuGUIPrefab;
-    public static GameObject FahnenmenuPrefab;
+    public static GameObject FlagCreationMenuPrefab;
+    public static GameObject RoadMenuPrefab;
+    public static GameObject FlagMenuPrefab;
 
     // GUI
 
@@ -68,17 +68,26 @@ public class UIHandler : MonoBehaviour
     /// </summary>
     public static Vector3 MainGUIWorldPos;
 
+    /// <summary>
+    /// The main camera
+    /// </summary>
+    public static Camera MainCamera;
+    
+
     // Start is called before the first frame update
     void Awake()
     {
         // GUI Prefabs
-        FahnenerzeugungGUIPrefab = fahnenerzeugungGUIPrefab;
-        StraßenbaumenuGUIPrefab = straßenbaumenuGUIPrefab;
-        FahnenmenuPrefab = fahenmenuPrefab;
+        FlagCreationMenuPrefab = flagCreationMenuPrefab;
+        RoadMenuPrefab = roadMenuPrefab;
+        FlagMenuPrefab = flagMenuPrefab;
 
         // GUI
         MainCanvas = mainCanvas;
         GUIActive = false;
+        
+        // Camera
+        MainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -86,7 +95,7 @@ public class UIHandler : MonoBehaviour
     {
         if (GUIActive)
         {
-            MainGUIWindow.transform.position = Camera.main.WorldToScreenPoint(MainGUIWorldPos);
+            MainGUIWindow.transform.position = MainCamera.WorldToScreenPoint(MainGUIWorldPos);
         }
     }
 
@@ -98,7 +107,7 @@ public class UIHandler : MonoBehaviour
     /// <param name="worldPos">the world position of the road building GUI</param>
     public static void StartRoadBuildingGUI(Vector3 worldPos)
     {
-        MainGUIWindow = Instantiate(StraßenbaumenuGUIPrefab, Camera.main.WorldToScreenPoint(worldPos),
+        MainGUIWindow = Instantiate(RoadMenuPrefab, MainCamera.WorldToScreenPoint(worldPos),
             Quaternion.identity, MainCanvas.transform);
         GUIActive = true;
         MainGUIWorldPos = worldPos;
@@ -125,7 +134,7 @@ public class UIHandler : MonoBehaviour
     /// <param name="worldPos"></param>
     public static void StartFlagGUI(Vector3 worldPos)
     {
-        MainGUIWindow = Instantiate(FahnenmenuPrefab, Camera.main.WorldToScreenPoint(worldPos),
+        MainGUIWindow = Instantiate(FlagMenuPrefab, MainCamera.WorldToScreenPoint(worldPos),
             Quaternion.identity, MainCanvas.transform);
         GUIActive = true;
         MainGUIWorldPos = worldPos;
@@ -137,7 +146,7 @@ public class UIHandler : MonoBehaviour
     /// <param name="worldPos"></param>
     public static void StartFlagCreationGUI(Vector3 worldPos)
     {
-        MainGUIWindow = Instantiate(FahnenerzeugungGUIPrefab, Camera.main.WorldToScreenPoint(worldPos),
+        MainGUIWindow = Instantiate(FlagCreationMenuPrefab, MainCamera.WorldToScreenPoint(worldPos),
             Quaternion.identity, MainCanvas.transform);
         GUIActive = true;
         MainGUIWorldPos = worldPos;

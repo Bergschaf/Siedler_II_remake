@@ -105,7 +105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de33ea21fa744e84ba6fa129b56254e0, type: 3}
+  m_Sprite: {fileID: 6775799435257957093, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -144,10 +144,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 38ced9a8606a05f4b8433db8b5d09857, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 38ced9a8606a05f4b8433db8b5d09857, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 38ced9a8606a05f4b8433db8b5d09857, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: c649265234e959946bf133adc9eee704, type: 3}
+    m_HighlightedSprite: {fileID: -5484400687075655864, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
+    m_PressedSprite: {fileID: -5484400687075655864, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
+    m_SelectedSprite: {fileID: -5484400687075655864, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
+    m_DisabledSprite: {fileID: 6775799435257957093, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -388,10 +388,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4747642463872881601, guid: 354986c46c12b654cb4c41a087136706, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 354986c46c12b654cb4c41a087136706, type: 3}
+--- !u!1 &8904572964847027541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4747642463872881607, guid: 354986c46c12b654cb4c41a087136706, type: 3}
+  m_PrefabInstance: {fileID: 4210978095680001682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8904572964847027540 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4747642463872881606, guid: 354986c46c12b654cb4c41a087136706, type: 3}
   m_PrefabInstance: {fileID: 4210978095680001682}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8232335539818582116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904572964847027541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3e65e7c5b55c8494bac40ad5b5d19d6b, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 100

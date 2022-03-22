@@ -185,7 +185,7 @@ public class GameHandler : MonoBehaviour
 
         CurrentlyBuildingRoad = false;
         // The GUI gets destroyed
-        UIHandler.EndRoadBuildingGUI();
+        UIHandler.EndGUI();
     }
 
     /// <summary>

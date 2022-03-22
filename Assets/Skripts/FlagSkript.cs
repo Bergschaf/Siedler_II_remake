@@ -8,15 +8,12 @@ using UnityEngine;
 /// </summary>
 public class FlagSkript : MonoBehaviour
 {
-    private bool _guiActive; // TODO Migrate this to UIHandler
-
+    
     /// <summary>
     /// The GameObject of the crossing at the road
     /// </summary>
     private GameObject _dirtCrossing;
-
-    private GameObject _gui; // TODO Migrate this to UIHandler
-
+    
     /// <summary>
     /// All road attached to the Flag
     /// </summary>
@@ -26,26 +23,11 @@ public class FlagSkript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(transform.position.x,
-            GameHandler.ActiveTerrain.SampleHeight(transform.position),
-            transform.position.z);
-    }
-
-
-    private void Update()
-    {
-        if (_guiActive)
-        {
-            if (_gui == null)
-            {
-                _guiActive = false;
-                UIHandler.GUIActive = false;
-            }
-            else
-            {
-                _gui.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0);
-            }
-        }
+        Vector3 position = transform.position;
+        position = new Vector3(position.x,
+            GameHandler.ActiveTerrain.SampleHeight(position),
+            position.z);
+        transform.position = position;
     }
 
     private void OnMouseDown()
@@ -57,15 +39,9 @@ public class FlagSkript : MonoBehaviour
         }
         else if (!UIHandler.GUIActive)
         {
-            _gui = Instantiate(UIHandler.FahnenmenuPrefab,
-                Camera.main.WorldToScreenPoint(transform.position) + new Vector3(150, 80, 0), Quaternion.identity,
-                UIHandler.MainCanvas.transform);
-            UIHandler.LastClickedFlag = gameObject;
-            _guiActive = true;
-            UIHandler.GUIActive = true;
+            UIHandler.StartFlagGUI(transform.position);
         }
-
-        GameHandler.GetRoadGridPath(this, this); // temp
+        UIHandler.LastClickedFlag = gameObject;
     }
 
     private void GenerateDirtCrossing()

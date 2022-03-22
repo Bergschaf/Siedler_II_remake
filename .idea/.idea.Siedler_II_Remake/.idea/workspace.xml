@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="DOK">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +123,7 @@
       <workItem from="1647884956125" duration="538000" />
       <workItem from="1647885511368" duration="5524000" />
       <workItem from="1647928475698" duration="3175000" />
-      <workItem from="1647968881732" duration="678000" />
+      <workItem from="1647968881732" duration="2571000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>

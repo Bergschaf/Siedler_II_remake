@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Script for the road building button
 /// </summary>
-public class BuildRoadButtonSkript : MonoBehaviour
+public class BuildRoadButtonScript : MonoBehaviour
 {
     public void Click(GameObject parentGUI)
     {

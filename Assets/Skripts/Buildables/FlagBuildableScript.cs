@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Script for the buildable Flag GameObject TODO Change buildable Flag to UI icon
 /// </summary>
-public class FlagBuildableSkript : MonoBehaviour
+public class FlagBuildableScript : MonoBehaviour
 {
     /// <summary>
     /// Is the mouse currently over the icon
@@ -22,13 +22,13 @@ public class FlagBuildableSkript : MonoBehaviour
     }
 
 
-    public FlagSkript ReplaceWithFlag()
+    public FlagScript ReplaceWithFlag()
     {
         GameObject temp = Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
         UIHandler.EndGUI();
         Destroy(gameObject);
 
-        return temp.GetComponent<FlagSkript>();
+        return temp.GetComponent<FlagScript>();
     }
 
     private void OnMouseDown()

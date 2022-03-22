@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// The script assigned to the flag GameObject
 /// </summary>
-public class FlagSkript : MonoBehaviour
+public class FlagScript : MonoBehaviour
 {
     
     /// <summary>
@@ -18,7 +18,7 @@ public class FlagSkript : MonoBehaviour
     /// All road attached to the Flag
     /// </summary>
     /// <code>List(Tuple(Road,FlagScript): Road,TargetFlag</code>
-    public List<Tuple<Road, FlagSkript>> AttachedRoads; // (Road,Target)
+    public List<Tuple<Road, FlagScript>> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class FlagSkript : MonoBehaviour
         if (GameHandler.CurrentlyBuildingRoad)
         {
             GameHandler.CurrentRoad.add_point(transform.position);
-            GameHandler.EndBuildingRoad(gameObject.GetComponent<FlagSkript>());
+            GameHandler.EndBuildingRoad(gameObject.GetComponent<FlagScript>());
         }
         else if (!UIHandler.GUIActive)
         {
@@ -47,21 +47,21 @@ public class FlagSkript : MonoBehaviour
     private void GenerateDirtCrossing()
     {
         _dirtCrossing = Instantiate(GameHandler.DirtCrossingPrefab);
-        _dirtCrossing.GetComponent<DirtCrossingMeshSkript>().SetVertices(transform.position);
+        _dirtCrossing.GetComponent<DirtCrossingMeshScript>().SetVertices(transform.position);
         if (!GameHandler.AllFlags.Contains(this))
         {
             GameHandler.AllFlags.Add(this);
         }
     }
 
-    public void AddRoad(Road road, FlagSkript targetFlagSkript)
+    public void AddRoad(Road road, FlagScript targetFlagScript)
     {
         GenerateDirtCrossing();
         if (AttachedRoads == null)
         {
-            AttachedRoads = new List<Tuple<Road, FlagSkript>>();
+            AttachedRoads = new List<Tuple<Road, FlagScript>>();
         }
 
-        AttachedRoads.Add(new Tuple<Road, FlagSkript>(road, targetFlagSkript));
+        AttachedRoads.Add(new Tuple<Road, FlagScript>(road, targetFlagScript));
     }
 }

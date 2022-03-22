@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirtCrossingMeshSkript : MonoBehaviour
+public class DirtCrossingMeshScript : MonoBehaviour
 {
     /// <summary>
     /// The mesh of the crossing

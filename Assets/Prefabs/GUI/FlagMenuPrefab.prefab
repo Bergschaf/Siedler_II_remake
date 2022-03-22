@@ -635,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8602803430402388824}
   m_Layer: 5
-  m_Name: FahnenmenuPrefab
+  m_Name: FlagMenuPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

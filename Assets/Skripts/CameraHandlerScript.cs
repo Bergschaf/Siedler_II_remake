@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Script for the CameraHandler GameObject
 /// </summary>
-public class CameraHandlerSkript : MonoBehaviour
+public class CameraHandlerScript : MonoBehaviour
 {
     // Speed values
     /// <summary>
@@ -32,8 +32,10 @@ public class CameraHandlerSkript : MonoBehaviour
         // The input of the w a s d or arrow keys gets translated to camera movement
         transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed,
             0, Input.GetAxis("Vertical") * Time.deltaTime * speed);
-        transform.position = new Vector3(transform.position.x, GameHandler.ActiveTerrain.SampleHeight(transform.position) + yOffset,
-            transform.position.z);
+        var position = transform.position;
+        position = new Vector3(position.x, GameHandler.ActiveTerrain.SampleHeight(position) + yOffset,
+            position.z);
+        transform.position = position;
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView + (Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * zoomSpeed), 20, 100);
     }
 }

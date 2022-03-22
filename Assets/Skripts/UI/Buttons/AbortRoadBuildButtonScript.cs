@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script for the Button that aborts the road build
 /// </summary>
-public class AbortRoadBuildButtonSkript : MonoBehaviour
+public class AbortRoadBuildButtonScript : MonoBehaviour
 {
     public void click()
     {

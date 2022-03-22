@@ -91,7 +91,7 @@ public class GameHandler : MonoBehaviour
     /// <summary>
     /// All flags with roads attached
     /// </summary>
-    public static List<FlagSkript> AllFlags;
+    public static List<FlagScript> AllFlags;
 
     /// <summary>
     /// The flag where the road building process was started
@@ -113,7 +113,7 @@ public class GameHandler : MonoBehaviour
     /// <summary>
     /// The flag of the main building where the settlers spawn
     /// </summary>
-    public static FlagSkript HomeFlag;
+    public static FlagScript HomeFlag;
 
     private void Awake()
     {
@@ -142,10 +142,10 @@ public class GameHandler : MonoBehaviour
         RoadWidth = roadWidth;
 
         // Variables
-        AllFlags = new List<FlagSkript>();
+        AllFlags = new List<FlagScript>();
 
         // Settlers
-        HomeFlag = homeFlag.GetComponent<FlagSkript>();
+        HomeFlag = homeFlag.GetComponent<FlagScript>();
 
         // Roads
         CurrentlyBuildingRoad = false;
@@ -169,13 +169,13 @@ public class GameHandler : MonoBehaviour
     /// </summary>
     /// <param name="endFlag">The flag where the building process ended</param>
     /// <param name="successful">Is the process finished or aborted</param>
-    public static void EndBuildingRoad(FlagSkript endFlag = null, bool successful = true)
+    public static void EndBuildingRoad(FlagScript endFlag = null, bool successful = true)
     {
         if (successful && CurrentlyBuildingRoad && endFlag != null)
         {
             // The road is added to the flags
-            endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagSkript>());
-            RoadBuildStartFlag.GetComponent<FlagSkript>().AddRoad(CurrentRoad, endFlag);
+            endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagScript>());
+            RoadBuildStartFlag.GetComponent<FlagScript>().AddRoad(CurrentRoad, endFlag);
         }
         else
         {
@@ -196,7 +196,7 @@ public class GameHandler : MonoBehaviour
     public static Vector3[] MakeSmoothCurve(Vector3[] points)
     {
         Vector3 p0, p1, m0, m1;
-        Vector3[] final_points = new Vector3[_numberOfPoints * (points.Length - 1)];
+        Vector3[] finalPoints = new Vector3[_numberOfPoints * (points.Length - 1)];
         for (int j = 0; j < points.Length - 1; j++)
         {
             // determine control points of segment
@@ -243,23 +243,23 @@ public class GameHandler : MonoBehaviour
                            + (t * t * t - 2.0f * t * t + t) * m0
                            + (-2.0f * t * t * t + 3.0f * t * t) * p1
                            + (t * t * t - t * t) * m1;
-                final_points[i + j * _numberOfPoints] = position;
+                finalPoints[i + j * _numberOfPoints] = position;
             }
         }
 
-        return final_points;
+        return finalPoints;
     }
 
     // Road Graph Variables
     /// <summary>
     /// Distance of the nodes (flags) from the starting Node
     /// </summary>
-    public static Dictionary<FlagSkript, float> Distance;
+    public static Dictionary<FlagScript, float> Distance;
 
     /// <summary>
     /// The parent node (flag) of each flag;
     /// </summary>
-    public static Dictionary<FlagSkript, FlagSkript> Parent;
+    public static Dictionary<FlagScript, FlagScript> Parent;
 
     /// <summary>
     /// Calculates a path on the available roads using the Dijkstra algorithm TODO optimize the function
@@ -267,13 +267,13 @@ public class GameHandler : MonoBehaviour
     /// <param name="startPos">Starting flag of the path</param>
     /// <param name="targetPos">Ending flag of the path</param>
     /// <returns>Array of roads from the start flag to the target flag, empty if no path is found</returns>
-    public static Road[] GetRoadGridPath(FlagSkript startPos, FlagSkript targetPos)
+    public static Road[] GetRoadGridPath(FlagScript startPos, FlagScript targetPos)
     {
-        FlagSkript currentFlag = startPos;
-        List<FlagSkript> qList = AllFlags.ToList();
+        FlagScript currentFlag = startPos;
+        List<FlagScript> qList = AllFlags.ToList();
 
-        Parent = new Dictionary<FlagSkript, FlagSkript>();
-        Distance = new Dictionary<FlagSkript, float>();
+        Parent = new Dictionary<FlagScript, FlagScript>();
+        Distance = new Dictionary<FlagScript, float>();
         foreach (var v in AllFlags)
         {
             Distance[v] = float.PositiveInfinity;
@@ -295,7 +295,7 @@ public class GameHandler : MonoBehaviour
             if (currentFlag == targetPos)
             {
                 List<Road> path = new List<Road>();
-                FlagSkript u = targetPos;
+                FlagScript u = targetPos;
                 foreach (var x in u.AttachedRoads)
                 {
                     if (x.Item2 == Parent[u])

@@ -5,11 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Script for the flag spawning button
 /// </summary>
-public class FlagSpawnButtonSkript : MonoBehaviour
+public class FlagSpawnButtonScript : MonoBehaviour
 {
     public void click()
     {
-        FlagSkript tempflag = UIHandler.ClickedBuildableFlag.GetComponent<FlagBuildableSkript>().ReplaceWithFlag();
+        FlagScript tempflag = UIHandler.ClickedBuildableFlag.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
         GameHandler.EndBuildingRoad(tempflag);
     }
 }

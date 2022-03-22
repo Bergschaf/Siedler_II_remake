@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Script for each settler, not fully developed yet
 /// </summary>
-public class SettlerSkript : MonoBehaviour
+public class SettlerScript : MonoBehaviour
 {
     /// <summary>
     /// The settlers job
@@ -27,7 +27,7 @@ public class SettlerSkript : MonoBehaviour
     /// <summary>
     /// The flag the settler is currently at
     /// </summary>
-    public FlagSkript currentFlag;
+    public FlagScript currentFlag;
     /// <summary>
     /// Variables for travelling over multiple frames
     /// </summary>
@@ -49,7 +49,7 @@ public class SettlerSkript : MonoBehaviour
     /// </summary>
     /// <param name="flag">a flag of the road</param>
     /// <param name="roadToAssign">the road the settler should go to</param>
-    public void AssignRoad(FlagSkript flag, Road roadToAssign)
+    public void AssignRoad(FlagScript flag, Road roadToAssign)
     {
         Road[] roadPath = GameHandler.GetRoadGridPath(currentFlag, flag);
         List<Vector3> tempPath = new List<Vector3>();

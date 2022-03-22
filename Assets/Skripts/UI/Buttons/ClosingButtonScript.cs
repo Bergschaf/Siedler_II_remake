@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// The script for the closing button of an UI element
 /// </summary>
-public class ClosingButton : MonoBehaviour
+public class ClosingButtonScript : MonoBehaviour
 {
     /// <summary>
     /// Called when the button is clicked

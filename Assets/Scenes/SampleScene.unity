@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98253665b896df74f860872800497cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unwalkableMask:
+  unbuildableMask:
     serializedVersion: 2
     m_Bits: 0
   nodeRadius: 8
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 1384989139}
   - component: {fileID: 1384989140}
   m_Layer: 0
-  m_Name: UIHanlder
+  m_Name: UIHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,9 +683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739dc617561755d448816509819f04dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fahnenerzeugungGUIPrefab: {fileID: 4210978094542084182, guid: 05439b58abf63d249a0c8de893f6f585, type: 3}
-  "stra\xDFenbaumenuGUIPrefab": {fileID: 2431808362182685125, guid: f1a224a07440b464b81978d4b8101547, type: 3}
-  fahenmenuPrefab: {fileID: 8424670560991179865, guid: 0169dd185ea5c8c49ad6761c84e5ccd2, type: 3}
+  flagCreationMenuPrefab: {fileID: 4210978094542084182, guid: 05439b58abf63d249a0c8de893f6f585, type: 3}
+  roadMenuPrefab: {fileID: 2431808362182685125, guid: f1a224a07440b464b81978d4b8101547, type: 3}
+  flagMenuPrefab: {fileID: 8424670560991179865, guid: 0169dd185ea5c8c49ad6761c84e5ccd2, type: 3}
   mainCanvas: {fileID: 325663340}
 --- !u!1 &1501053647
 GameObject:

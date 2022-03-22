@@ -5,4 +5,4 @@ Wer Lust hat mitzumachen, einfach anschreiben (Discord: Bergschaf#0628)
 
 EN:
 A remake (using unity) of the game Settlers II 10th anniversary, a 3D RTS. The development process is currently at the very beginning.
-If you wnat to contribute, DM me (Discord: Bergschaf#0628)
+If you want to contribute, DM me (Discord: Bergschaf#0628)

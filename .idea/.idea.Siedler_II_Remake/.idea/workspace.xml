@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="DOK">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerSkript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/TestSmoothCurve.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/TestSmoothCurve.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/AbortRoadBuildButtonSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/AbortRoadBuildButtonSkript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/BuildRoadButtonSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/BuildRoadButtonSkript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonSkript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/FontConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/FontConverter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +39,6 @@
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road_builder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Buildables/Flag_buildable_skript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/SettlerSkript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Terrain_skript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/b2/eb7d8cde/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Flag.cs" root0="SKIP_HIGHLIGHTING" />
@@ -129,7 +122,8 @@
       <workItem from="1647883903249" duration="1018000" />
       <workItem from="1647884956125" duration="538000" />
       <workItem from="1647885511368" duration="5524000" />
-      <workItem from="1647928475698" duration="2014000" />
+      <workItem from="1647928475698" duration="3175000" />
+      <workItem from="1647968881732" duration="2571000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -306,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647892814968</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="DOK">
+      <created>1647930693539</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1647930693539</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +341,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Init" />
     <MESSAGE value="Init2" />
     <MESSAGE value="Gamehandler init" />
     <MESSAGE value="Game Handler varibales + flag skript" />
@@ -365,6 +365,7 @@
     <MESSAGE value="Scene Changes" />
     <MESSAGE value="Init Flag Road System" />
     <MESSAGE value="Dok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dok" />
+    <MESSAGE value="DOK" />
+    <option name="LAST_COMMIT_MESSAGE" value="DOK" />
   </component>
 </project>

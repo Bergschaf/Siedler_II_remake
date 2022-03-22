@@ -3,24 +3,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script for each settler, not fully developed yet
+/// </summary>
 public class SettlerSkript : MonoBehaviour
 {
+    /// <summary>
+    /// The settlers job
+    /// </summary>
     public string job;
+    /// <summary>
+    /// The walking speed of the settler
+    /// </summary>
     private float _speed = 10;
+    /// <summary>
+    /// The road the settler should stand at and carry the Items between the two flags of the road
+    /// </summary>
     public Road AssignedRoad;
+    /// <summary>
+    /// The path the settler has to walk
+    /// </summary>
     public Vector3[] pathToTravel;
+    /// <summary>
+    /// The flag the settler is currently at
+    /// </summary>
     public FlagSkript currentFlag;
-    private float _interpolation;
-    private float _interpolationStepSize;
-    private int _pathToTravelIndex; // where in that path is the settler right now
+    /// <summary>
+    /// Variables for travelling over multiple frames
+    /// </summary>
+    private float _interpolation,_interpolationStepSize;
+    /// <summary>
+    /// At what position in the path array is the settler right now
+    /// </summary>
+    private int _pathToTravelIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        job = "Standart";
+        job = "Standard";
         currentFlag = GameHandler.HomeFlag;
     }
 
+    /// <summary>
+    /// Sets the road a settler should stand at and carry the items between the two flags of the road
+    /// </summary>
+    /// <param name="flag">a flag of the road</param>
+    /// <param name="roadToAssign">the road the settler should go to</param>
     public void AssignRoad(FlagSkript flag, Road roadToAssign)
     {
         Road[] roadPath = GameHandler.GetRoadGridPath(currentFlag, flag);

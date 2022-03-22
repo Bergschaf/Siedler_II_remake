@@ -10,8 +10,17 @@ using UnityEngine;
 /// </summary>
 public class RoadMesh : MonoBehaviour
 {
+    /// <summary>
+    /// The road Mesh
+    /// </summary>
     private Mesh _mesh;
+    /// <summary>
+    /// The UV-Map for the mesh
+    /// </summary>
     private Vector2[] _uvMap;
+    /// <summary>
+    /// The array of triangles of the mesh
+    /// </summary>
     private int[] _triangles;
 
 
@@ -25,12 +34,15 @@ public class RoadMesh : MonoBehaviour
         GetComponent<MeshRenderer>().material = GameHandler.DirtRoadMaterial;
     }
 
+    /// <summary>
+    /// Applies the points of the left and right array to the mesh
+    /// </summary>
+    /// <param name="verticesLeft">the points of one side of the road</param>
+    /// <param name="verticesRight">the points of the other side of the road</param>
     public void SetVertices(Vector3[] verticesLeft, Vector3[] verticesRight)
     {
         // TODO Calculate UVS Based on the space a triangle takes 
-        
-        
-        
+
         _mesh.Clear();
         _mesh.vertices = verticesLeft.Concat(verticesRight).ToArray();
 
@@ -40,8 +52,6 @@ public class RoadMesh : MonoBehaviour
 
         for (int i = 0; i < verticesLen - 1; i++)
         {
-            // 0  1  2
-            // 3  4  5
             _triangles[i * 6] = i;
             _triangles[i * 6 + 1] = i + 1;
             _triangles[i * 6 + 2] = i + verticesLen;
@@ -85,6 +95,9 @@ public class RoadMesh : MonoBehaviour
         _mesh.RecalculateNormals();
     }
 
+    /// <summary>
+    /// Destroys the mesh
+    /// </summary>
     public void destroy()
     {
         Destroy(gameObject);

@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class for finding a path for a road
+/// </summary>
 public class RoadPathfinding : MonoBehaviour
 {
-    // Find Path from startPos to targetPos
+    /// <summary>
+    /// Find a path from the start to the target position, using the A* algorithm
+    /// </summary>
+    /// <param name="startPos"></param>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
     public static List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
     {
         Node startNode = Grid.NodeFromWorldPoint(startPos);
@@ -57,7 +65,12 @@ public class RoadPathfinding : MonoBehaviour
         return new List<Node>();
     }
 
-    // Retrace the Calculated Path
+    /// <summary>
+    /// Retrace the calculating path
+    /// </summary>
+    /// <param name="startNode"></param>
+    /// <param name="endNode"></param>
+    /// <returns></returns>
     static List<Node> RetracePath(Node startNode, Node endNode)
     {
         List<Node> path = new List<Node>();
@@ -75,7 +88,12 @@ public class RoadPathfinding : MonoBehaviour
         return path;
     }
 
-    // Calculate the Distance between two Nodes
+    /// <summary>
+    /// Calculate the distance between two nodes
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns></returns>
     static int GetDistance(Node nodeA, Node nodeB)
     {
         int dstX = Mathf.Abs(nodeA.GridX - nodeB.GridX);

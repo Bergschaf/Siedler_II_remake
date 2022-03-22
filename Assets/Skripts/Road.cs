@@ -6,18 +6,35 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+/// <summary>
+/// Road class
+/// </summary>
 public class Road
 {
-    // Paramters
-    public Vector3[] RoadPoints;
-    private Vector3[] _roadPointsRight;
-    private Vector3[] _roadPointsLeft;
+    /// <summary>
+    /// Points of the road
+    /// </summary>
+    public Vector3[] RoadPoints,_roadPointsRight,_roadPointsLeft;
+    /// <summary>
+    /// Road GameObject
+    /// </summary>
     private GameObject _road;
+    /// <summary>
+    /// Road mesh
+    /// </summary>
     private RoadMesh _roadMesh;
-    public Vector3 Pos1;
-    public Vector3 Pos2;
+    /// <summary>
+    /// Start and end position of the road
+    /// </summary>
+    public Vector3 Pos1,Pos2;
+    /// <summary>
+    /// Length of the road
+    /// </summary>
     public float Len;
-    public Vector3 MiddlePos; // The exact middle of the road, where the assigned settler stands
+    /// <summary>
+    /// The exact middle position of the road, where the assigned settler stands TODO remove bugs
+    /// </summary>
+    public Vector3 MiddlePos; 
 
 
     public Road(Vector3[] _road_points, Vector3 _pos1, Vector3 _pos2)
@@ -35,6 +52,11 @@ public class Road
         _roadMesh = _road.GetComponent<RoadMesh>();
     }
 
+    
+    /// <summary>
+    /// Adds a point to the road
+    /// </summary>
+    /// <param name="point"></param>
     public void add_point(Vector3 point)
     {
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
@@ -57,6 +79,9 @@ public class Road
         draw_road();
     }
 
+    /// <summary>
+    /// Lays a smooth curve through the road points, offsets the points to both sides and applies them to the mesh
+    /// </summary>
     private void draw_road()
     {
         Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
@@ -83,7 +108,10 @@ public class Road
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
     }
-
+    
+    /// <summary>
+    /// Destroys the road and the corresponding mesh
+    /// </summary>
     public void destroy()
     {
         _roadMesh.destroy();

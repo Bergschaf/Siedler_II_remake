@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script for the road building button
+/// </summary>
 public class BuildRoadButtonSkript : MonoBehaviour
 {
     public void Click(GameObject parentGUI)

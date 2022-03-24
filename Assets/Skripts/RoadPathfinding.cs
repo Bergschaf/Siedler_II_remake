@@ -46,7 +46,11 @@ public class RoadPathfinding : MonoBehaviour
             {
                 if (!neighbour.Buildable || closedSet.Contains(neighbour))
                 {
-                    continue;
+                    if (neighbour.Type != "Flag" && neighbour != targetNode)
+
+                    {
+                        continue;
+                    }
                 }
 
                 // If the connection between the two nodes is diagonal
@@ -92,10 +96,8 @@ public class RoadPathfinding : MonoBehaviour
 
         while (currentNode != startNode)
         {
-
             path.Add(currentNode);
             currentNode = currentNode.Parent;
-
         }
 
         path.Add(currentNode);

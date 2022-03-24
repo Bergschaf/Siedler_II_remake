@@ -47,7 +47,7 @@ public class DirtCrossingMeshScript : MonoBehaviour
     {
         _vertices = new Vector3[num_vertices + 1];
 
-        middlePoint = new Vector3(middlePoint.x, GameHandler.ActiveTerrain.SampleHeight(middlePoint) + 0.1f,
+        middlePoint = new Vector3(middlePoint.x, GameHandler.ActiveTerrain.SampleHeight(middlePoint) + 0.15f,
             middlePoint.z);
         _vertices[0] = middlePoint;
         int c = 1;
@@ -57,7 +57,7 @@ public class DirtCrossingMeshScript : MonoBehaviour
                           Quaternion.AngleAxis(i, Vector3.up) * Vector3.forward *
                           radius;
 
-            _vertices[c] = new Vector3(pos.x, GameHandler.ActiveTerrain.SampleHeight(pos) + 0.1f, pos.z);
+            _vertices[c] = new Vector3(pos.x, GameHandler.ActiveTerrain.SampleHeight(pos) + 0.15f, pos.z);
             c++;
         }
 

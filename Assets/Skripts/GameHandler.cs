@@ -145,7 +145,7 @@ public class GameHandler : MonoBehaviour
         AllFlags = new List<FlagScript>();
 
         // Settlers
-        HomeFlag = homeFlag.GetComponent<FlagScript>();
+        if (homeFlag != null) HomeFlag = homeFlag.GetComponent<FlagScript>();
 
         // Roads
         CurrentlyBuildingRoad = false;
@@ -158,8 +158,7 @@ public class GameHandler : MonoBehaviour
     public static void StartBuildingRoad(Vector3 position)
     {
         CurrentlyBuildingRoad = true;
-        Vector3[] temp = {position};
-        CurrentRoad = new Road(temp, position, position); // Instantiate a road
+        CurrentRoad = new Road(position); // Instantiate a road
         RoadBuildStartFlag = UIHandler.LastClickedFlag;
         UIHandler.StartRoadBuildingGUI(position); // Start the GUI
     }
@@ -269,7 +268,7 @@ public class GameHandler : MonoBehaviour
     /// <returns>Array of roads from the start flag to the target flag, empty if no path is found</returns>
     public static Road[] GetRoadGridPath(FlagScript startPos, FlagScript targetPos)
     {
-        FlagScript currentFlag = startPos;
+        FlagScript currentFlag;
         List<FlagScript> qList = AllFlags.ToList();
 
         Parent = new Dictionary<FlagScript, FlagScript>();

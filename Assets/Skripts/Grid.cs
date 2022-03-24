@@ -66,8 +66,9 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * _nodeDiameter + nodeRadius) +
                                      Vector3.forward * (y * _nodeDiameter + nodeRadius);
                 // Check if the point is obstructed or not
-                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unbuildableMask));
-                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y);
+                //bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unbuildableMask));
+                bool walkable = true;
+                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y,"BuildableFlag");
                 if (walkable)
                 {
                     // TODO Calculate where what building size can go

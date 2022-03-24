@@ -8,12 +8,11 @@ using UnityEngine;
 /// </summary>
 public class FlagScript : MonoBehaviour
 {
-    
     /// <summary>
     /// The GameObject of the crossing at the road
     /// </summary>
     private GameObject _dirtCrossing;
-    
+
     /// <summary>
     /// All road attached to the Flag
     /// </summary>
@@ -28,19 +27,23 @@ public class FlagScript : MonoBehaviour
             GameHandler.ActiveTerrain.SampleHeight(position),
             position.z);
         transform.position = position;
+        // Grid.NodeFromWorldPoint(position).Type = "Flag";
     }
 
     private void OnMouseDown()
     {
         if (GameHandler.CurrentlyBuildingRoad)
         {
-            GameHandler.CurrentRoad.add_point(transform.position);
-            GameHandler.EndBuildingRoad(gameObject.GetComponent<FlagScript>());
+            if (GameHandler.CurrentRoad.add_point(transform.position))
+            {
+                GameHandler.EndBuildingRoad(gameObject.GetComponent<FlagScript>());
+            }
         }
         else if (!UIHandler.GUIActive)
         {
             UIHandler.StartFlagGUI(transform.position);
         }
+
         UIHandler.LastClickedFlag = gameObject;
     }
 

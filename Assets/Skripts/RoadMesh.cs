@@ -43,6 +43,7 @@ public class RoadMesh : MonoBehaviour
     {
         // TODO Calculate UVS Based on the space a triangle takes 
 
+
         _mesh.Clear();
         _mesh.vertices = verticesLeft.Concat(verticesRight).ToArray();
 
@@ -63,14 +64,14 @@ public class RoadMesh : MonoBehaviour
 
         _uvMap = new Vector2[verticesLen * 2];
         float count = 0;
-        bool count_up = true;
+        bool countUp = true;
         for (int i = 0; i < verticesLen; i++)
         {
             
             _uvMap[i] = new Vector2(0, count);
             _uvMap[i + verticesLen] = new Vector2(1, count);
 
-            if (count_up)
+            if (countUp)
             {
                 count += 0.5f;
 
@@ -81,11 +82,11 @@ public class RoadMesh : MonoBehaviour
             }
             if(count >= 1)
             {
-                count_up = false;
+                countUp = false;
             }
             else if(count <= 0)
             {
-                count_up = true;
+                countUp = true;
             }
 
         }

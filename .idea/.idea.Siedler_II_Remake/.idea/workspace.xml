@@ -4,28 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="GUI to UIHandler">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Add new renamed files">
+      <change afterPath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/CameraHandlerSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/CameraHandlerSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/DirtCrossingMeshSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/DirtCrossingMeshSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagSkript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/DirtCrossingMeshScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/DirtCrossingMeshScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/AbortRoadBuildButtonSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/AbortRoadBuildButtonSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/BuildRoadButtonSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/BuildRoadButtonSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/ClosingButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/ClosingButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonSkript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonSkript.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadMesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadMesh.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +131,10 @@
       <workItem from="1647884956125" duration="538000" />
       <workItem from="1647885511368" duration="5524000" />
       <workItem from="1647928475698" duration="3175000" />
-      <workItem from="1647968881732" duration="6124000" />
+      <workItem from="1647968881732" duration="6867000" />
+      <workItem from="1648016054590" duration="2506000" />
+      <workItem from="1648040483931" duration="6012000" />
+      <workItem from="1648127015035" duration="14390000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -330,7 +325,21 @@
       <option name="project" value="LOCAL" />
       <updated>1647973796911</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Typos + performance fixes">
+      <created>1647979742944</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1647979742944</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add new renamed files">
+      <created>1647979783152</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1647979783152</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,8 +373,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Gamehandler init" />
-    <MESSAGE value="Game Handler varibales + flag skript" />
     <MESSAGE value="Camera Movement + Zoom" />
     <MESSAGE value="Grid + Nodes + Camera y Offset from Terrain" />
     <MESSAGE value="UI" />
@@ -389,6 +396,8 @@
     <MESSAGE value="Dok" />
     <MESSAGE value="DOK" />
     <MESSAGE value="GUI to UIHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI to UIHandler" />
+    <MESSAGE value="Typos + performance fixes" />
+    <MESSAGE value="Add new renamed files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new renamed files" />
   </component>
 </project>

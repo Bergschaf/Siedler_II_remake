@@ -49,6 +49,20 @@ public class RoadPathfinding : MonoBehaviour
                     continue;
                 }
 
+                // If the connection between the two nodes is diagonal
+                if (node.GridX != neighbour.GridX && node.GridY != neighbour.GridY)
+                {
+                    // If there is a diagonal Road across the other road
+                    if (Grid.NodeGrid[node.GridX, neighbour.GridY].RoadTo
+                            .Contains(Grid.NodeGrid[neighbour.GridX, node.GridY]) || Grid
+                            .NodeGrid[neighbour.GridX, node.GridY].RoadTo
+                            .Contains(Grid.NodeGrid[node.GridX, neighbour.GridY]))
+                    {
+                        continue;
+                    }
+                }
+
+
                 int newCostToNeighbour = node.GCost + GetDistance(node, neighbour);
                 if (newCostToNeighbour < neighbour.GCost || !openSet.Contains(neighbour))
                 {
@@ -78,9 +92,12 @@ public class RoadPathfinding : MonoBehaviour
 
         while (currentNode != startNode)
         {
+
             path.Add(currentNode);
             currentNode = currentNode.Parent;
+
         }
+
         path.Add(currentNode);
 
         path.Reverse();

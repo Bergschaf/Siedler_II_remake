@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -27,12 +28,31 @@ public class Node
     /// The parent node, used for pathfinding
     /// </summary>
     public Node Parent;
-    public Node(bool _buildable, Vector3 _world_Pos, int _gridX, int _gridY)
+    /// <summary>
+    /// The Node Type (All types in NodeTypes.txt)
+    /// </summary>
+    public string Type;
+    /// <summary>
+    /// The road connections to other nodes
+    /// </summary>
+    public List<Node> RoadTo;
+
+    public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
     {
-        Buildable = _buildable;
-        WorldPosition = _world_Pos;
-        GridX = _gridX;
-        GridY = _gridY;
+        RoadTo = new List<Node>();
+        Buildable = buildable;
+        WorldPosition = worldPos;
+        GridX = gridX;
+        GridY = gridY;
+        Type = type;
+
+    }
+
+    public void CalculateBuildableType()
+    {
+        //TODO Calculate Buildable type
+        Type = "BuildableFlag";
+
     }
 
     /// <summary>

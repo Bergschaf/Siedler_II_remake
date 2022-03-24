@@ -35,11 +35,17 @@ public class FlagBuildableScript : MonoBehaviour
     {
         if (GameHandler.CurrentlyBuildingRoad)
         {
-            
-            UIHandler.ClickedBuildableFlag = gameObject;
             var position = transform.position;
-            GameHandler.CurrentRoad.add_point(position);
-            UIHandler.UpdateGUIWorldPos(position);
+
+            
+            if (GameHandler.CurrentRoad.add_point(position))
+            {
+                UIHandler.ClickedBuildableFlag = gameObject;
+                UIHandler.UpdateGUIWorldPos(position);
+
+
+            }
+
 
         }
         else if (!UIHandler.GUIActive)

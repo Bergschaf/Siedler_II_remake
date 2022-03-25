@@ -36,6 +36,10 @@ public class Node
     /// The road connections to other nodes
     /// </summary>
     public List<Node> RoadTo;
+    /// <summary>
+    /// The Flag at the Node if a flag is at the Node
+    /// </summary>
+    public Flagscript Flag;
 
     public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
     {
@@ -52,6 +56,7 @@ public class Node
     {
         //TODO Calculate Buildable type
         Type = "BuildableFlag";
+        Buildable = true;
 
     }
 

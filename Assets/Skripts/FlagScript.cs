@@ -27,7 +27,15 @@ public class FlagScript : MonoBehaviour
             GameHandler.ActiveTerrain.SampleHeight(position),
             position.z);
         transform.position = position;
-        // Grid.NodeFromWorldPoint(position).Type = "Flag";
+        
+        Node temp = Grid.NodeFromWorldPoint(position);
+        if (Node.Type = "Road")
+        {
+            
+        }
+        temp.Type = "Flag";
+        temp.Flag = this;
+
     }
 
     private void OnMouseDown()

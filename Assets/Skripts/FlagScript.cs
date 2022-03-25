@@ -29,12 +29,13 @@ public class FlagScript : MonoBehaviour
         transform.position = position;
         
         Node temp = Grid.NodeFromWorldPoint(position);
-        if (Node.Type = "Road")
+        if (temp.Type == "Road" && temp.RoadTo.Count > 1)
         {
-            
+            GameHandler.PlaceFlagInRoad(this);
         }
         temp.Type = "Flag";
         temp.Flag = this;
+        temp.RoadTo = new List<Node>();
 
     }
 

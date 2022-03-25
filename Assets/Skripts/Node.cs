@@ -39,7 +39,8 @@ public class Node
     /// <summary>
     /// The Flag at the Node if a flag is at the Node
     /// </summary>
-    public Flagscript Flag;
+    public FlagScript Flag;
+    
 
     public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
     {

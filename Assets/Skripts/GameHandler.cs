@@ -188,6 +188,100 @@ public class GameHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Places a flag at a node which is already road
+    /// </summary>
+    /// <param name="flag">the flag to be placed</param>
+    public static void PlaceFlagInRoad(FlagScript flag)
+    {
+        Vector3 flagPos = flag.transform.position;
+        Node node = Grid.NodeFromWorldPoint(flagPos);
+        Node prevTempNode = node.RoadTo[0];
+        Node tempNode = node;
+        while (tempNode.Type != "Flag")
+        {
+            foreach (var n in tempNode.RoadTo)
+            {
+                if (!n.Equals(prevTempNode))
+                {
+                    prevTempNode = tempNode;
+                    tempNode = n;
+                    break;
+                }
+            }
+        }
+
+        FlagScript flag1 = tempNode.Flag;
+
+        prevTempNode = node.RoadTo[1];
+        tempNode = node;
+        while (tempNode.Type != "Flag")
+        {
+            foreach (var n in tempNode.RoadTo)
+            {
+                if (!n.Equals(prevTempNode))
+                {
+                    prevTempNode = tempNode;
+                    tempNode = n;
+                }
+            }
+        }
+
+        FlagScript flag2 = tempNode.Flag;
+        Road road = flag1.AttachedRoads[0].Item1;
+
+        foreach (var t in flag1.AttachedRoads)
+        {
+            if (t.Item2.Equals(flag2))
+            {
+                road = t.Item1;
+                flag1.AttachedRoads.Remove(t);
+                break;
+            }
+        }
+        
+        foreach (var t in flag2.AttachedRoads)
+        {
+            if (t.Item2.Equals(flag1))
+            {
+                flag2.AttachedRoads.Remove(t);
+                break;
+            }
+        }
+
+        int splitIndex = 0;
+        float dist = Vector3.Distance(road.Pos1, flagPos);
+        for (int i = 1; i < road.RoadPoints.Length; i++)
+        {
+            if (Vector3.Distance(road.RoadPoints[i], flagPos) < dist)
+            {
+                dist = Vector3.Distance(road.RoadPoints[i], flagPos);
+                splitIndex = i;
+
+            }
+        }
+
+        Vector3[] roadPoints = road.RoadPoints;
+        road.destroy();
+        Road newRoad1 = new Road(roadPoints[0]);
+        for (int i = 1; i < splitIndex + 1; i++)
+        {
+            newRoad1.add_point(roadPoints[i]);
+        }
+        
+        Road newRoad2 = new Road(roadPoints[splitIndex]);
+        for (int i = splitIndex + 1; i < roadPoints.Length; i++)
+        {
+            newRoad2.add_point(roadPoints[i]);
+        }
+        flag1.AddRoad(newRoad1,flag);
+        flag.AddRoad(newRoad1,flag1);
+        
+        flag2.AddRoad(newRoad2,flag);
+        flag.AddRoad(newRoad2,flag2);
+
+    }
+
+    /// <summary>
     /// Lay a smooth curve through the points (Copied from the unity forum)
     /// </summary>
     /// <param name="points">Array of the points the curve should go through</param>

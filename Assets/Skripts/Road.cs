@@ -81,7 +81,8 @@ public class Road
             path[i].Type = "Road";
             Nodes.Add(path[i]);
         }
-
+        
+        
         Nodes[0].RoadTo.Add(Nodes[1]);
         Nodes[Nodes.Count - 1].RoadTo.Add(Nodes[Nodes.Count - 2]);
         for (int i = 1; i < Nodes.Count - 1; i++)
@@ -159,6 +160,7 @@ public class Road
         foreach (var n in Nodes)
         {
             n.Buildable = false;
+            n.RoadTo.Clear();
         }
 
         _roadMesh.destroy();

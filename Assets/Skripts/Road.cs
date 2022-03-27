@@ -57,8 +57,6 @@ public class Road
         _road = Object.Instantiate(GameHandler.DirtRoadPrefab, Vector3.zero, Quaternion.identity);
         _roadMesh = _road.GetComponent<RoadMesh>();
         Nodes = new List<Node> {Grid.NodeFromWorldPoint(Pos1)};
-        Nodes[0].Buildable = false;
-        Nodes[0].Type = "Road";
     }
 
 
@@ -70,7 +68,7 @@ public class Road
     {
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
-        if (path.Count == 0)
+        if (path.Count < 2)
         {
             return false;
         }
@@ -78,17 +76,13 @@ public class Road
         for (int i = 1; i < path.Count; i++)
         {
             path[i].Buildable = false;
-            path[i].Type = "Road";
+            if (path[i].Type != "Flag")
+            {
+                path[i].Type = "Road";
+                path[i].Road = this;
+            }
+
             Nodes.Add(path[i]);
-        }
-        
-        
-        Nodes[0].RoadTo.Add(Nodes[1]);
-        Nodes[Nodes.Count - 1].RoadTo.Add(Nodes[Nodes.Count - 2]);
-        for (int i = 1; i < Nodes.Count - 1; i++)
-        {
-            Nodes[i].RoadTo.Add(Nodes[i - 1]);
-            Nodes[i].RoadTo.Add(Nodes[i + 1]);
         }
 
 
@@ -157,11 +151,13 @@ public class Road
     /// </summary>
     public void destroy()
     {
-        foreach (var n in Nodes)
+        for (int i = 0; i < Nodes.Count; i++)
         {
-            n.Buildable = false;
-            n.RoadTo.Clear();
+            Nodes[i].Road = null;
+
+            Nodes[i].CalculateBuildableType();
         }
+
 
         _roadMesh.destroy();
     }

@@ -100,6 +100,6 @@ public class RoadMesh : MonoBehaviour
     /// </summary>
     public void destroy()
     {
-        Destroy(gameObject);
+        if (gameObject != null) Destroy(gameObject);
     }
 }

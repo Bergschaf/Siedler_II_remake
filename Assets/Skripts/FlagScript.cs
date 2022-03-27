@@ -29,13 +29,12 @@ public class FlagScript : MonoBehaviour
         transform.position = position;
         
         Node temp = Grid.NodeFromWorldPoint(position);
-        if (temp.Type == "Road" && temp.RoadTo.Count > 1)
+        if (temp.Type == "Road")
         {
             GameHandler.PlaceFlagInRoad(this);
         }
         temp.Type = "Flag";
         temp.Flag = this;
-        temp.RoadTo = new List<Node>();
 
     }
 
@@ -66,14 +65,41 @@ public class FlagScript : MonoBehaviour
         }
     }
 
+    private void DestroyDirtCrossing()
+    {
+        _dirtCrossing.GetComponent<DirtCrossingMeshScript>().destroy();
+        GameHandler.AllFlags.Remove(this);
+    }
+
     public void AddRoad(Road road, FlagScript targetFlagScript)
     {
-        GenerateDirtCrossing();
         if (AttachedRoads == null)
         {
             AttachedRoads = new List<Tuple<Road, FlagScript>>();
         }
 
+        if (AttachedRoads.Count < 1)
+        {
+            GenerateDirtCrossing();
+        }
+
         AttachedRoads.Add(new Tuple<Road, FlagScript>(road, targetFlagScript));
+    }
+
+    public void RemoveRoad(Road road)
+    {
+        foreach (var t in AttachedRoads)
+        {
+            if (t.Item1 == road)
+            {
+                AttachedRoads.Remove(t);
+                break;
+            }
+        }
+
+        if (AttachedRoads.Count < 1)
+        {
+            DestroyDirtCrossing();
+        }
     }
 }

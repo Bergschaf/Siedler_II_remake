@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System.Linq;
 
 /// <summary>
 /// Class for finding a path for a road
@@ -44,25 +44,59 @@ public class RoadPathfinding : MonoBehaviour
 
             foreach (Node neighbour in Grid.GetNeighbours(node))
             {
-                if (!neighbour.Buildable || closedSet.Contains(neighbour))
+                if (closedSet.Contains(neighbour))
                 {
-                    if (neighbour.Type != "Flag" && neighbour != targetNode)
-
-                    {
-                        continue;
-                    }
+                    continue;
                 }
 
-                // If the connection between the two nodes is diagonal
-                if (node.GridX != neighbour.GridX && node.GridY != neighbour.GridY)
+                if (neighbour.Type != "Flag" && neighbour != targetNode && !neighbour.Buildable)
+
                 {
-                    // If there is a diagonal Road across the other road
-                    if (Grid.NodeGrid[node.GridX, neighbour.GridY].RoadTo
-                            .Contains(Grid.NodeGrid[neighbour.GridX, node.GridY]) || Grid
-                            .NodeGrid[neighbour.GridX, node.GridY].RoadTo
-                            .Contains(Grid.NodeGrid[node.GridX, neighbour.GridY]))
+                    continue;
+                }
+
+
+                // If the connection between the two nodes is diagonal
+                if (node.GridX != neighbour.GridX && node.GridY != neighbour.GridY &&
+                    (node.Type == "Flag" || node.Type == "Road") ||
+                    (neighbour.Type == "Flag" || neighbour.Type == "Road"))
+                {
+                    Node node1 = Grid.NodeGrid[node.GridX, neighbour.GridY];
+                    Node node2 = Grid.NodeGrid[neighbour.GridX, node.GridY];
+
+                    Road road1 = node1.Road;
+
+                    if (road1 == null && node1.Type == "Flag" && node1.Flag.AttachedRoads != null)
                     {
-                        continue;
+                        foreach (var r in node1.Flag.AttachedRoads)
+                        {
+                            if (r.Item1.Nodes.Contains(node1))
+                            {
+                                road1 = r.Item1;
+                            }
+                        }
+                    }
+
+                    Road road2 = node2.Road;
+                    if (road2 == null && node2.Type == "Flag" && node2.Flag.AttachedRoads != null)
+                    {
+                        foreach (var r in node2.Flag.AttachedRoads)
+                        {
+                            if (r.Item1.Nodes.Contains(node2))
+                            {
+                                road2 = r.Item1;
+                            }
+                        }
+                    }
+
+                    if (road1 != null && road2 != null)
+                    {
+                        // If there is a diagonal Road across the other road
+
+                        if (road1.Nodes.Contains(node2) || road2.Nodes.Contains(node1))
+                        {
+                            continue;
+                        }
                     }
                 }
 

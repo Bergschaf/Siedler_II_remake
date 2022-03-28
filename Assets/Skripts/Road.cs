@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -57,8 +58,6 @@ public class Road
         _road = Object.Instantiate(GameHandler.DirtRoadPrefab, Vector3.zero, Quaternion.identity);
         _roadMesh = _road.GetComponent<RoadMesh>();
         Nodes = new List<Node> {Grid.NodeFromWorldPoint(Pos1)};
-        Nodes[0].Buildable = false;
-        Nodes[0].Type = "Road";
     }
 
 
@@ -70,7 +69,7 @@ public class Road
     {
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
-        if (path.Count == 0)
+        if (path.Count < 2)
         {
             return false;
         }
@@ -78,16 +77,14 @@ public class Road
         for (int i = 1; i < path.Count; i++)
         {
             path[i].Buildable = false;
-            path[i].Type = "Road";
-            Nodes.Add(path[i]);
-        }
+            if (path[i].Type != "Flag")
+            {
+                path[i].Type = "Road";
+            }
+            path[i].Road = this;
 
-        Nodes[0].RoadTo.Add(Nodes[1]);
-        Nodes[Nodes.Count - 1].RoadTo.Add(Nodes[Nodes.Count - 2]);
-        for (int i = 1; i < Nodes.Count - 1; i++)
-        {
-            Nodes[i].RoadTo.Add(Nodes[i - 1]);
-            Nodes[i].RoadTo.Add(Nodes[i + 1]);
+
+            Nodes.Add(path[i]);
         }
 
 
@@ -150,16 +147,33 @@ public class Road
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
     }
+    
+
+    
+        public void EndRoadBuild()
+        {
+            for (int i = 1; i < Nodes.Count - 1; i++)
+            {
+                if (Nodes[i].Type == "Flag")
+                {
+                    GameHandler.PlaceFlagInRoad(Nodes[i].Flag);
+                }
+            }
+        }
+    
 
     /// <summary>
     /// Destroys the road and the corresponding mesh
     /// </summary>
     public void destroy()
     {
-        foreach (var n in Nodes)
+        for (int i = 0; i < Nodes.Count; i++)
         {
-            n.Buildable = false;
+            Nodes[i].Road = null;
+
+            Nodes[i].CalculateBuildableType();
         }
+
 
         _roadMesh.destroy();
     }

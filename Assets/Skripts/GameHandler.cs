@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class GameHandler : MonoBehaviour
 {
+    public static GameHandler instance;
     // Variables to set in the untiy editor
     // Buildable Prefabs
     // TODO Change these to UI elements
@@ -117,6 +118,8 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        
         // Buildable Prefabs
         BuildableFlag = buildableFlag;
         BuildableHouse1 = buildableHouse1;
@@ -175,6 +178,7 @@ public class GameHandler : MonoBehaviour
             // The road is added to the flags
             endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagScript>());
             RoadBuildStartFlag.GetComponent<FlagScript>().AddRoad(CurrentRoad, endFlag);
+            CurrentRoad.EndRoadBuild();
         }
         else
         {
@@ -186,6 +190,61 @@ public class GameHandler : MonoBehaviour
         // The GUI gets destroyed
         UIHandler.EndGUI();
     }
+
+    /// <summary>
+    /// Places a flag at a node which is already road
+    /// </summary>
+    /// <param name="flag">the flag to be placed</param>
+    public static void PlaceFlagInRoad(FlagScript flag)
+    {
+        Vector3 flagPos = flag.transform.position;
+        Node node = Grid.NodeFromWorldPoint(flagPos);
+        Road road = node.Road;
+
+        FlagScript flag1 = Grid.NodeFromWorldPoint(road.Pos1).Flag;
+        FlagScript flag2 = Grid.NodeFromWorldPoint(road.Pos2).Flag;
+
+        if (flag1 == null || flag2 == null)
+        {
+            return;
+        }
+
+        flag1.RemoveRoad(road);
+        flag2.RemoveRoad(road);
+
+        int splitIndex = 0;
+        float dist = Vector3.Distance(road.RoadPoints[0], flagPos);
+        for (int i = 1; i < road.RoadPoints.Length; i++)
+        {
+            if (Vector3.Distance(road.RoadPoints[i], flagPos) < dist)
+            {
+                dist = Vector3.Distance(road.RoadPoints[i], flagPos);
+                splitIndex = i;
+            }
+        }
+
+        Vector3[] roadPoints = road.RoadPoints;
+
+        road.destroy();
+        Road newRoad1 = new Road(roadPoints[0]);
+        for (int i = 1; i < splitIndex + 1; i++)
+        {
+            newRoad1.add_point(roadPoints[i]);
+        }
+
+        Road newRoad2 = new Road(roadPoints[splitIndex]);
+        for (int i = splitIndex + 1; i < roadPoints.Length; i++)
+        {
+            newRoad2.add_point(roadPoints[i]);
+        }
+
+        flag1.AddRoad(newRoad1, flag);
+        flag.AddRoad(newRoad1, flag1);
+
+        flag2.AddRoad(newRoad2, flag);
+        flag.AddRoad(newRoad2, flag2);
+    }
+
 
     /// <summary>
     /// Lay a smooth curve through the points (Copied from the unity forum)

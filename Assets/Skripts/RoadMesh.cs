@@ -25,7 +25,7 @@ public class RoadMesh : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameObject.AddComponent<MeshFilter>();
         gameObject.AddComponent<MeshRenderer>();
@@ -42,7 +42,6 @@ public class RoadMesh : MonoBehaviour
     public void SetVertices(Vector3[] verticesLeft, Vector3[] verticesRight)
     {
         // TODO Calculate UVS Based on the space a triangle takes 
-
 
         _mesh.Clear();
         _mesh.vertices = verticesLeft.Concat(verticesRight).ToArray();
@@ -101,6 +100,6 @@ public class RoadMesh : MonoBehaviour
     /// </summary>
     public void destroy()
     {
-        Destroy(gameObject);
+        if (gameObject != null) Destroy(gameObject);
     }
 }

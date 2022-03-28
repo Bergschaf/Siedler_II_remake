@@ -27,7 +27,7 @@ public class FlagBuildableScript : MonoBehaviour
         GameObject temp = Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
         UIHandler.EndGUI();
         Destroy(gameObject);
-
+        
         return temp.GetComponent<FlagScript>();
     }
 

@@ -12,47 +12,60 @@ public class Node
     /// Are you able to build something on this node
     /// </summary>
     public bool Buildable;
+
     /// <summary>
     /// The world Position of the node
     /// </summary>
     public Vector3 WorldPosition;
+
     /// <summary>
     /// Values for pathfinding
     /// </summary>
-    public int GCost,HCost;
+    public int GCost, HCost;
+
     /// <summary>
     /// The position of the node in the grid
     /// </summary>
-    public int GridX,GridY;
+    public int GridX, GridY;
+
     /// <summary>
     /// The parent node, used for pathfinding
     /// </summary>
     public Node Parent;
+
     /// <summary>
     /// The Node Type (All types in NodeTypes.txt)
     /// </summary>
     public string Type;
+
     /// <summary>
-    /// The road connections to other nodes
+    /// The Flag at the Node if a flag is at the Node
     /// </summary>
-    public List<Node> RoadTo;
+    public FlagScript Flag;
+
+    /// <summary>
+    /// The Road at the Node if there is one
+    /// </summary>
+    public Road Road;
+
 
     public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
     {
-        RoadTo = new List<Node>();
         Buildable = buildable;
         WorldPosition = worldPos;
         GridX = gridX;
         GridY = gridY;
         Type = type;
-
     }
 
     public void CalculateBuildableType()
     {
         //TODO Calculate Buildable type
-        Type = "BuildableFlag";
-
+        if(Type != "Flag")
+        {
+            Type = "BuildableFlag";
+            Buildable = true;
+        }
     }
 
     /// <summary>

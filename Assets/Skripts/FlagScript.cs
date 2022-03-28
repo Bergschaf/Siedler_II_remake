@@ -20,14 +20,23 @@ public class FlagScript : MonoBehaviour
     public List<Tuple<Road, FlagScript>> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         Vector3 position = transform.position;
         position = new Vector3(position.x,
             GameHandler.ActiveTerrain.SampleHeight(position),
             position.z);
         transform.position = position;
-        // Grid.NodeFromWorldPoint(position).Type = "Flag";
+
+        Node temp = Grid.NodeFromWorldPoint(position);
+
+        if (temp.Type == "Road")
+        {
+            GameHandler.PlaceFlagInRoad(this);
+        }
+        temp.Type = "Flag";
+        temp.Flag = this;
+
     }
 
     private void OnMouseDown()
@@ -57,14 +66,41 @@ public class FlagScript : MonoBehaviour
         }
     }
 
+    private void DestroyDirtCrossing()
+    {
+        _dirtCrossing.GetComponent<DirtCrossingMeshScript>().destroy();
+        GameHandler.AllFlags.Remove(this);
+    }
+
     public void AddRoad(Road road, FlagScript targetFlagScript)
     {
-        GenerateDirtCrossing();
         if (AttachedRoads == null)
         {
             AttachedRoads = new List<Tuple<Road, FlagScript>>();
         }
 
+        if (AttachedRoads.Count < 1)
+        {
+            GenerateDirtCrossing();
+        }
+
         AttachedRoads.Add(new Tuple<Road, FlagScript>(road, targetFlagScript));
+    }
+
+    public void RemoveRoad(Road road)
+    {
+        foreach (var t in AttachedRoads)
+        {
+            if (t.Item1 == road)
+            {
+                AttachedRoads.Remove(t);
+                break;
+            }
+        }
+
+        if (AttachedRoads.Count < 1)
+        {
+            DestroyDirtCrossing();
+        }
     }
 }

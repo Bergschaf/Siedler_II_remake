@@ -20,15 +20,16 @@ public class FlagScript : MonoBehaviour
     public List<Tuple<Road, FlagScript>> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         Vector3 position = transform.position;
         position = new Vector3(position.x,
             GameHandler.ActiveTerrain.SampleHeight(position),
             position.z);
         transform.position = position;
-        
+
         Node temp = Grid.NodeFromWorldPoint(position);
+
         if (temp.Type == "Road")
         {
             GameHandler.PlaceFlagInRoad(this);

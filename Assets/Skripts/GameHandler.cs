@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class GameHandler : MonoBehaviour
 {
+    public static GameHandler instance;
     // Variables to set in the untiy editor
     // Buildable Prefabs
     // TODO Change these to UI elements
@@ -117,6 +118,8 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        
         // Buildable Prefabs
         BuildableFlag = buildableFlag;
         BuildableHouse1 = buildableHouse1;
@@ -175,6 +178,7 @@ public class GameHandler : MonoBehaviour
             // The road is added to the flags
             endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagScript>());
             RoadBuildStartFlag.GetComponent<FlagScript>().AddRoad(CurrentRoad, endFlag);
+            CurrentRoad.EndRoadBuild();
         }
         else
         {

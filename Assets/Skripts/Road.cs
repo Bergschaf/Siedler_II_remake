@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -79,8 +80,9 @@ public class Road
             if (path[i].Type != "Flag")
             {
                 path[i].Type = "Road";
-                path[i].Road = this;
             }
+            path[i].Road = this;
+
 
             Nodes.Add(path[i]);
         }
@@ -145,6 +147,20 @@ public class Road
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
     }
+    
+
+    
+        public void EndRoadBuild()
+        {
+            for (int i = 1; i < Nodes.Count - 1; i++)
+            {
+                if (Nodes[i].Type == "Flag")
+                {
+                    GameHandler.PlaceFlagInRoad(Nodes[i].Flag);
+                }
+            }
+        }
+    
 
     /// <summary>
     /// Destroys the road and the corresponding mesh

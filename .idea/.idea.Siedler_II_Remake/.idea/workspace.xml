@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/0.backup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/ArtifactDB" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/Assembly-CSharp.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/Assembly-CSharp.dll.hash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/EditorEncounteredVariants" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/SourceAssetDB" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04_[NotImportantChanges]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2022_18_04__NotImportantChanges_1.xml" beforeDir="false" />
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Road Build System Fix">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadMesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadMesh.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +75,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1596">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4824">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1596" />
+      <option name="pid" value="4824" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -144,7 +134,8 @@
       <workItem from="1648230774830" duration="6904000" />
       <workItem from="1648302575580" duration="445000" />
       <workItem from="1648317258447" duration="3749000" />
-      <workItem from="1648364249929" duration="8063000" />
+      <workItem from="1648364249929" duration="11216000" />
+      <workItem from="1648476680210" duration="1238000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -363,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648237527138</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Road Build System Fix">
+      <created>1648402771683</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1648402771683</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +395,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="UI" />
     <MESSAGE value="Flag Buildable GUi Setup" />
     <MESSAGE value="Spawn Flags" />
     <MESSAGE value="Road mesh" />
@@ -422,6 +419,7 @@
     <MESSAGE value="Add new renamed files" />
     <MESSAGE value="No road overlap + Texture Length fix" />
     <MESSAGE value="Place Flag in the Middle of road, second flag in one road not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Place Flag in the Middle of road, second flag in one road not working" />
+    <MESSAGE value="Road Build System Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Road Build System Fix" />
   </component>
 </project>

@@ -65,40 +65,54 @@ public class Road
     /// Adds a point to the road
     /// </summary>
     /// <param name="point"></param>
-    public bool add_point(Vector3 point)
+    /// <param name="force">false if there should be a path found to the point</param>
+    public bool add_point(Vector3 point,bool force = false)
     {
-        List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
-        if (path.Count < 2)
-        {
-            return false;
-        }
+        if(!force)
+        { 
+            List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
-        for (int i = 1; i < path.Count; i++)
-        {
-            path[i].Buildable = false;
-            if (path[i].Type != "Flag")
+            if (path.Count < 2)
             {
-                path[i].Type = "Road";
+                return false;
             }
-            path[i].Road = this;
+
+            for (int i = 1; i < path.Count; i++)
+            {
+                path[i].Buildable = false;
+                if (path[i].Type != "Flag")
+                {
+                    path[i].Type = "Road";
+                }
+
+                path[i].Road = this;
 
 
-            Nodes.Add(path[i]);
+                Nodes.Add(path[i]);
+            }
+
+
+            Vector3[] temp = new Vector3[path.Count - 1];
+
+
+            for (int i = 1; i < path.Count; i++)
+            {
+                temp[i - 1] = path[i].WorldPosition;
+                Len += Vector3.Distance(path[i - 1].WorldPosition, path[i].WorldPosition);
+            }
+            RoadPoints = RoadPoints.Concat(temp).ToArray();
+
+
         }
-
-
-        Vector3[] temp = new Vector3[path.Count - 1];
-
-
-        for (int i = 1; i < path.Count; i++)
+        else
         {
-            temp[i - 1] = path[i].WorldPosition;
-            Len += Vector3.Distance(path[i - 1].WorldPosition, path[i].WorldPosition);
+            Len += Vector3.Distance(Pos2, point);
+            Vector3[] temp = {point};
+            RoadPoints = RoadPoints.Concat(temp).ToArray();
+
         }
-
-        RoadPoints = RoadPoints.Concat(temp).ToArray();
-
+        
         Pos2 = point;
         MiddlePos = Vector3.Lerp(RoadPoints[Mathf.FloorToInt((RoadPoints.Length - 1) / 2)],
             RoadPoints[Mathf.CeilToInt((RoadPoints.Length - 1) / 2)], 0.5f);

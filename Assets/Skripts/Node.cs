@@ -48,6 +48,14 @@ public class Node
     /// </summary>
     public Road Road;
 
+    /// <summary>
+    /// The Buildable GameObject, e.g. The little orange flag
+    /// </summary>
+    public GameObject BuildableIcon;
+    
+    public Renderer BuildableIconRenderer;
+
+
 
     public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
     {
@@ -56,6 +64,9 @@ public class Node
         GridX = gridX;
         GridY = gridY;
         Type = type;
+        BuildableIconRenderer = BuildableIcon.GetComponent<Renderer>();
+        BuildableIconRenderer.enabled = buildable;
+
     }
 
     public void CalculateBuildableType()

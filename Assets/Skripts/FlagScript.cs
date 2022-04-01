@@ -34,9 +34,9 @@ public class FlagScript : MonoBehaviour
         {
             GameHandler.PlaceFlagInRoad(this);
         }
+
         temp.Type = "Flag";
         temp.Flag = this;
-
     }
 
     private void OnMouseDown()
@@ -94,6 +94,7 @@ public class FlagScript : MonoBehaviour
             if (t.Item1 == road)
             {
                 AttachedRoads.Remove(t);
+                t.Item1.destroy();
                 break;
             }
         }
@@ -102,5 +103,44 @@ public class FlagScript : MonoBehaviour
         {
             DestroyDirtCrossing();
         }
+    }
+
+    /// <summary>
+    /// Destroys the Flag and removes all the road connections
+    /// </summary>
+    public void Destroy()
+    {   
+        
+        // The Roads that should be removed from a flag, because they connect to this flag
+        List<Road> toRemove;
+        if (AttachedRoads != null)
+            foreach (var t in AttachedRoads)
+            {
+                if (t.Item2.AttachedRoads != null)
+
+                {
+                    toRemove = new List<Road>();
+                    foreach (var x in t.Item2.AttachedRoads)
+                    {
+                        if (x.Item2 == this)
+                        {
+                            toRemove.Add(x.Item1);
+                        }
+                    }
+
+                    foreach (var r in toRemove)
+                    {
+                        t.Item2.RemoveRoad(r);
+                    }
+                }
+            }
+
+        GameHandler.AllFlags.Remove(this);
+        DestroyDirtCrossing();
+        Destroy(gameObject);
+        UIHandler.EndGUI();
+        var position = transform.position;
+        Grid.NodeFromWorldPoint(position).Type = "Buildable";
+        Grid.NodeFromWorldPoint(position).CalculateBuildableType();
     }
 }

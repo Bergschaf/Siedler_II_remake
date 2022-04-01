@@ -67,14 +67,9 @@ public class Grid : MonoBehaviour
                                      Vector3.forward * (y * _nodeDiameter + nodeRadius);
                 // Check if the point is obstructed or not
                 //bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unbuildableMask));
-                bool walkable = true;
-                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y,"BuildableFlag");
-                if (walkable)
-                {
-                    // TODO Calculate where what building size can go
-                    // TODO Migrate this to UI element
-                    Instantiate(GameHandler.BuildableFlag, worldPoint, rotation);
-                }
+                bool buildable = true;
+                NodeGrid[x, y] = new Node(buildable, worldPoint, x, y,"BuildableFlag");
+                NodeGrid[x, y].BuildableIcon = Instantiate(GameHandler.BuildableFlag, worldPoint, rotation);
 
             }
         }

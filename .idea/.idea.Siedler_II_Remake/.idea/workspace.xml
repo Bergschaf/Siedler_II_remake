@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Road Build System Fix">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/DestroyFlagButtonScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GUI/FlagMenuPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GUI/FlagMenuPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +27,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RESET_MODE" value="MIXED" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -75,10 +80,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4824">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4824" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -135,7 +140,9 @@
       <workItem from="1648302575580" duration="445000" />
       <workItem from="1648317258447" duration="3749000" />
       <workItem from="1648364249929" duration="11216000" />
-      <workItem from="1648476680210" duration="1238000" />
+      <workItem from="1648476680210" duration="7896000" />
+      <workItem from="1648567047438" duration="4834000" />
+      <workItem from="1648726396687" duration="1243000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -361,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648402771683</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Road building System Fix">
+      <created>1648479773830</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1648479773830</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +409,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Flag Buildable GUi Setup" />
     <MESSAGE value="Spawn Flags" />
     <MESSAGE value="Road mesh" />
     <MESSAGE value="Road" />
@@ -420,6 +433,7 @@
     <MESSAGE value="No road overlap + Texture Length fix" />
     <MESSAGE value="Place Flag in the Middle of road, second flag in one road not working" />
     <MESSAGE value="Road Build System Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Road Build System Fix" />
+    <MESSAGE value="Road building System Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Road building System Fix" />
   </component>
 </project>

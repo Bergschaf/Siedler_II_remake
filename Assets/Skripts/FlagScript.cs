@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 /// <summary>
@@ -20,7 +21,9 @@ public class FlagScript : MonoBehaviour
     public List<Tuple<Road, FlagScript>> AttachedRoads; // (Road,Target)
 
     // Start is called before the first frame update
-    private void Awake()
+
+
+    private void Start()
     {
         Vector3 position = transform.position;
         position = new Vector3(position.x,
@@ -34,9 +37,9 @@ public class FlagScript : MonoBehaviour
         {
             GameHandler.PlaceFlagInRoad(this);
         }
+
         temp.Type = "Flag";
         temp.Flag = this;
-
     }
 
     private void OnMouseDown()

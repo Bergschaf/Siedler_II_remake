@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Script for each settler, not fully developed yet
@@ -12,33 +13,39 @@ public class SettlerScript : MonoBehaviour
     /// The settlers job
     /// </summary>
     public string job;
+
     /// <summary>
     /// The walking speed of the settler
     /// </summary>
     private float _speed = 10;
+
     /// <summary>
     /// The road the settler should stand at and carry the Items between the two flags of the road
     /// </summary>
     public Road AssignedRoad;
+
     /// <summary>
     /// The path the settler has to walk
     /// </summary>
     public Vector3[] pathToTravel;
+
     /// <summary>
     /// The flag the settler is currently at
     /// </summary>
     public FlagScript currentFlag;
+
     /// <summary>
     /// Variables for travelling over multiple frames
     /// </summary>
-    private float _interpolation,_interpolationStepSize;
+    private float _interpolation, _interpolationStepSize;
+
     /// <summary>
     /// At what position in the path array is the settler right now
     /// </summary>
     private int _pathToTravelIndex;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         job = "Standard";
         currentFlag = GameHandler.HomeFlag;
@@ -47,13 +54,11 @@ public class SettlerScript : MonoBehaviour
     /// <summary>
     /// Sets the road a settler should stand at and carry the items between the two flags of the road
     /// </summary>
-    /// <param name="flag">a flag of the road</param>
     /// <param name="roadToAssign">the road the settler should go to</param>
-    public void AssignRoad(FlagScript flag, Road roadToAssign)
+    /// <param name="roadPath">The path the Settler should take to the road</param>
+    public void AssignRoad(Road roadToAssign, Road[] roadPath)
     {
-        Road[] roadPath = GameHandler.GetRoadGridPath(currentFlag, flag);
-        List<Vector3> tempPath = new List<Vector3>();
-        tempPath.Add(currentFlag.transform.position);
+        List<Vector3> tempPath = new List<Vector3> {currentFlag.transform.position};
         Vector3[] smoothRoadPoints;
 
         foreach (var road in roadPath)
@@ -77,7 +82,7 @@ public class SettlerScript : MonoBehaviour
                         tempPath.Add(smoothRoadPoints[i]);
                     }
                 }
-
+                Debug.Log("HIer");
                 tempPath.Add(road.MiddlePos);
             }
             else
@@ -107,6 +112,7 @@ public class SettlerScript : MonoBehaviour
 
         _pathToTravelIndex = 0;
         _interpolation = 0;
+
     }
 
     // Update is called once per frame
@@ -137,11 +143,5 @@ public class SettlerScript : MonoBehaviour
 
             _interpolation += _interpolationStepSize * Time.deltaTime;
         }
-    }
-
-    private void OnMouseDown()
-    {
-        AssignRoad(GameHandler.AllFlags[GameHandler.AllFlags.Count - 1],
-            GameHandler.AllFlags[GameHandler.AllFlags.Count - 1].AttachedRoads[0].Item1);
     }
 }

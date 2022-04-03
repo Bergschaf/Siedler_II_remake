@@ -11,7 +11,6 @@ public class GameHandler : MonoBehaviour
     public static GameHandler instance;
     // Variables to set in the untiy editor
     // Buildable Prefabs
-    // TODO Change these to UI elements
     public GameObject buildableFlag;
     public GameObject buildableHouse1;
     public GameObject buildableHouse2;
@@ -34,6 +33,7 @@ public class GameHandler : MonoBehaviour
     /// </summary>
     public GameObject dirtCrossingPrefab;
 
+
     // Terrain
     /// <summary>
     /// The main terrain
@@ -46,7 +46,7 @@ public class GameHandler : MonoBehaviour
 
     // Building Parameters
 
-    public float flagBuildableYOffset; // TODO Flag buildable becomes UI
+    public float flagBuildableYOffset;
 
     /// <summary>
     /// The width of the standard dirt roads
@@ -148,7 +148,11 @@ public class GameHandler : MonoBehaviour
         AllFlags = new List<FlagScript>();
 
         // Settlers
-        if (homeFlag != null) HomeFlag = homeFlag.GetComponent<FlagScript>();
+        if (homeFlag != null)
+        {
+            HomeFlag = homeFlag.GetComponent<FlagScript>();
+            
+        }
 
         // Roads
         CurrentlyBuildingRoad = false;
@@ -179,6 +183,7 @@ public class GameHandler : MonoBehaviour
             endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagScript>());
             RoadBuildStartFlag.GetComponent<FlagScript>().AddRoad(CurrentRoad, endFlag);
             CurrentRoad.EndRoadBuild();
+            SettlerHandler.OnRoadPlacement(CurrentRoad);
         }
         else
         {

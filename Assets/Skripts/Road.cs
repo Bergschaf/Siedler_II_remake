@@ -100,8 +100,6 @@ public class Road
         RoadPoints = RoadPoints.Concat(temp).ToArray();
 
         Pos2 = point;
-        MiddlePos = Vector3.Lerp(RoadPoints[Mathf.FloorToInt((RoadPoints.Length - 1) / 2)],
-            RoadPoints[Mathf.CeilToInt((RoadPoints.Length - 1) / 2)], 0.5f);
 
         draw_road();
         return true;
@@ -113,6 +111,7 @@ public class Road
     private void draw_road()
     {
         Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
+        MiddlePos = tempRoadPoints[Mathf.RoundToInt(tempRoadPoints.Length / 2)];
         _roadPointsLeft = new Vector3[tempRoadPoints.Length];
         _roadPointsRight = new Vector3[tempRoadPoints.Length];
 

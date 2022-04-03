@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Road Build System Fix">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Skripts/Config/SettlerJobs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +76,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -136,6 +143,9 @@
       <workItem from="1648317258447" duration="3749000" />
       <workItem from="1648364249929" duration="11216000" />
       <workItem from="1648476680210" duration="1238000" />
+      <workItem from="1648834869218" duration="677000" />
+      <workItem from="1648884575255" duration="9554000" />
+      <workItem from="1648973044754" duration="471000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>

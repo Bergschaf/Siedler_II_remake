@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Skripts/Config/SettlerJobs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/NodeTypes.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +136,12 @@
       <workItem from="1648476680210" duration="1238000" />
       <workItem from="1648834869218" duration="677000" />
       <workItem from="1648884575255" duration="9554000" />
-      <workItem from="1648973044754" duration="471000" />
+      <workItem from="1648973044754" duration="576000" />
+      <workItem from="1648973700480" duration="485000" />
+      <workItem from="1649253787853" duration="1959000" />
+      <workItem from="1649341558826" duration="69000" />
+      <workItem from="1649341643005" duration="224000" />
+      <workItem from="1649341881430" duration="93000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -371,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648402771683</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Settler assingment beginning">
+      <created>1648973620249</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1648973620249</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +408,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Flag Buildable GUi Setup" />
     <MESSAGE value="Spawn Flags" />
     <MESSAGE value="Road mesh" />
     <MESSAGE value="Road" />
@@ -430,6 +432,26 @@
     <MESSAGE value="No road overlap + Texture Length fix" />
     <MESSAGE value="Place Flag in the Middle of road, second flag in one road not working" />
     <MESSAGE value="Road Build System Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Road Build System Fix" />
+    <MESSAGE value="Settler assingment beginning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Settler assingment beginning" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs</url>
+          <line>76</line>
+          <properties documentPath="C:\Users\Christian\Unity\Siedler_II_Remake\Assets\Skripts\SettlerHandler.cs" initialLine="75" containingFunctionPresentation="method 'OnRoadPlacement'">
+            <startOffsets>
+              <option value="2049" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2050" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

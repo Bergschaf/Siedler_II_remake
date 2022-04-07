@@ -73,9 +73,10 @@ public class SettlerHandler : MonoBehaviour
         {
             NotAssignedRoads.Remove(r);
         }
+        
     }
 
-    /// <summary>
+    
     /// Returns a new Settler at the specified Position
     /// </summary>
     /// <param name="position"></param>

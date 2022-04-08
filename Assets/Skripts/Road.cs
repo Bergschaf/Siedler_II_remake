@@ -111,7 +111,10 @@ public class Road
     private void draw_road()
     {
         Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
-        MiddlePos = tempRoadPoints[Mathf.RoundToInt(tempRoadPoints.Length / 2)];
+        
+        // Middle Position of tempRoadPoints in MiddlePos
+        MiddlePos = tempRoadPoints[tempRoadPoints.Length / 2];
+        
         _roadPointsLeft = new Vector3[tempRoadPoints.Length];
         _roadPointsRight = new Vector3[tempRoadPoints.Length];
 

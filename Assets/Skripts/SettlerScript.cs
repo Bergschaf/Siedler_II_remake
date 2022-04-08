@@ -58,55 +58,51 @@ public class SettlerScript : MonoBehaviour
     /// <param name="roadPath">The path the Settler should take to the road</param>
     public void AssignRoad(Road roadToAssign, Road[] roadPath)
     {
-        List<Vector3> tempPath = new List<Vector3> {currentFlag.transform.position};
-        Vector3[] smoothRoadPoints;
-
-        foreach (var road in roadPath)
+        AssignedRoad = roadToAssign;
+        List<Vector3> Path = new List<Vector3>();
+        Vector3 lastPos = currentFlag.transform.position;
+        foreach (var r in roadPath)
         {
-            smoothRoadPoints = GameHandler.MakeSmoothCurve(road.RoadPoints);
-            if (road == roadToAssign)
+            if(Vector3.Distance(r.Pos1,lastPos) < Vector3.Distance(r.Pos2,lastPos))
             {
-                if (Vector3.Distance(roadToAssign.Pos1, tempPath[tempPath.Count - 1]) <
-                    Vector3.Distance(roadToAssign.Pos2, tempPath[tempPath.Count - 1]))
+                for (int i = 0; i < r.RoadPoints.Length; i++)
                 {
-                    for (int i = 0; i < Mathf.RoundToInt(smoothRoadPoints.Length / 2); i++)
-                    {
-                        tempPath.Add(smoothRoadPoints[i]);
-                    }
+                    Path.Add(r.RoadPoints[i]);
                 }
-
-                else
-                {
-                    for (int i = smoothRoadPoints.Length - 1; i > Mathf.RoundToInt(smoothRoadPoints.Length / 2); i--)
-                    {
-                        tempPath.Add(smoothRoadPoints[i]);
-                    }
-                }
-                Debug.Log("HIer");
-                tempPath.Add(road.MiddlePos);
+                lastPos = r.Pos2;
             }
             else
             {
-                if (Vector3.Distance(road.Pos1, tempPath[tempPath.Count - 1]) <
-                    Vector3.Distance(road.Pos2, tempPath[tempPath.Count - 1]))
+                for (int i = r.RoadPoints.Length - 1; i >= 0; i--)
                 {
-                    for (int i = 0; i < smoothRoadPoints.Length; i++)
-                    {
-                        tempPath.Add(smoothRoadPoints[i]);
-                    }
+                    Path.Add(r.RoadPoints[i]);
+                    
                 }
-                else
-                {
-                    for (int i = smoothRoadPoints.Length - 1; i > -1; i--)
-                    {
-                        tempPath.Add(smoothRoadPoints[i]);
-                    }
-                }
+
+                lastPos = r.Pos1;
+            }
+            
+        }
+        
+        if(Vector3.Distance(roadToAssign.Pos1,lastPos) < Vector3.Distance(roadToAssign.Pos2,lastPos))
+        {
+            for (int i = 0; i < roadToAssign.RoadPoints.Length / 2; i++)
+            {
+                Path.Add(roadToAssign.RoadPoints[i]);
             }
         }
+        else
+        {
+            for (int i = roadToAssign.RoadPoints.Length - 1; i >= roadToAssign.RoadPoints.Length / 2; i--)
+            {
+                Path.Add(roadToAssign.RoadPoints[i]);
+                    
+            }
+        }
+        Path.Add(roadToAssign.MiddlePos);
 
-        pathToTravel = tempPath.ToArray();
-
+        pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
+        
         _interpolationStepSize =
             _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
 
@@ -143,5 +139,11 @@ public class SettlerScript : MonoBehaviour
 
             _interpolation += _interpolationStepSize * Time.deltaTime;
         }
+    }
+
+    public void GoBackToHomeFlag()
+    {
+        // TODO Check if settler could go to a nearby road
+
     }
 }

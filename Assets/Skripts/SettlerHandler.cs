@@ -7,10 +7,10 @@ public class SettlerHandler : MonoBehaviour
 {
     // Prefabs
     public GameObject settlerPrefab;
-    
+
     // Static Prefabs
     public static GameObject SettlerPrefab;
-    
+
     /// <summary>
     /// All the Settlers that are currently in the game
     /// </summary>
@@ -27,7 +27,7 @@ public class SettlerHandler : MonoBehaviour
     {
         // Prefabs
         SettlerPrefab = settlerPrefab;
-        
+
         AllSettlers = new List<SettlerScript>();
         NotAssignedRoads = new List<Road>();
     }
@@ -60,12 +60,12 @@ public class SettlerHandler : MonoBehaviour
 
                 roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
             }
-            
+
             if (roadPath != null && roadPath.Length > 0)
             {
                 toRemove.Add(r);
                 SettlerScript tempSettler = SpawnSettler(GameHandler.HomeFlag.transform.position);
-                tempSettler.AssignRoad(r,roadPath);
+                tempSettler.AssignRoad(r, roadPath);
             }
         }
 
@@ -73,10 +73,9 @@ public class SettlerHandler : MonoBehaviour
         {
             NotAssignedRoads.Remove(r);
         }
-        
     }
 
-    
+    /// <summary>
     /// Returns a new Settler at the specified Position
     /// </summary>
     /// <param name="position"></param>

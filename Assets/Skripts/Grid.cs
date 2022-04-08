@@ -145,4 +145,53 @@ public class Grid : MonoBehaviour
 
         return NodeGrid[x, y];
     }
+
+    /// <summary>
+    /// Returns the closest Flag to a world Position
+    /// </summary>
+    /// <param name="worldPos"></param>
+    /// <returns></returns>
+    public static FlagScript ClosestFlagToWorldPoint(Vector3 worldPos)
+    {
+        Node middleNode = NodeFromWorldPoint(worldPos);
+        int minX, minY, maxX, maxY;
+        int maxSearchDistance = 20; // The Maximum Radius to search for a Flag
+        for (int currentSearchDistance = 1; currentSearchDistance < maxSearchDistance; currentSearchDistance++)
+        {
+            minX = Mathf.Max(0, middleNode.GridX - currentSearchDistance);
+            minY = Mathf.Max(0, middleNode.GridY - currentSearchDistance);
+            maxX = Mathf.Min(GridSizeX - 1, middleNode.GridX + currentSearchDistance);
+            maxY = Mathf.Min(GridSizeY - 1, middleNode.GridY + currentSearchDistance);
+
+            for (int x = minX; x <= maxX; x++)
+            {
+                if (NodeGrid[x, maxY].Flag != null)
+                {
+                    return NodeGrid[x, maxY].Flag;
+                }
+                
+                if (NodeGrid[x, minY].Flag != null)
+                {
+                    return NodeGrid[x, minY].Flag;
+                }
+                
+            }
+            
+            for (int y = minY; y <= maxY; y++)
+            {
+                if (NodeGrid[maxX, y].Flag != null)
+                {
+                    return NodeGrid[maxX, y].Flag;
+                }
+                
+                if (NodeGrid[minX, y].Flag != null)
+                {
+                    return NodeGrid[minX, y].Flag;
+                }
+                
+            }
+        }
+
+        return null;
+    }
 }

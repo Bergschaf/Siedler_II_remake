@@ -183,7 +183,6 @@ public class GameHandler : MonoBehaviour
             endFlag.AddRoad(CurrentRoad, RoadBuildStartFlag.GetComponent<FlagScript>());
             RoadBuildStartFlag.GetComponent<FlagScript>().AddRoad(CurrentRoad, endFlag);
             CurrentRoad.EndRoadBuild();
-            SettlerHandler.OnRoadPlacement(CurrentRoad);
         }
         else
         {
@@ -248,6 +247,9 @@ public class GameHandler : MonoBehaviour
 
         flag2.AddRoad(newRoad2, flag);
         flag.AddRoad(newRoad2, flag2);
+        
+        newRoad1.EndRoadBuild();
+        newRoad2.EndRoadBuild();
     }
 
 
@@ -401,7 +403,7 @@ public class GameHandler : MonoBehaviour
             }
         }
 
-        return Array.Empty<Road>();
+        return null;
     }
 
 }

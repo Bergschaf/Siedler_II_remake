@@ -47,21 +47,14 @@ public class SettlerHandler : MonoBehaviour
             Road[] roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
 
 
-            if (roadPath == null || roadPath.Length < 1)
+            if (roadPath == null)
             {
                 flag = Grid.NodeFromWorldPoint(r.Pos2).Flag;
 
                 roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
             }
 
-            else if (roadPath.Last() != r)
-            {
-                flag = Grid.NodeFromWorldPoint(r.Pos2).Flag;
-
-                roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
-            }
-
-            if (roadPath != null && roadPath.Length > 0)
+            if (roadPath != null)
             {
                 toRemove.Add(r);
                 SettlerScript tempSettler = SpawnSettler(GameHandler.HomeFlag.transform.position);

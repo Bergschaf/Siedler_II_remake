@@ -47,6 +47,11 @@ public class Road
     /// </summary>
     public List<Node> Nodes;
 
+    /// <summary>
+    /// The Settler that is Assigned to this road
+    /// </summary>
+    public SettlerScript Settler;
+
 
     public Road(Vector3 pos1)
     {
@@ -81,6 +86,7 @@ public class Road
             {
                 path[i].Type = "Road";
             }
+
             path[i].Road = this;
 
 
@@ -111,10 +117,10 @@ public class Road
     private void draw_road()
     {
         Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
-        
+
         // Middle Position of tempRoadPoints in MiddlePos
         MiddlePos = tempRoadPoints[tempRoadPoints.Length / 2];
-        
+
         _roadPointsLeft = new Vector3[tempRoadPoints.Length];
         _roadPointsRight = new Vector3[tempRoadPoints.Length];
 
@@ -149,20 +155,21 @@ public class Road
 
         _roadMesh.SetVertices(_roadPointsLeft, _roadPointsRight);
     }
-    
 
-    
-        public void EndRoadBuild()
+
+    public void EndRoadBuild()
+    {
+        for (int i = 1; i < Nodes.Count - 1; i++)
         {
-            for (int i = 1; i < Nodes.Count - 1; i++)
+            if (Nodes[i].Type == "Flag")
             {
-                if (Nodes[i].Type == "Flag")
-                {
-                    GameHandler.PlaceFlagInRoad(Nodes[i].Flag);
-                }
+                GameHandler.PlaceFlagInRoad(Nodes[i].Flag);
             }
         }
-    
+        SettlerHandler.OnRoadPlacement(this);
+
+    }
+
 
     /// <summary>
     /// Destroys the road and the corresponding mesh
@@ -176,7 +183,7 @@ public class Road
             Nodes[i].CalculateBuildableType();
         }
 
-
+        if (Settler != null) Settler.GoBackToHomeFlag();
         _roadMesh.destroy();
     }
 }

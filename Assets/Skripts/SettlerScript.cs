@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -58,57 +59,64 @@ public class SettlerScript : MonoBehaviour
     /// <param name="roadPath">The path the Settler should take to the road</param>
     public void AssignRoad(Road roadToAssign, Road[] roadPath)
     {
+        roadToAssign.Settler = this;
         AssignedRoad = roadToAssign;
         List<Vector3> Path = new List<Vector3>();
+
         Vector3 lastPos = currentFlag.transform.position;
+        Path.Add(lastPos);
         foreach (var r in roadPath)
         {
-            if(Vector3.Distance(r.Pos1,lastPos) < Vector3.Distance(r.Pos2,lastPos))
+            if (r == roadToAssign)
             {
-                for (int i = 0; i < r.RoadPoints.Length; i++)
+                break;
+            }
+
+            if (Vector3.Distance(r.Pos1, lastPos) < Vector3.Distance(r.Pos2, lastPos))
+            {
+                for (int i = 1; i < r.RoadPoints.Length; i++)
                 {
                     Path.Add(r.RoadPoints[i]);
                 }
+
                 lastPos = r.Pos2;
             }
             else
             {
-                for (int i = r.RoadPoints.Length - 1; i >= 0; i--)
+                for (int i = r.RoadPoints.Length - 2; i >= 0; i--)
                 {
                     Path.Add(r.RoadPoints[i]);
-                    
                 }
 
                 lastPos = r.Pos1;
             }
-            
         }
-        
-        if(Vector3.Distance(roadToAssign.Pos1,lastPos) < Vector3.Distance(roadToAssign.Pos2,lastPos))
+
+        if (Vector3.Distance(roadToAssign.Pos1, lastPos) < Vector3.Distance(roadToAssign.Pos2, lastPos))
         {
-            for (int i = 0; i < roadToAssign.RoadPoints.Length / 2; i++)
+            for (int i = 1; i < roadToAssign.RoadPoints.Length / 2; i++)
             {
                 Path.Add(roadToAssign.RoadPoints[i]);
             }
         }
         else
         {
-            for (int i = roadToAssign.RoadPoints.Length - 1; i >= roadToAssign.RoadPoints.Length / 2; i--)
+            for (int i = roadToAssign.RoadPoints.Length - 2; i >= roadToAssign.RoadPoints.Length / 2; i--)
             {
                 Path.Add(roadToAssign.RoadPoints[i]);
-                    
             }
         }
+
         Path.Add(roadToAssign.MiddlePos);
 
         pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
-        
+
         _interpolationStepSize =
             _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
 
         _pathToTravelIndex = 0;
         _interpolation = 0;
-
+        currentFlag = null;
     }
 
     // Update is called once per frame
@@ -144,6 +152,60 @@ public class SettlerScript : MonoBehaviour
     public void GoBackToHomeFlag()
     {
         // TODO Check if settler could go to a nearby road
+        AssignedRoad = null;
+        List<Vector3> Path = new List<Vector3>();
+        FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);
+        if (flag != null && flag != GameHandler.HomeFlag)
+        {
+            Road[] roadPath = GameHandler.GetRoadGridPath(flag, GameHandler.HomeFlag);
+            Path.Add(transform.position);
+            Vector3 lastPos = flag.transform.position;
+            Path.Add(lastPos);
+            foreach (var r in roadPath)
+            {
+                if (Vector3.Distance(r.Pos1, lastPos) > Vector3.Distance(r.Pos2, lastPos))
+                {
+                    for (int i = 1; i < r.RoadPoints.Length; i++)
+                    {
+                        Path.Add(r.RoadPoints[i]);
+                    }
 
+                    lastPos = r.Pos2;
+                }
+                else
+                {
+                    for (int i = r.RoadPoints.Length - 2; i >= 0; i--)
+                    {
+                        Path.Add(r.RoadPoints[i]);
+                    }
+
+                    lastPos = r.Pos1;
+                }
+            }
+
+            Path.Add(GameHandler.HomeFlag.transform.position);
+
+            pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
+        }
+        else
+        {
+            Node[] nodePath = RoadPathfinding.FindPath(transform.position, GameHandler.HomeFlag.transform.position)
+                .ToArray();
+
+            pathToTravel = new Vector3[nodePath.Length];
+            for (int i = 0; i < nodePath.Length; i++)
+            {
+                pathToTravel[i] = nodePath[i].WorldPosition;
+            }
+            
+
+            pathToTravel = GameHandler.MakeSmoothCurve(pathToTravel);
+        }
+
+        _interpolationStepSize =
+            _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
+
+        _pathToTravelIndex = 0;
+        _interpolation = 0;
     }
 }

@@ -39,6 +39,7 @@ public class GameHandler : MonoBehaviour
     /// The main terrain
     /// </summary>
     public Terrain activeTerrain;
+    public LayerMask terrainLayer;
 
     // Materials
     public Material dirtRoadMaterial;
@@ -71,6 +72,7 @@ public class GameHandler : MonoBehaviour
     // Terrain
     public static Terrain ActiveTerrain;
     public static TerrainData ActiveTerrainTerrainData;
+    public static LayerMask TerrainLayer;
 
     // Materials
     public static Material DirtRoadMaterial;
@@ -130,6 +132,7 @@ public class GameHandler : MonoBehaviour
         // Terrain
         ActiveTerrain = activeTerrain;
         ActiveTerrainTerrainData = ActiveTerrain.terrainData;
+        TerrainLayer = terrainLayer;
 
         // Materials
         DirtRoadMaterial = dirtRoadMaterial;

@@ -30,6 +30,11 @@ public class FlagScript : MonoBehaviour
     /// The possible positions for Items next to the Flag
     /// </summary>
     private Vector3[] _itemPositions;
+    
+    /// <summary>
+    /// The alignment to the terrain of the items at the positions next to the flag
+    /// </summary>
+    private Vector3[] _itemAlignments;
 
     private void Awake()
     {
@@ -52,7 +57,7 @@ public class FlagScript : MonoBehaviour
         temp.BuildableIcon.SetActive(false);
 
         Items = new List<ItemScript>();
-        GenerateItemPositions();
+        GenerateItemPositionsAlignment();
     }
 
     private void OnMouseDown()
@@ -70,6 +75,9 @@ public class FlagScript : MonoBehaviour
         }
 
         UIHandler.LastClickedFlag = gameObject;
+        
+        // Temporary
+        AddItem(Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>());
     }
 
     private void GenerateDirtCrossing()
@@ -163,17 +171,27 @@ public class FlagScript : MonoBehaviour
     /// <summary>
     /// Generates the Positions for the Items next to the Flag in a circle
     /// </summary>
-    private void GenerateItemPositions()
+    private void GenerateItemPositionsAlignment()
     {
+
         _itemPositions = new Vector3[ItemHandler.MaxItemsNextToFlag];
+        _itemAlignments = new Vector3[ItemHandler.MaxItemsNextToFlag];
         int c = 0;
-        for (float i = 0; i < 360; i += 360 / ItemHandler.MaxItemsNextToFlag)
+        RaycastHit hit;
+        float maxItems = ItemHandler.MaxItemsNextToFlag;
+
+        for (float i = 0; i < 360; i += 360 / maxItems)
         {
             Vector3 pos = transform.position +
                           Quaternion.AngleAxis(i, Vector3.up) * Vector3.forward *
-                          2.8f;
+                          2f;
 
             _itemPositions[c] = new Vector3(pos.x, GameHandler.ActiveTerrain.SampleHeight(pos) + 0.2f, pos.z);
+            
+            Physics.Raycast(pos, Vector3.down, out hit, 2, GameHandler.TerrainLayer);
+            
+            _itemAlignments[c] = hit.normal;
+            
             c++;
         }
     }
@@ -185,12 +203,16 @@ public class FlagScript : MonoBehaviour
     /// <returns>True if it succeeded, false if there are already to much items next to to the flag</returns>
     public bool AddItem(ItemScript item)
     {
-        if(Items.Count >= ItemHandler.MaxItemsNextToFlag)
+        float maxItems = ItemHandler.MaxItemsNextToFlag;
+        if(Items.Count >= maxItems)
         {
             return false;
         }
         item.transform.position = _itemPositions[Items.Count];
-        item.transform.Rotate(new Vector3(0,360 * ItemHandler.MaxItemsNextToFlag / Items.Count,0));
+        Debug.Log((ItemHandler.MaxItemsNextToFlag,Items.Count,360 * ((Items.Count) / maxItems  )));
+        Transform transform1;
+        (transform1 = item.transform).up = _itemAlignments[Items.Count];
+        transform1.Rotate(0,360 * ((Items.Count) /maxItems ),0);
         Items.Add(item);
         return true;
     }

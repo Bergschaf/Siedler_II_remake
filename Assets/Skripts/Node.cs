@@ -53,19 +53,17 @@ public class Node
     /// </summary>
     public GameObject BuildableIcon;
     
-    public Renderer BuildableIconRenderer;
 
 
-
-    public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
+    public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type,GameObject _buildableIcon)
     {
         Buildable = buildable;
         WorldPosition = worldPos;
         GridX = gridX;
         GridY = gridY;
         Type = type;
-        BuildableIconRenderer = BuildableIcon.GetComponent<Renderer>();
-        BuildableIconRenderer.enabled = buildable;
+        BuildableIcon = _buildableIcon;
+        BuildableIcon.SetActive(buildable);
 
     }
 
@@ -76,8 +74,18 @@ public class Node
         {
             Type = "BuildableFlag";
             Buildable = true;
+            BuildableIcon.SetActive(true);
+
+            
         }
+        else
+        {
+            BuildableIcon.SetActive(false);
+        }
+
     }
+
+
 
     /// <summary>
     /// Value for pathfinding

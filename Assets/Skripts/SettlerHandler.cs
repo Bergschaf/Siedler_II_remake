@@ -46,7 +46,6 @@ public class SettlerHandler : MonoBehaviour
 
             Road[] roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag1);
 
-            Debug.Log(roadPath);
 
             FlagScript flag2 = Grid.NodeFromWorldPoint(r.Pos2).Flag;
             ;
@@ -55,7 +54,6 @@ public class SettlerHandler : MonoBehaviour
                 roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag2);
             }
 
-            Debug.Log(roadPath);
 
             if (roadPath.Length == 0 && !(flag1 == GameHandler.HomeFlag || flag2 == GameHandler.HomeFlag))
             {

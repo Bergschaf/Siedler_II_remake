@@ -23,7 +23,7 @@ public class FlagScript : MonoBehaviour
     // Start is called before the first frame update
 
 
-    private void Start()
+    private void Awake()
     {
         Vector3 position = transform.position;
         position = new Vector3(position.x,
@@ -32,14 +32,17 @@ public class FlagScript : MonoBehaviour
         transform.position = position;
 
         Node temp = Grid.NodeFromWorldPoint(position);
-
+        
         if (temp.Type == "Road")
         {
             GameHandler.PlaceFlagInRoad(this);
+            Debug.Log("Placed Flag in Road");
         }
 
         temp.Type = "Flag";
+        
         temp.Flag = this;
+        temp.BuildableIcon.SetActive(false);
     }
 
     private void OnMouseDown()

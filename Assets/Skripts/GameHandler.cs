@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 
 public class GameHandler : MonoBehaviour
 {
-    public static GameHandler instance;
 
     // Variables to set in the untiy editor
     // Buildable Prefabs
@@ -53,10 +52,7 @@ public class GameHandler : MonoBehaviour
     /// The width of the standard dirt roads
     /// </summary>
     public float roadWidth;
-
-
-    // Settlers
-    public GameObject homeFlag;
+    
 
     // static global variables
 
@@ -119,8 +115,6 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-
         // Buildable Prefabs
         BuildableFlag = buildableFlag;
         BuildableHouse1 = buildableHouse1;
@@ -148,14 +142,13 @@ public class GameHandler : MonoBehaviour
         // Variables
         AllFlags = new List<FlagScript>();
 
-        // Settlers
-        if (homeFlag != null)
-        {
-            HomeFlag = homeFlag.GetComponent<FlagScript>();
-        }
-
         // Roads
         CurrentlyBuildingRoad = false;
+    }
+
+    private void Start()
+    {
+        HomeFlag = Grid.NodeGrid[1, 1].BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
     }
 
     /// <summary>
@@ -233,14 +226,13 @@ public class GameHandler : MonoBehaviour
         Road newRoad1 = new Road(roadPoints[0]);
         for (int i = 1; i < splitIndex + 1; i++)
         {
-            newRoad1.add_point(roadPoints[i],true);
+            newRoad1.add_point(roadPoints[i]);
         }
 
         Road newRoad2 = new Road(roadPoints[splitIndex]);
         for (int i = splitIndex + 1; i < roadPoints.Length; i++)
         {
-            newRoad2.add_point(roadPoints[i],
-                true);
+            newRoad2.add_point(roadPoints[i]);
         }
 
         flag1.AddRoad(newRoad1, flag);
@@ -407,5 +399,6 @@ public class GameHandler : MonoBehaviour
 
         return null;
     }
+    
 
 }

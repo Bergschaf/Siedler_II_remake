@@ -72,6 +72,13 @@ public class Road
     /// <param name="point"></param>
     public bool add_point(Vector3 point)
     {
+        bool end = Grid.NodeFromWorldPoint(point).Type == "Road"; // True if the road goes into another road and therefore should be ended
+        FlagScript flag = null;
+        if (end)
+        {
+            flag = Grid.NodeFromWorldPoint(point).BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
+        }
+        
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
         if (path.Count < 2)
@@ -82,6 +89,7 @@ public class Road
         for (int i = 1; i < path.Count; i++)
         {
             path[i].Buildable = false;
+
             if (path[i].Type != "Flag")
             {
                 path[i].Type = "Road";
@@ -108,6 +116,11 @@ public class Road
         Pos2 = point;
 
         draw_road();
+
+        if (end)
+        {
+            GameHandler.EndBuildingRoad(flag);
+        }
         return true;
     }
 

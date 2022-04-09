@@ -23,7 +23,7 @@ public class Road
     private GameObject _road;
 
     /// <summary>
-    /// Road mesh
+    /// The visible road
     /// </summary>
     private RoadMesh _roadMesh;
 
@@ -51,6 +51,11 @@ public class Road
     /// The Settler that is Assigned to this road
     /// </summary>
     public SettlerScript Settler;
+    
+    /// <summary>
+    /// The Flags at the end of the road
+    /// </summary>
+    public FlagScript Flag1, Flag2;
 
 
     public Road(Vector3 pos1)
@@ -180,7 +185,8 @@ public class Road
             }
         }
         SettlerHandler.OnRoadPlacement(this);
-
+        Flag1 = Grid.NodeFromWorldPoint(Pos1).Flag;
+        Flag2 = Grid.NodeFromWorldPoint(Pos2).Flag;
     }
 
 

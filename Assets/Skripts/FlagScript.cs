@@ -24,7 +24,7 @@ public class FlagScript : MonoBehaviour
     /// <summary>
     /// The Items next to the Flag
     /// </summary>
-    public List<ItemScript> Items;
+    public ItemScript[] Items;
     
     /// <summary>
     /// The possible positions for Items next to the Flag
@@ -56,7 +56,7 @@ public class FlagScript : MonoBehaviour
         temp.Flag = this;
         temp.BuildableIcon.SetActive(false);
 
-        Items = new List<ItemScript>();
+        Items = new ItemScript[ItemHandler.MaxItemsNextToFlag];
         GenerateItemPositionsAlignment();
     }
 
@@ -204,16 +204,44 @@ public class FlagScript : MonoBehaviour
     public bool AddItem(ItemScript item)
     {
         float maxItems = ItemHandler.MaxItemsNextToFlag;
-        if(Items.Count >= maxItems)
+
+        for (int i = 0; i < maxItems; i++)
         {
-            return false;
+            if (Items[i] == null)
+            {
+                Transform transform1 = item.transform;
+
+                transform1.position = _itemPositions[i];
+                transform1.up = _itemAlignments[i];
+                transform1.Rotate(0,360 * (i /maxItems ),0);
+                Items[i] = item;
+                return true;
+            }
         }
-        item.transform.position = _itemPositions[Items.Count];
-        Debug.Log((ItemHandler.MaxItemsNextToFlag,Items.Count,360 * ((Items.Count) / maxItems  )));
-        Transform transform1;
-        (transform1 = item.transform).up = _itemAlignments[Items.Count];
-        transform1.Rotate(0,360 * ((Items.Count) /maxItems ),0);
-        Items.Add(item);
-        return true;
+        return false;
     }
+
+    /// <summary>
+    /// Trys to remove an Item with the given type from the flag
+    /// </summary>
+    /// <param name="itemID"></param>
+    /// <returns>the item if there is one, null if there is no item of that type</returns>
+    public ItemScript GetItem(int itemID)
+    {
+        for (int i = 0; i < ItemHandler.MaxItemsNextToFlag; i++)
+        {
+            if(Items[i] != null)
+            {
+                if (Items[i].itemID == itemID)
+                {
+                    ItemScript item = Items[i];
+                    Items[i] = null;
+                    return item;
+                }
+            }   
+        }
+
+        return null;
+    }
+
 }

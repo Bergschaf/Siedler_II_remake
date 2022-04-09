@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Items start">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Align items to ground when put next to flag">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649507677796</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Align items to ground when put next to flag">
+      <created>1649514659528</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1649514659528</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +428,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Road mesh" />
     <MESSAGE value="Road" />
     <MESSAGE value="Roads" />
     <MESSAGE value="Abort Road Build" />
@@ -446,6 +452,7 @@
     <MESSAGE value="Road Build System Fix" />
     <MESSAGE value="Settler walking fix" />
     <MESSAGE value="Items start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Items start" />
+    <MESSAGE value="Align items to ground when put next to flag" />
+    <option name="LAST_COMMIT_MESSAGE" value="Align items to ground when put next to flag" />
   </component>
 </project>

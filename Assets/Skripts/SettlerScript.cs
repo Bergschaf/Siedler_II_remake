@@ -209,4 +209,9 @@ public class SettlerScript : MonoBehaviour
         _pathToTravelIndex = 0;
         _interpolation = 0;
     }
+
+    public void TransportItem(ItemScript item)
+    {
+        
+    }
 }

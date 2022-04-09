@@ -151,6 +151,11 @@ public class Grid : MonoBehaviour
     public static FlagScript ClosestFlagToWorldPoint(Vector3 worldPos)
     {
         Node middleNode = NodeFromWorldPoint(worldPos);
+        if(middleNode.Flag != null)
+        {
+            return middleNode.Flag;
+        }
+
         int minX, minY, maxX, maxY;
         int maxSearchDistance = 20; // The Maximum Radius to search for a Flag
         for (int currentSearchDistance = 1; currentSearchDistance < maxSearchDistance; currentSearchDistance++)

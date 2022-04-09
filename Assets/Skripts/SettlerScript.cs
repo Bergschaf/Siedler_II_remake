@@ -61,6 +61,7 @@ public class SettlerScript : MonoBehaviour
     {
         roadToAssign.Settler = this;
         AssignedRoad = roadToAssign;
+        
         List<Vector3> Path = new List<Vector3>();
 
         Vector3 lastPos = currentFlag.transform.position;
@@ -151,7 +152,8 @@ public class SettlerScript : MonoBehaviour
 
     public void GoBackToHomeFlag()
     {
-        // TODO Check if settler could go to a nearby road
+        Debug.Log("Sent home :(");
+        // TODO Check if settler could go to a nearby road and carry stuff around there
         AssignedRoad = null;
         List<Vector3> Path = new List<Vector3>();
         FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);

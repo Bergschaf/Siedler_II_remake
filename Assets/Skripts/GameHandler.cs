@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -192,7 +193,7 @@ public class GameHandler : MonoBehaviour
     /// Places a flag at a node which is already road
     /// </summary>
     /// <param name="flag">the flag to be placed</param>
-    public static void PlaceFlagInRoad(FlagScript flag)
+    public static bool PlaceFlagInRoad(FlagScript flag)
     {
         Vector3 flagPos = flag.transform.position;
         Node node = Grid.NodeFromWorldPoint(flagPos);
@@ -203,7 +204,7 @@ public class GameHandler : MonoBehaviour
 
         if (flag1 == null || flag2 == null)
         {
-            return;
+            return false;
         }
 
         flag1.RemoveRoad(road);
@@ -243,6 +244,7 @@ public class GameHandler : MonoBehaviour
         
         newRoad1.EndRoadBuild();
         newRoad2.EndRoadBuild();
+        return true;
     }
 
 

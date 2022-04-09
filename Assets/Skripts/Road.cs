@@ -72,13 +72,14 @@ public class Road
     /// <param name="point"></param>
     public bool add_point(Vector3 point)
     {
-        bool end = Grid.NodeFromWorldPoint(point).Type == "Road"; // True if the road goes into another road and therefore should be ended
+        bool end = Grid.NodeFromWorldPoint(point).Type ==
+                   "Road"; // True if the road goes into another road and therefore should be ended
         FlagScript flag = null;
         if (end)
         {
             flag = Grid.NodeFromWorldPoint(point).BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
         }
-        
+
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
 
         if (path.Count < 2)
@@ -121,6 +122,7 @@ public class Road
         {
             GameHandler.EndBuildingRoad(flag);
         }
+
         return true;
     }
 
@@ -172,15 +174,21 @@ public class Road
 
     public void EndRoadBuild()
     {
+        bool destroyed = false;
         for (int i = 1; i < Nodes.Count - 1; i++)
         {
             if (Nodes[i].Type == "Flag")
             {
-                GameHandler.PlaceFlagInRoad(Nodes[i].Flag);
+                if(GameHandler.PlaceFlagInRoad(Nodes[i].Flag)) {
+                    destroyed = true;
+                }
             }
         }
-        SettlerHandler.OnRoadPlacement(this);
 
+        if (!destroyed)
+        {
+            SettlerHandler.OnRoadPlacement(this);
+        }
     }
 
 
@@ -197,6 +205,7 @@ public class Road
         }
 
         if (Settler != null) Settler.GoBackToHomeFlag();
+
         _roadMesh.destroy();
     }
 }

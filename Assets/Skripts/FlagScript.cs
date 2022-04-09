@@ -133,7 +133,11 @@ public class FlagScript : MonoBehaviour
     /// Destroys the Flag and removes all the road connections
     /// </summary>
     public void Destroy()
-    {   
+    {
+        foreach (var item in Items)
+        {
+            if (item != null) Destroy(item.gameObject);
+        }
         
         // The Roads that should be removed from a flag, because they connect to this flag
         List<Road> toRemove;

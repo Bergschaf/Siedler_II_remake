@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Align items to ground when put next to flag">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Settlers Transport Items">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/Grid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/GameHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/16/8a5b3d1e/WaitUntil.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/GameHandler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -86,9 +86,15 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="System.Diagnostics.Stopwatch.StartNew();" />
+    </option>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20252">
@@ -398,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649514659528</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Settlers Transport Items">
+      <created>1649530378592</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1649530378592</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +445,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Road" />
     <MESSAGE value="Roads" />
     <MESSAGE value="Abort Road Build" />
     <MESSAGE value="Road Building Stuff + additional files" />
@@ -457,6 +469,7 @@
     <MESSAGE value="Settler walking fix" />
     <MESSAGE value="Items start" />
     <MESSAGE value="Align items to ground when put next to flag" />
-    <option name="LAST_COMMIT_MESSAGE" value="Align items to ground when put next to flag" />
+    <MESSAGE value="Settlers Transport Items" />
+    <option name="LAST_COMMIT_MESSAGE" value="Settlers Transport Items" />
   </component>
 </project>

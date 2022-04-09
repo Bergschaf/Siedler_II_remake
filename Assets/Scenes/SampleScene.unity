@@ -169,6 +169,51 @@ MonoBehaviour:
   unbuildableMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!1 &264039624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264039625}
+  - component: {fileID: 264039626}
+  m_Layer: 0
+  m_Name: ItemHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264039625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264039624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1822336796}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264039626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264039624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b370c7ad6a4b25aea07c2b453deecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 8788792870598541071, guid: d494bb1b0bd534948a913ab4529efa8d, type: 3}
 --- !u!1 &325663337
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +544,7 @@ GameObject:
   - component: {fileID: 1362112658}
   - component: {fileID: 1362112656}
   - component: {fileID: 1362112657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,6 +904,9 @@ MonoBehaviour:
   dirtRoadPrefab: {fileID: 5457993618964081888, guid: d1e000fd900e968408b8a3570c5a070d, type: 3}
   dirtCrossingPrefab: {fileID: 3346937960534483937, guid: c265d924b8d94574cb995515c9c92229, type: 3}
   activeTerrain: {fileID: 1362112656}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 8
   dirtRoadMaterial: {fileID: 2100000, guid: 6547fb72b3a80724ebf69150b3408453, type: 2}
   dirtCrossingMaterial: {fileID: 2100000, guid: b28d394f1cbd5964a888913131b84f2e, type: 2}
   flagBuildableYOffset: 3
@@ -877,6 +925,7 @@ Transform:
   - {fileID: 165370234}
   - {fileID: 1384989139}
   - {fileID: 962970407}
+  - {fileID: 264039625}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

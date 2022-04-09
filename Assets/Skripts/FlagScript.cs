@@ -73,7 +73,7 @@ public class FlagScript : MonoBehaviour
 
     private void DestroyDirtCrossing()
     {
-        _dirtCrossing.GetComponent<DirtCrossingMeshScript>().destroy();
+        if (_dirtCrossing != null) _dirtCrossing.GetComponent<DirtCrossingMeshScript>().destroy();
         GameHandler.AllFlags.Remove(this);
     }
 

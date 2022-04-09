@@ -233,13 +233,14 @@ public class GameHandler : MonoBehaviour
         Road newRoad1 = new Road(roadPoints[0]);
         for (int i = 1; i < splitIndex + 1; i++)
         {
-            newRoad1.add_point(roadPoints[i]);
+            newRoad1.add_point(roadPoints[i],true);
         }
 
         Road newRoad2 = new Road(roadPoints[splitIndex]);
         for (int i = splitIndex + 1; i < roadPoints.Length; i++)
         {
-            newRoad2.add_point(roadPoints[i]);
+            newRoad2.add_point(roadPoints[i],
+                true);
         }
 
         flag1.AddRoad(newRoad1, flag);

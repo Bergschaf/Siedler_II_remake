@@ -334,6 +334,7 @@ public class GameHandler : MonoBehaviour
     /// <returns>Array of roads from the start flag to the target flag, empty if no path is found</returns>
     public static Road[] GetRoadGridPath(FlagScript startPos, FlagScript targetPos)
     {
+
         FlagScript currentFlag;
         List<FlagScript> qList = AllFlags.ToList();
 
@@ -344,7 +345,7 @@ public class GameHandler : MonoBehaviour
             Distance[v] = float.PositiveInfinity;
             Parent[v] = null;
         }
-
+        
         Distance[startPos] = 0;
         while (qList.Count > 0)
         {

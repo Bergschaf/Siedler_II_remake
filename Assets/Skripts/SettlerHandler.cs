@@ -42,24 +42,29 @@ public class SettlerHandler : MonoBehaviour
         toRemove = new List<Road>();
         foreach (var r in NotAssignedRoads)
         {
-            FlagScript flag = Grid.NodeFromWorldPoint(r.Pos1).Flag;
+            FlagScript flag1 = Grid.NodeFromWorldPoint(r.Pos1).Flag;
 
-            Road[] roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
+            Road[] roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag1);
 
+            Debug.Log(roadPath);
 
+            FlagScript flag2 = Grid.NodeFromWorldPoint(r.Pos2).Flag;
+            ;
             if (roadPath == null)
             {
-                flag = Grid.NodeFromWorldPoint(r.Pos2).Flag;
-
-                roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag);
+                roadPath = GameHandler.GetRoadGridPath(GameHandler.HomeFlag, flag2);
             }
 
-            if (roadPath != null)
+            Debug.Log(roadPath);
+
+            if (roadPath.Length == 0 && !(flag1 == GameHandler.HomeFlag || flag2 == GameHandler.HomeFlag))
             {
-                toRemove.Add(r);
-                SettlerScript tempSettler = SpawnSettler(GameHandler.HomeFlag.transform.position);
-                tempSettler.AssignRoad(r, roadPath);
+                continue;
             }
+
+            toRemove.Add(r);
+            SettlerScript tempSettler = SpawnSettler(GameHandler.HomeFlag.transform.position);
+            tempSettler.AssignRoad(r, roadPath);
         }
 
         foreach (var r in toRemove)

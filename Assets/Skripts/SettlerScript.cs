@@ -155,9 +155,10 @@ public class SettlerScript : MonoBehaviour
         AssignedRoad = null;
         List<Vector3> Path = new List<Vector3>();
         FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);
-        if (flag != null && flag != GameHandler.HomeFlag)
+        Road[] roadPath = GameHandler.GetRoadGridPath(flag, GameHandler.HomeFlag);
+
+        if (flag != null && flag != GameHandler.HomeFlag && roadPath != null)
         {
-            Road[] roadPath = GameHandler.GetRoadGridPath(flag, GameHandler.HomeFlag);
             Path.Add(transform.position);
             Vector3 lastPos = flag.transform.position;
             Path.Add(lastPos);

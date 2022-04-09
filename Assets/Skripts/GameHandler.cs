@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 
 public class GameHandler : MonoBehaviour
 {
-
+    public static GameHandler Instance; // required for coroutines
+    
     // Variables to set in the untiy editor
     // Buildable Prefabs
     public GameObject buildableFlag;
@@ -117,6 +118,8 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        
         // Buildable Prefabs
         BuildableFlag = buildableFlag;
         BuildableHouse1 = buildableHouse1;
@@ -401,6 +404,20 @@ public class GameHandler : MonoBehaviour
         }
 
         return null;
+    }
+    
+    /// <summary>
+    /// Executes all coroutines in the coroutine queue
+    /// </summary>
+    /// <param name="coroutines"></param>
+    /// <returns></returns>
+    public static IEnumerator ExecuteCoroutines(List<IEnumerator> coroutines)
+    {
+        foreach (var coroutine in coroutines)
+        {
+            
+            yield return Instance.StartCoroutine(coroutine);
+        }
     }
     
 

@@ -36,7 +36,6 @@ public class FlagScript : MonoBehaviour
         if (temp.Type == "Road")
         {
             GameHandler.PlaceFlagInRoad(this);
-            Debug.Log("Placed Flag in Road");
         }
 
         temp.Type = "Flag";

@@ -16,6 +16,9 @@ public class Settings : MonoBehaviour
 
     public Sprite mute;
     public Sprite unmute;
+    public Sprite volume25;
+    public Sprite volume50;
+    public Sprite volume75;
 
 
     public void PlayGame()
@@ -36,7 +39,22 @@ public class Settings : MonoBehaviour
             audioSrc.mute = true;
             MuteButton.GetComponent<Image>().sprite = mute;
         }
-        else if(MusicVolume.value > 0.0f)
+        else if (MusicVolume.value > 0.0f && MusicVolume.value <= 0.25f)
+        {
+            audioSrc.mute = false;
+            MuteButton.GetComponent<Image>().sprite = volume25;
+        }
+        else if (MusicVolume.value > 0.25f && MusicVolume.value <= 0.50f)
+        {
+            audioSrc.mute = false;
+            MuteButton.GetComponent<Image>().sprite = volume50;
+        }
+        else if (MusicVolume.value > 0.50f && MusicVolume.value <= 0.75f)
+        {
+            audioSrc.mute = false;
+            MuteButton.GetComponent<Image>().sprite = volume75;
+        }
+        else if(MusicVolume.value == 1.0f)
         {
             audioSrc.mute = false;
             MuteButton.GetComponent<Image>().sprite = unmute;

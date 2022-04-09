@@ -442,7 +442,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -632,6 +632,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mute: {fileID: 0}
   unmute: {fileID: 0}
+  volume25: {fileID: 0}
+  volume50: {fileID: 0}
+  volume75: {fileID: 0}
 --- !u!1 &567428915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,8 +1527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 162.63544, y: 302.28748}
-  m_SizeDelta: {x: 57.6999, y: 65.5526}
+  m_AnchoredPosition: {x: 155.19, y: 291.14}
+  m_SizeDelta: {x: 42.801, y: 43.266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092746033
 MonoBehaviour:
@@ -1603,7 +1606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3730123195373760269, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
+  m_Sprite: {fileID: 6852596334027925792, guid: dfd45891d0b58844fa9f0f55b374a0be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2294,6 +2297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mute: {fileID: 21300000, guid: dcd34d9a517a8b448b9a11f75726c0bb, type: 3}
   unmute: {fileID: 21300000, guid: f7439898729b777478de93d3c4aa5d69, type: 3}
+  volume25: {fileID: 21300000, guid: dd5e5bb1795ca324cb7ab71058c20c35, type: 3}
+  volume50: {fileID: 21300000, guid: 369142ba52ca59842bcbee2b2eee8aad, type: 3}
+  volume75: {fileID: 21300000, guid: 4db7625434787dd40a3bca2ef577b521, type: 3}
 --- !u!4 &1706447562
 Transform:
   m_ObjectHideFlags: 0

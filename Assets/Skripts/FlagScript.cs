@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Object = System.Object;
 
 /// <summary>
 /// The script assigned to the flag GameObject
@@ -20,8 +21,15 @@ public class FlagScript : MonoBehaviour
     /// <code>List(Tuple(Road,FlagScript): Road,TargetFlag</code>
     public List<Tuple<Road, FlagScript>> AttachedRoads; // (Road,Target)
 
-    // Start is called before the first frame update
-
+    /// <summary>
+    /// The Items next to the Flag
+    /// </summary>
+    public List<ItemScript> Items;
+    
+    /// <summary>
+    /// The possible positions for Items next to the Flag
+    /// </summary>
+    private Vector3[] _itemPositions;
 
     private void Awake()
     {
@@ -42,6 +50,9 @@ public class FlagScript : MonoBehaviour
         
         temp.Flag = this;
         temp.BuildableIcon.SetActive(false);
+
+        Items = new List<ItemScript>();
+        GenerateItemPositions();
     }
 
     private void OnMouseDown()
@@ -147,5 +158,40 @@ public class FlagScript : MonoBehaviour
         var position = transform.position;
         Grid.NodeFromWorldPoint(position).Type = "Buildable";
         Grid.NodeFromWorldPoint(position).CalculateBuildableType();
+    }
+
+    /// <summary>
+    /// Generates the Positions for the Items next to the Flag in a circle
+    /// </summary>
+    private void GenerateItemPositions()
+    {
+        _itemPositions = new Vector3[ItemHandler.MaxItemsNextToFlag];
+        int c = 0;
+        for (float i = 0; i < 360; i += 360 / ItemHandler.MaxItemsNextToFlag)
+        {
+            Vector3 pos = transform.position +
+                          Quaternion.AngleAxis(i, Vector3.up) * Vector3.forward *
+                          2.8f;
+
+            _itemPositions[c] = new Vector3(pos.x, GameHandler.ActiveTerrain.SampleHeight(pos) + 0.2f, pos.z);
+            c++;
+        }
+    }
+
+    /// <summary>
+    /// Adds the item next to the flag
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns>True if it succeeded, false if there are already to much items next to to the flag</returns>
+    public bool AddItem(ItemScript item)
+    {
+        if(Items.Count >= ItemHandler.MaxItemsNextToFlag)
+        {
+            return false;
+        }
+        item.transform.position = _itemPositions[Items.Count];
+        item.transform.Rotate(new Vector3(0,360 * ItemHandler.MaxItemsNextToFlag / Items.Count,0));
+        Items.Add(item);
+        return true;
     }
 }

@@ -1,0 +1,3 @@
+﻿0 - Stone
+1 - Wood Log
+2 - Wooden Plank

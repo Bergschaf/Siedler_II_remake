@@ -48,14 +48,23 @@ public class Node
     /// </summary>
     public Road Road;
 
+    /// <summary>
+    /// The Buildable GameObject, e.g. The little orange flag
+    /// </summary>
+    public GameObject BuildableIcon;
+    
 
-    public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type)
+
+    public Node(bool buildable, Vector3 worldPos, int gridX, int gridY, string type,GameObject _buildableIcon)
     {
         Buildable = buildable;
         WorldPosition = worldPos;
         GridX = gridX;
         GridY = gridY;
         Type = type;
+        BuildableIcon = _buildableIcon;
+        BuildableIcon.SetActive(buildable);
+
     }
 
     public void CalculateBuildableType()
@@ -65,8 +74,18 @@ public class Node
         {
             Type = "BuildableFlag";
             Buildable = true;
+            BuildableIcon.SetActive(true);
+
+            
         }
+        else
+        {
+            BuildableIcon.SetActive(false);
+        }
+
     }
+
+
 
     /// <summary>
     /// Value for pathfinding

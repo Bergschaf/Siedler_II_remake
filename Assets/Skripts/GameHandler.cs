@@ -8,10 +8,9 @@ using UnityEngine.UIElements;
 
 public class GameHandler : MonoBehaviour
 {
-    public static GameHandler instance;
+
     // Variables to set in the untiy editor
     // Buildable Prefabs
-    // TODO Change these to UI elements
     public GameObject buildableFlag;
     public GameObject buildableHouse1;
     public GameObject buildableHouse2;
@@ -34,6 +33,7 @@ public class GameHandler : MonoBehaviour
     /// </summary>
     public GameObject dirtCrossingPrefab;
 
+
     // Terrain
     /// <summary>
     /// The main terrain
@@ -46,16 +46,13 @@ public class GameHandler : MonoBehaviour
 
     // Building Parameters
 
-    public float flagBuildableYOffset; // TODO Flag buildable becomes UI
+    public float flagBuildableYOffset;
 
     /// <summary>
     /// The width of the standard dirt roads
     /// </summary>
     public float roadWidth;
-
-
-    // Settlers
-    public GameObject homeFlag;
+    
 
     // static global variables
 
@@ -118,8 +115,6 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        
         // Buildable Prefabs
         BuildableFlag = buildableFlag;
         BuildableHouse1 = buildableHouse1;
@@ -147,11 +142,13 @@ public class GameHandler : MonoBehaviour
         // Variables
         AllFlags = new List<FlagScript>();
 
-        // Settlers
-        if (homeFlag != null) HomeFlag = homeFlag.GetComponent<FlagScript>();
-
         // Roads
         CurrentlyBuildingRoad = false;
+    }
+
+    private void Start()
+    {
+        HomeFlag = Grid.NodeGrid[1, 1].BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
     }
 
     /// <summary>
@@ -243,6 +240,9 @@ public class GameHandler : MonoBehaviour
 
         flag2.AddRoad(newRoad2, flag);
         flag.AddRoad(newRoad2, flag2);
+        
+        newRoad1.EndRoadBuild();
+        newRoad2.EndRoadBuild();
     }
 
 
@@ -327,6 +327,7 @@ public class GameHandler : MonoBehaviour
     /// <returns>Array of roads from the start flag to the target flag, empty if no path is found</returns>
     public static Road[] GetRoadGridPath(FlagScript startPos, FlagScript targetPos)
     {
+
         FlagScript currentFlag;
         List<FlagScript> qList = AllFlags.ToList();
 
@@ -337,7 +338,7 @@ public class GameHandler : MonoBehaviour
             Distance[v] = float.PositiveInfinity;
             Parent[v] = null;
         }
-
+        
         Distance[startPos] = 0;
         while (qList.Count > 0)
         {
@@ -396,6 +397,8 @@ public class GameHandler : MonoBehaviour
             }
         }
 
-        return Array.Empty<Road>();
+        return null;
     }
+    
+
 }

@@ -26,8 +26,7 @@ public class FlagBuildableScript : MonoBehaviour
     {
         GameObject temp = Instantiate(GameHandler.FlagPrefab, transform.position, Quaternion.identity);
         UIHandler.EndGUI();
-        Destroy(gameObject);
-        
+
         return temp.GetComponent<FlagScript>();
     }
 
@@ -37,16 +36,12 @@ public class FlagBuildableScript : MonoBehaviour
         {
             var position = transform.position;
 
-            
+
             if (GameHandler.CurrentRoad.add_point(position))
             {
                 UIHandler.ClickedBuildableFlag = gameObject;
                 UIHandler.UpdateGUIWorldPos(position);
-
-
             }
-
-
         }
         else if (!UIHandler.GUIActive)
         {

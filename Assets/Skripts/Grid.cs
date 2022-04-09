@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -19,18 +21,21 @@ public class Grid : MonoBehaviour
     /// The world size of the Grid
     /// </summary>
     public static Vector2 GridWorldSize;
+
     /// <summary>
     /// The size of the grid (in grid units)
     /// </summary>
     public static int GridSizeX, GridSizeY;
+
     /// <summary>
     /// The radius of a node
     /// </summary>
-    public float nodeRadius;
+    public static float nodeRadius = 8;
+
     /// <summary>
     /// The diameter of a node
     /// </summary>
-    private float _nodeDiameter;
+    private static float _nodeDiameter;
 
     /// <summary>
     /// The main node grid
@@ -38,6 +43,14 @@ public class Grid : MonoBehaviour
     public static Node[,] NodeGrid;
 
     private void Start()
+    {
+        if (NodeGrid == null)
+        {
+            start();
+        }
+    }
+
+    private static void start()
     {
         // Parameters
         GridWorldSize = new Vector2(GameHandler.ActiveTerrainTerrainData.size.x,
@@ -49,15 +62,15 @@ public class Grid : MonoBehaviour
         // Grid Creation
         CreateGrid();
     }
-    
+
     /// <summary>
     /// Initializes the node grid
     /// </summary>
-    void CreateGrid()
+    static void CreateGrid()
     {
         NodeGrid = new Node[GridSizeX, GridSizeY];
 
-        Vector3 worldBottomLeft = transform.position; // Grid Game Object has to be on the bottom left of the terrain 
+        Vector3 worldBottomLeft = Vector3.zero; // Grid Game Object has to be on the bottom left of the terrain 
         Quaternion rotation = Quaternion.Euler(0, 0, 0);
         for (int x = 0; x < GridSizeX; x++)
         {
@@ -68,13 +81,9 @@ public class Grid : MonoBehaviour
                 // Check if the point is obstructed or not
                 //bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unbuildableMask));
                 bool walkable = true;
-                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y,"BuildableFlag");
-                if (walkable)
-                {
-                    // TODO Calculate where what building size can go
-                    // TODO Migrate this to UI element
-                    Instantiate(GameHandler.BuildableFlag, worldPoint, rotation);
-                }
+                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y, "BuildableFlag",Instantiate(GameHandler.BuildableFlag, worldPoint, rotation));
+
+                // TODO Calculate where what building size can go
 
             }
         }
@@ -118,6 +127,11 @@ public class Grid : MonoBehaviour
     /// <returns>Node at the world position</returns>
     public static Node NodeFromWorldPoint(Vector3 worldPos)
     {
+        if (NodeGrid == null)
+        {
+            start();
+        }
+
         float percentX = (worldPos.x) / GridWorldSize.x;
         float percentY = (worldPos.z) / GridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
@@ -125,7 +139,56 @@ public class Grid : MonoBehaviour
 
         int x = Mathf.RoundToInt((GridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((GridSizeY - 1) * percentY);
+
         return NodeGrid[x, y];
     }
-    
+
+    /// <summary>
+    /// Returns the closest Flag to a world Position
+    /// </summary>
+    /// <param name="worldPos"></param>
+    /// <returns></returns>
+    public static FlagScript ClosestFlagToWorldPoint(Vector3 worldPos)
+    {
+        Node middleNode = NodeFromWorldPoint(worldPos);
+        int minX, minY, maxX, maxY;
+        int maxSearchDistance = 20; // The Maximum Radius to search for a Flag
+        for (int currentSearchDistance = 1; currentSearchDistance < maxSearchDistance; currentSearchDistance++)
+        {
+            minX = Mathf.Max(0, middleNode.GridX - currentSearchDistance);
+            minY = Mathf.Max(0, middleNode.GridY - currentSearchDistance);
+            maxX = Mathf.Min(GridSizeX - 1, middleNode.GridX + currentSearchDistance);
+            maxY = Mathf.Min(GridSizeY - 1, middleNode.GridY + currentSearchDistance);
+
+            for (int x = minX; x <= maxX; x++)
+            {
+                if (NodeGrid[x, maxY].Flag != null)
+                {
+                    return NodeGrid[x, maxY].Flag;
+                }
+                
+                if (NodeGrid[x, minY].Flag != null)
+                {
+                    return NodeGrid[x, minY].Flag;
+                }
+                
+            }
+            
+            for (int y = minY; y <= maxY; y++)
+            {
+                if (NodeGrid[maxX, y].Flag != null)
+                {
+                    return NodeGrid[maxX, y].Flag;
+                }
+                
+                if (NodeGrid[minX, y].Flag != null)
+                {
+                    return NodeGrid[minX, y].Flag;
+                }
+                
+            }
+        }
+
+        return null;
+    }
 }

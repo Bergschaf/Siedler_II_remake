@@ -35,4 +35,14 @@ public class ItemHandler : MonoBehaviour
         ItemSuppliers = new List<FlagScript>[itemCount];
         GenericSuppliers = new List<FlagScript>();
     }
+
+    /// <summary>
+    /// Called by a flag, when it needs an item of the given type
+    /// </summary>
+    /// <param name="flag"></param>
+    /// <param name="itemID"></param>
+    public static void DemandItem(FlagScript flag, int itemID)
+    {
+        
+    }
 }

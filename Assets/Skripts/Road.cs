@@ -15,7 +15,7 @@ public class Road
     /// <summary>
     /// Points of the road
     /// </summary>
-    public Vector3[] RoadPoints, _roadPointsRight, _roadPointsLeft;
+    public Vector3[] RoadPoints, _roadPointsRight, _roadPointsLeft, SmoothRoadPoints;
 
     /// <summary>
     /// Road GameObject
@@ -23,7 +23,7 @@ public class Road
     private GameObject _road;
 
     /// <summary>
-    /// Road mesh
+    /// The visible road
     /// </summary>
     private RoadMesh _roadMesh;
 
@@ -51,6 +51,11 @@ public class Road
     /// The Settler that is Assigned to this road
     /// </summary>
     public SettlerScript Settler;
+    
+    /// <summary>
+    /// The Flags at the end of the road
+    /// </summary>
+    public FlagScript Flag1, Flag2;
 
 
     public Road(Vector3 pos1)
@@ -131,35 +136,37 @@ public class Road
     /// </summary>
     private void draw_road()
     {
-        Vector3[] tempRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
+        SmoothRoadPoints = GameHandler.MakeSmoothCurve(RoadPoints);
 
-        // Middle Position of tempRoadPoints in MiddlePos
-        MiddlePos = tempRoadPoints[tempRoadPoints.Length / 2];
+        // Middle Position of SmoothRoadPoints in MiddlePos
 
-        _roadPointsLeft = new Vector3[tempRoadPoints.Length];
-        _roadPointsRight = new Vector3[tempRoadPoints.Length];
+        MiddlePos = SmoothRoadPoints[SmoothRoadPoints.Length / 2];
+        
 
-        float angle = (Mathf.Rad2Deg * Mathf.Atan2(tempRoadPoints[0].x - tempRoadPoints[1].x,
-            tempRoadPoints[0].z - tempRoadPoints[1].z));
+        _roadPointsLeft = new Vector3[SmoothRoadPoints.Length];
+        _roadPointsRight = new Vector3[SmoothRoadPoints.Length];
 
-        Vector3 pos1 = tempRoadPoints[0] +
+        float angle = (Mathf.Rad2Deg * Mathf.Atan2(SmoothRoadPoints[0].x - SmoothRoadPoints[1].x,
+            SmoothRoadPoints[0].z - SmoothRoadPoints[1].z));
+
+        Vector3 pos1 = SmoothRoadPoints[0] +
                        Quaternion.AngleAxis(angle + 90, Vector3.up) * Vector3.forward *
                        GameHandler.RoadWidth / 2;
-        Vector3 pos2 = tempRoadPoints[0] +
+        Vector3 pos2 = SmoothRoadPoints[0] +
                        Quaternion.AngleAxis(angle + 90, Vector3.up) * Vector3.forward *
                        GameHandler.RoadWidth / -2;
         _roadPointsLeft[0] = new Vector3(pos1.x, GameHandler.ActiveTerrain.SampleHeight(pos1) + 0.1f, pos1.z);
         _roadPointsRight[0] = new Vector3(pos2.x, GameHandler.ActiveTerrain.SampleHeight(pos2) + 0.1f, pos2.z);
 
-        for (int i = 1; i < tempRoadPoints.Length; i++)
+        for (int i = 1; i < SmoothRoadPoints.Length; i++)
         {
-            angle = (Mathf.Rad2Deg * Mathf.Atan2(tempRoadPoints[i - 1].x - tempRoadPoints[i].x,
-                tempRoadPoints[i - 1].z - tempRoadPoints[i].z));
+            angle = (Mathf.Rad2Deg * Mathf.Atan2(SmoothRoadPoints[i - 1].x - SmoothRoadPoints[i].x,
+                SmoothRoadPoints[i - 1].z - SmoothRoadPoints[i].z));
 
-            pos1 = tempRoadPoints[i] +
+            pos1 = SmoothRoadPoints[i] +
                    Quaternion.AngleAxis(angle + 90, Vector3.up) * Vector3.forward *
                    GameHandler.RoadWidth / 2;
-            pos2 = tempRoadPoints[i] +
+            pos2 = SmoothRoadPoints[i] +
                    Quaternion.AngleAxis(angle + 90, Vector3.up) * Vector3.forward *
                    GameHandler.RoadWidth / -2;
 
@@ -184,11 +191,10 @@ public class Road
                 }
             }
         }
+        SettlerHandler.OnRoadPlacement(this);
+        Flag1 = Grid.NodeFromWorldPoint(Pos1).Flag;
+        Flag2 = Grid.NodeFromWorldPoint(Pos2).Flag;
 
-        if (!destroyed)
-        {
-            SettlerHandler.OnRoadPlacement(this);
-        }
     }
 
 

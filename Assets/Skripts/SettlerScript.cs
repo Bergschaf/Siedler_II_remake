@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,24 +27,19 @@ public class SettlerScript : MonoBehaviour
     public Road AssignedRoad;
 
     /// <summary>
-    /// The path the settler has to walk
-    /// </summary>
-    public Vector3[] pathToTravel;
-
-    /// <summary>
     /// The flag the settler is currently at
     /// </summary>
     public FlagScript currentFlag;
 
     /// <summary>
-    /// Variables for travelling over multiple frames
+    /// The item the settler is currently carrying
     /// </summary>
-    private float _interpolation, _interpolationStepSize;
+    private ItemScript _item;
 
     /// <summary>
-    /// At what position in the path array is the settler right now
+    /// True if the settler is currently carrying an item
     /// </summary>
-    private int _pathToTravelIndex;
+    public bool transporting;
 
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +47,71 @@ public class SettlerScript : MonoBehaviour
         job = "Standard";
         currentFlag = GameHandler.HomeFlag;
     }
+
+    /// <summary>
+    /// Travels allong the path in a coroutine
+    /// </summary>
+    /// <param name="pathToTravel"></param>
+    /// <returns></returns>
+    private IEnumerator TravelAlongPath(Vector3[] pathToTravel)
+    {
+
+        float interpolationStepSize =
+            _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
+
+        float interpolation = 0;
+        for (int i = 0; i < pathToTravel.Length - 1; i++)
+        {
+            while (interpolation < 1)
+            {
+                Vector3 lerpPos = Vector3.Lerp(pathToTravel[i], pathToTravel[i + 1], interpolation);
+                transform.position = new Vector3(lerpPos.x, GameHandler.ActiveTerrain.SampleHeight(lerpPos), lerpPos.z);
+                interpolation += interpolationStepSize * Time.deltaTime;
+                yield return null;
+            }
+
+            interpolation = 0;
+        }
+
+    }
+
+    /// <summary>
+    /// Picks up the item from the flag, requires the settler to be at the flag
+    /// </summary>
+    /// <param name="flag"></param>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    private IEnumerator PickUpItem(FlagScript flag, ItemScript item)
+    {
+        // TODO Fancy animation here
+        yield return new WaitForSeconds(0.5f);
+
+        flag.RemoveItem(item); // TODO Handle if false is returned  
+        _item = item;
+        var transform1 = _item.transform;
+        transform1.parent = transform;
+        transform1.localPosition = Vector3.up * 1.5f;
+        transform1.localRotation = Quaternion.Euler(0, 0, 0) * ItemHandler.ItemSpecificRotation[_item.itemID];
+    }
+
+    /// <summary>
+    /// Puts the item the settler is currently carrying down at the flag, requires the settler to be at the flag and to be carrying an item
+    /// </summary>
+    /// <param name="flag"></param>
+    /// <returns></returns>
+    private IEnumerator PutItemToFlag(FlagScript flag)
+    {
+        // TODO Fancy animation here
+        yield return new WaitForSeconds(0.5f);
+        _item.transform.parent = null;
+        while (!flag.AddItem(_item))
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        _item = null;
+    }
+
 
     /// <summary>
     /// Sets the road a settler should stand at and carry the items between the two flags of the road
@@ -110,55 +171,22 @@ public class SettlerScript : MonoBehaviour
 
         Path.Add(roadToAssign.MiddlePos);
 
-        pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
-
-        _interpolationStepSize =
-            _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
-
-        _pathToTravelIndex = 0;
-        _interpolation = 0;
+        Vector3[] pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
+        StartCoroutine(TravelAlongPath(pathToTravel));
         currentFlag = null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (pathToTravel.Length > 0)
-        {
-            if (_interpolation >= 1)
-            {
-                _interpolation = 0;
-                _pathToTravelIndex += 1;
-                if (_pathToTravelIndex + 2 >= pathToTravel.Length)
-                {
-                    pathToTravel = Array.Empty<Vector3>();
-                    _pathToTravelIndex = 0;
-                    return;
-                }
-
-                _interpolationStepSize =
-                    _speed / Vector3.Distance(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1]);
-            }
-
-            Vector3 tempPos = Vector3.Lerp(pathToTravel[_pathToTravelIndex], pathToTravel[_pathToTravelIndex + 1],
-                _interpolation);
-
-
-            transform.position = new Vector3(tempPos.x, GameHandler.ActiveTerrain.SampleHeight(tempPos), tempPos.z);
-
-            _interpolation += _interpolationStepSize * Time.deltaTime;
-        }
     }
 
     public void GoBackToHomeFlag()
     {
-        Debug.Log("Sent home :(");
-        // TODO Check if settler could go to a nearby road and carry stuff around there
+        // TODO Check if settler could go to a nearby road and carry stuff there
+
         AssignedRoad = null;
         List<Vector3> Path = new List<Vector3>();
         FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);
         Road[] roadPath = GameHandler.GetRoadGridPath(flag, GameHandler.HomeFlag);
 
+
+        Vector3[] pathToTravel;
         if (flag != null && flag != GameHandler.HomeFlag && roadPath != null)
         {
             Path.Add(transform.position);
@@ -200,15 +228,107 @@ public class SettlerScript : MonoBehaviour
             {
                 pathToTravel[i] = nodePath[i].WorldPosition;
             }
-            
+
 
             pathToTravel = GameHandler.MakeSmoothCurve(pathToTravel);
         }
 
-        _interpolationStepSize =
-            _speed / Vector3.Distance(pathToTravel[0], pathToTravel[1]);
+        StartCoroutine(TravelAlongPath(pathToTravel));
+    }
 
-        _pathToTravelIndex = 0;
-        _interpolation = 0;
+    /// <summary>
+    /// The Settler walks from one flag of the road, picks up the item and carries it to the other
+    /// </summary>
+    /// <param name="item">The type of item the Settler should carry</param>
+    /// <param name="startOnFlag1">Is the flag, where the item is, the first flag of the road => true, if not => false</param>
+    public IEnumerator TransportItemOnRoad(ItemScript item, bool startOnFlag1)
+    {
+        
+        List<IEnumerator> coroutines = new List<IEnumerator>();
+        
+        if (transporting)
+        {
+            yield return new WaitUntil((() => !transporting));
+        }
+        transporting = true;
+
+
+        Vector3[] pathToTravel = new Vector3[AssignedRoad.SmoothRoadPoints.Length / 2];
+
+        if (startOnFlag1)
+        {
+            int c = 0;
+            for (int i = pathToTravel.Length; i > 0; i--)
+            {
+                pathToTravel[c] = AssignedRoad.SmoothRoadPoints[i];
+                c++;
+            }
+        }
+        else
+        {
+            for (int i = pathToTravel.Length; i < pathToTravel.Length * 2; i++)
+            {
+                pathToTravel[i - pathToTravel.Length] = AssignedRoad.SmoothRoadPoints[i];
+            }
+        }
+
+        coroutines.Add(TravelAlongPath(pathToTravel));
+
+
+        if (startOnFlag1)
+        {
+            coroutines.Add(PickUpItem(AssignedRoad.Flag1, item));
+            coroutines.Add(TravelAlongPath(AssignedRoad.SmoothRoadPoints));
+            coroutines.Add(PutItemToFlag(AssignedRoad.Flag2));
+        }
+        else
+        {
+            coroutines.Add(PickUpItem(AssignedRoad.Flag2, item));
+            coroutines.Add(TravelAlongPath(AssignedRoad.SmoothRoadPoints.Reverse().ToArray()));
+            coroutines.Add(PutItemToFlag(AssignedRoad.Flag1));
+        }
+
+        Vector3[] pathToTravel3 = new Vector3[AssignedRoad.SmoothRoadPoints.Length / 2];
+
+        if (!startOnFlag1)
+        {
+            int c = 0;
+            for (int i = 0; i < pathToTravel3.Length; i++)
+            {
+                pathToTravel3[c] = AssignedRoad.SmoothRoadPoints[i];
+                c++;
+            }
+        }
+        else
+        {
+            int c = 0;
+
+            for (int i = pathToTravel3.Length * 2 - 1; i > pathToTravel3.Length - 1; i--)
+            {
+                pathToTravel3[c] = AssignedRoad.SmoothRoadPoints[i];
+                c++;
+            }
+        }
+
+        coroutines.Add(TravelAlongPath(pathToTravel3));
+        coroutines.Add(EndTransport());
+        yield return GameHandler.ExecuteCoroutines(coroutines);
+    }
+
+    private IEnumerator EndTransport()
+    {
+        transporting = false;
+        yield return null;
+    }
+
+
+    // Temp
+    private void OnMouseDown()
+    {
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 1, 2);
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 0, 2);
+
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 2, 2);
+
     }
 }

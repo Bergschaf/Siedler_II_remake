@@ -187,7 +187,6 @@ public class Road
             if (Nodes[i].Type == "Flag")
             {
                 if(GameHandler.PlaceFlagInRoad(Nodes[i].Flag)) {
-                    destroyed = true;
                 }
             }
         }

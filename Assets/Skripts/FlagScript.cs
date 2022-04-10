@@ -92,15 +92,19 @@ public class FlagScript : MonoBehaviour
 
         if (this != GameHandler.HomeFlag)
         {
-            if(!ItemHandler.ItemSuppliers[0].Contains(this))
+
+            for (int i = 0; i < 3; i++)
             {
-                ItemHandler.ItemSuppliers[0].Add(this);
+                ItemScript item = Instantiate(ItemHandler.ItemPrefabs[i]).GetComponent<ItemScript>();
+                item.currentFlag = this;
+                AddAvailableItem(item);
+                AddItem(item);
+                if (!ItemHandler.ItemSuppliers[i].Contains(this))
+                {
+                    ItemHandler.ItemSuppliers[i].Add(this);
+                }
 
             }
-            ItemScript item = Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>();
-            item.currentFlag = this;
-            AddAvailableItem(item);
-            AddItem(item);
         }
     }
 
@@ -240,7 +244,8 @@ public class FlagScript : MonoBehaviour
 
                 transform1.position = _itemPositions[i];
                 transform1.up = _itemAlignments[i];
-                transform1.Rotate(0, 360 * (i / maxItems), 0);
+                transform1.rotation = Quaternion.Euler(0, 360 * (i / maxItems), 0) *
+                                      ItemHandler.ItemSpecificRotation[item.itemID];
                 Items[i] = item;
                 return true;
             }
@@ -285,5 +290,4 @@ public class FlagScript : MonoBehaviour
 
         return false;
     }
-
 }

@@ -91,7 +91,7 @@ public class SettlerScript : MonoBehaviour
         var transform1 = _item.transform;
         transform1.parent = transform;
         transform1.localPosition = Vector3.up * 1.5f;
-        transform1.localRotation = Quaternion.Euler(0, 0, 0);
+        transform1.localRotation = Quaternion.Euler(0, 0, 0) * ItemHandler.ItemSpecificRotation[_item.itemID];
     }
 
     /// <summary>
@@ -104,8 +104,10 @@ public class SettlerScript : MonoBehaviour
         // TODO Fancy animation here
         yield return new WaitForSeconds(0.5f);
         _item.transform.parent = null;
-
-        flag.AddItem(_item);
+        while (!flag.AddItem(_item))
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
 
         _item = null;
     }
@@ -321,6 +323,10 @@ public class SettlerScript : MonoBehaviour
     // Temp
     private void OnMouseDown()
     {
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 1, 2);
         ItemHandler.DemandItem(GameHandler.HomeFlag, 0, 2);
+
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 2, 2);
+
     }
 }

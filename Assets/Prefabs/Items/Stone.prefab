@@ -95,3 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
+  currentFlag: {fileID: 0}
+  inTransport: 0

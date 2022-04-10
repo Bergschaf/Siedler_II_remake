@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Demand items">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Demand multiple items">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,27 +33,28 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/b2/eb7d8cde/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/34/11a89a3c/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Settler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/10/c7128530/String.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/b9/2583d81d/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Skripts/UI/Buttons/DestroyFlagButtonScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/18/4eb7c2e3/Monitor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Buildables/Flag_buildable_skript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/a3/a52b2aea/Environment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Terrain_skript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/16/8a5b3d1e/WaitUntil.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/Items/ItemHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Skripts/FlagScript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Game_handler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Flag.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road_builder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skripts/SettlerHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/7a/e4288ffe/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/b2/eb7d8cde/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Settler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Skripts/Items/ItemScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Skripts/UI/Buttons/DestroyFlagButtonScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3be1a7ff939c43f181c0a10b5a0189ac13c800/16/8a5b3d1e/WaitUntil.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -424,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649591115776</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Demand multiple items">
+      <created>1649597441680</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1649597441680</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +466,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Road Building Stuff + additional files" />
     <MESSAGE value="Version Change to 2020.3.21f1 + Road Pathfinding beginning" />
     <MESSAGE value="Raod Grid Pathfinding" />
     <MESSAGE value="Road Grid pathfinding" />
@@ -483,6 +490,7 @@
     <MESSAGE value="Settlers Transport Items" />
     <MESSAGE value="Start Supply + Demand, Items get Destroyed when Flag is deleted" />
     <MESSAGE value="Demand items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Demand items" />
+    <MESSAGE value="Demand multiple items" />
+    <option name="LAST_COMMIT_MESSAGE" value="Demand multiple items" />
   </component>
 </project>

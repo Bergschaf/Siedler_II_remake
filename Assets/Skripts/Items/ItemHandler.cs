@@ -11,12 +11,14 @@ public class ItemHandler : MonoBehaviour
     /// </summary>
     public static int MaxItemsNextToFlag = 6;
 
-    public static int itemCount = 1; // How many Item Types are in the game
+    public static int itemCount = 3; // How many Item Types are in the game
     // Item Prefabs
     public GameObject[] itemPrefabs;
+    public Quaternion[] itemSpecificRotation;
     
     // Static Item Prefabs
     public static GameObject[] ItemPrefabs;
+    public static Quaternion[] ItemSpecificRotation;
     
     /// <summary>
     /// All flags with Item Suppliers attached to them
@@ -32,7 +34,7 @@ public class ItemHandler : MonoBehaviour
     private void Awake()
     {
         ItemPrefabs = itemPrefabs;
-        
+        ItemSpecificRotation = itemSpecificRotation;
         ItemSuppliers = new List<FlagScript>[itemCount];
         for (int i = 0; i < itemCount; i++)
         {

@@ -25,16 +25,21 @@ public class FlagScript : MonoBehaviour
     /// The Items next to the Flag
     /// </summary>
     public ItemScript[] Items;
-    
+
     /// <summary>
     /// The possible positions for Items next to the Flag
     /// </summary>
     private Vector3[] _itemPositions;
-    
+
     /// <summary>
     /// The alignment to the terrain of the items at the positions next to the flag
     /// </summary>
     private Vector3[] _itemAlignments;
+
+    /// <summary>
+    /// A list of items for each type the flag has available (including items in the building at the flag)
+    /// </summary>
+    public List<ItemScript>[] AvailableItems;
 
     private void Awake()
     {
@@ -45,19 +50,25 @@ public class FlagScript : MonoBehaviour
         transform.position = position;
 
         Node temp = Grid.NodeFromWorldPoint(position);
-        
+
         if (temp.Type == "Road")
         {
             GameHandler.PlaceFlagInRoad(this);
         }
 
         temp.Type = "Flag";
-        
+
         temp.Flag = this;
         temp.BuildableIcon.SetActive(false);
 
         Items = new ItemScript[ItemHandler.MaxItemsNextToFlag];
         GenerateItemPositionsAlignment();
+
+        AvailableItems = new List<ItemScript>[ItemHandler.itemCount];
+        for (int i = 0; i < ItemHandler.itemCount; i++)
+        {
+            AvailableItems[i] = new List<ItemScript>();
+        }
     }
 
     private void OnMouseDown()
@@ -75,9 +86,15 @@ public class FlagScript : MonoBehaviour
         }
 
         UIHandler.LastClickedFlag = gameObject;
-        
+
         // Temporary
-        AddItem(Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>());
+        ItemScript item = Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>();
+        item.currentFlag = this;
+        AddItem(item);
+        if (this != GameHandler.HomeFlag)
+        {
+            ItemHandler.ItemSuppliers[0].Add(this);
+        }
     }
 
     private void GenerateDirtCrossing()
@@ -138,7 +155,7 @@ public class FlagScript : MonoBehaviour
         {
             if (item != null) Destroy(item.gameObject);
         }
-        
+
         // The Roads that should be removed from a flag, because they connect to this flag
         List<Road> toRemove;
         if (AttachedRoads != null)
@@ -177,7 +194,6 @@ public class FlagScript : MonoBehaviour
     /// </summary>
     private void GenerateItemPositionsAlignment()
     {
-
         _itemPositions = new Vector3[ItemHandler.MaxItemsNextToFlag];
         _itemAlignments = new Vector3[ItemHandler.MaxItemsNextToFlag];
         int c = 0;
@@ -191,11 +207,11 @@ public class FlagScript : MonoBehaviour
                           2f;
 
             _itemPositions[c] = new Vector3(pos.x, GameHandler.ActiveTerrain.SampleHeight(pos) + 0.2f, pos.z);
-            
+
             Physics.Raycast(pos, Vector3.down, out hit, 2, GameHandler.TerrainLayer);
-            
+
             _itemAlignments[c] = hit.normal;
-            
+
             c++;
         }
     }
@@ -217,35 +233,46 @@ public class FlagScript : MonoBehaviour
 
                 transform1.position = _itemPositions[i];
                 transform1.up = _itemAlignments[i];
-                transform1.Rotate(0,360 * (i /maxItems ),0);
+                transform1.Rotate(0, 360 * (i / maxItems), 0);
                 Items[i] = item;
+                AvailableItems[item.itemID].Add(item);
                 return true;
             }
         }
+
         return false;
     }
 
     /// <summary>
-    /// Trys to remove an Item with the given type from the flag
+    /// Trys to remove the item from the flag
     /// </summary>
-    /// <param name="itemID"></param>
-    /// <returns>the item if there is one, null if there is no item of that type</returns>
-    public ItemScript GetItem(int itemID)
+    /// <param name="itemScript"></param>
+    /// <returns>true if the items was at the flag, false it not</returns>
+    public bool RemoveItem(ItemScript itemScript)
     {
         for (int i = 0; i < ItemHandler.MaxItemsNextToFlag; i++)
         {
-            if(Items[i] != null)
+            if (Items[i] == itemScript)
             {
-                if (Items[i].itemID == itemID)
-                {
-                    ItemScript item = Items[i];
-                    Items[i] = null;
-                    return item;
-                }
-            }   
+                Items[i] = null;
+                AvailableItems[itemScript.itemID].Remove(itemScript);
+                return true;
+            }
         }
 
-        return null;
+        foreach (var i in AvailableItems[itemScript.itemID])
+        {
+            if (i == itemScript)
+            {
+                // TODO Have a settler transport the item out of the building to the flag if it isN#t at the flag
+
+                AvailableItems[itemScript.itemID].Remove(itemScript);
+                return true;
+            }
+        }
+
+
+        return false;
     }
 
 }

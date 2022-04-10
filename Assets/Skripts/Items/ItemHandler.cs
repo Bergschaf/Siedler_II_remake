@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemHandler : MonoBehaviour
@@ -10,7 +11,7 @@ public class ItemHandler : MonoBehaviour
     /// </summary>
     public static int MaxItemsNextToFlag = 6;
 
-    public int itemCount = 1; // How many Item Types are in the game
+    public static int itemCount = 1; // How many Item Types are in the game
     // Item Prefabs
     public GameObject[] itemPrefabs;
     
@@ -33,6 +34,10 @@ public class ItemHandler : MonoBehaviour
         ItemPrefabs = itemPrefabs;
         
         ItemSuppliers = new List<FlagScript>[itemCount];
+        for (int i = 0; i < itemCount; i++)
+        {
+            ItemSuppliers[i] = new List<FlagScript>();
+        }
         GenericSuppliers = new List<FlagScript>();
     }
 
@@ -41,8 +46,55 @@ public class ItemHandler : MonoBehaviour
     /// </summary>
     /// <param name="flag"></param>
     /// <param name="itemID"></param>
-    public static void DemandItem(FlagScript flag, int itemID)
+    /// <returns>The number of items that weren't send, 0 if all were send</returns>
+    public static int DemandItem(FlagScript flag, int itemID, int numberOfItems)
     {
+        FlagScript[] suppliers = ItemSuppliers[itemID].ToArray().Concat(GenericSuppliers.ToArray()).ToArray();
+        List<Tuple<Road[], FlagScript>> supplierpaths = new List<Tuple<Road[], FlagScript>>();
         
+        List<Road[]> paths = GameHandler.GetMultipleRoadGridPaths(flag, suppliers);
+        
+        for(int i = 0; i < paths.Count; i++)
+        {
+            supplierpaths.Add(new Tuple<Road[], FlagScript>(paths[i].Reverse().ToArray(), suppliers[i]));
+        } 
+        
+        // Sort the paths by the length of the path
+        supplierpaths = supplierpaths.OrderBy(x => GetRoadPathLength(x.Item1)).ToList();
+        
+        
+        // TODO Maybe some weighting for the paths? e.g. weigh direct suppliers (e.g. stone-cutter) more than the generic suppliers (e.g. warehouse)
+        int itemsToSend = numberOfItems;
+        for (int i = 0; i < supplierpaths.Count; i++)
+        {
+            for (int j = 0; j < Math.Min(itemsToSend,supplierpaths[i].Item2.AvailableItems[itemID].Count); j++)
+            {
+                supplierpaths[i].Item2.AvailableItems[itemID][itemID].GetTransportedToFlag(flag,supplierpaths[i].Item1);
+                itemsToSend--;
+            }
+        }
+
+        return itemsToSend;
+
     }
+
+    
+
+    /// <summary>
+    /// determines the Length of a road path represented by an array of roads
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    private static float GetRoadPathLength(Road[] path)
+    {
+        float length = 0;
+        foreach (var road in path)
+        {
+            length += road.Len;
+        }
+
+        return length;
+    }
+
+
 }

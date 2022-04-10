@@ -41,6 +41,9 @@ public class SettlerScript : MonoBehaviour
     /// </summary>
     private Coroutine _movementCoroutine;
 
+    /// <summary>
+    /// The item the settler is currently carrying
+    /// </summary>
     private ItemScript _item;
 
     // Start is called before the first frame update
@@ -80,17 +83,18 @@ public class SettlerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Picks up an item from the flag, requires the settler to be at the flag
+    /// Picks up the item from the flag, requires the settler to be at the flag
     /// </summary>
     /// <param name="flag"></param>
-    /// <param name="itemID"></param>
+    /// <param name="item"></param>
     /// <returns></returns>
-    private IEnumerator PickUpItem(FlagScript flag, int itemID)
+    private IEnumerator PickUpItem(FlagScript flag, ItemScript item)
     {
         // TODO Fancy animation here
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
-        _item = flag.GetItem(itemID);
+        flag.RemoveItem(item); // TODO Handle if false is returned  
+        _item = item;
         var transform1 = _item.transform;
         transform1.parent = transform;
         transform1.localPosition = Vector3.up * 1.5f;
@@ -105,7 +109,7 @@ public class SettlerScript : MonoBehaviour
     private IEnumerator PutItemToFlag(FlagScript flag)
     {
         // TODO Fancy animation here
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         _item.transform.parent = null;
 
         flag.AddItem(_item);
@@ -178,7 +182,7 @@ public class SettlerScript : MonoBehaviour
 
     public void GoBackToHomeFlag()
     {
-        // TODO Check if settler could go to a nearby road
+        // TODO Check if settler could go to a nearby road and carry stuff there
         AssignedRoad = null;
         List<Vector3> Path = new List<Vector3>();
         FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);
@@ -238,9 +242,9 @@ public class SettlerScript : MonoBehaviour
     /// <summary>
     /// The Settler walks from one flag of the road, picks up the item and carries it to the other
     /// </summary>
-    /// <param name="itemID">The type of item the Settler should carry</param>
+    /// <param name="item">The type of item the Settler should carry</param>
     /// <param name="startOnFlag1">Is the flag, where the item is, the first flag of the road => true, if not => false</param>
-    public void TransportItemOnRoad(int itemID, bool startOnFlag1)
+    public IEnumerator TransportItemOnRoad(ItemScript item, bool startOnFlag1)
     {
         List<IEnumerator> coroutines = new List<IEnumerator>();
 
@@ -248,10 +252,12 @@ public class SettlerScript : MonoBehaviour
         {
             StopCoroutine(_movementCoroutine);
             _travelling = false;
+            
+            float dist = Vector3.Distance(transform.position, AssignedRoad.SmoothRoadPoints[0]);
         }
         else
         {
-            Vector3[] pathToTravel = new Vector3[AssignedRoad.SmoothRoadPoints.Length / 2 + 1];
+            Vector3[] pathToTravel = new Vector3[AssignedRoad.SmoothRoadPoints.Length / 2];
 
             if (startOnFlag1)
             {
@@ -276,14 +282,14 @@ public class SettlerScript : MonoBehaviour
 
         if (startOnFlag1)
         {
-            coroutines.Add(PickUpItem(AssignedRoad.Flag1, itemID));
+            coroutines.Add(PickUpItem(AssignedRoad.Flag1, item));
             coroutines.Add(TravelAlongPath(AssignedRoad.SmoothRoadPoints));
             coroutines.Add(PutItemToFlag(AssignedRoad.Flag2));
 
         }
         else
         {
-            coroutines.Add(PickUpItem(AssignedRoad.Flag2, itemID));
+            coroutines.Add(PickUpItem(AssignedRoad.Flag2, item));
             coroutines.Add(TravelAlongPath(AssignedRoad.SmoothRoadPoints.Reverse().ToArray()));
             coroutines.Add(PutItemToFlag(AssignedRoad.Flag1));
             
@@ -312,7 +318,13 @@ public class SettlerScript : MonoBehaviour
         }
 
         coroutines.Add(TravelAlongPath(pathToTravel3));
-        StartCoroutine(GameHandler.ExecuteCoroutines(coroutines));
+        yield return GameHandler.ExecuteCoroutines(coroutines);
         
+    }
+
+    // Temp
+    private void OnMouseDown()
+    {
+        ItemHandler.DemandItem(GameHandler.HomeFlag, 0, 1);
     }
 }

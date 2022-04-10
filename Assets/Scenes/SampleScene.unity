@@ -214,6 +214,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefabs:
   - {fileID: 8788792870598541071, guid: d494bb1b0bd534948a913ab4529efa8d, type: 3}
+  - {fileID: 4885181841640423740, guid: 634b4de10972e5340a29cbbc53c7162b, type: 3}
+  - {fileID: 5450913640242499666, guid: 0bdab305a41e7fe49903516d7043ad2f, type: 3}
+  itemSpecificRotation:
+  - {x: 0.00880202, y: 0.008649721, z: 0.008649721, w: 0.9998864}
+  - {x: 0.012340714, y: 0.70699906, z: 0, w: 0.7071067}
+  - {x: 0.00880202, y: 0.008649721, z: 0.008649721, w: 0.9998864}
 --- !u!1 &325663337
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.UIElements;
 using UnityEngine;
 using Object = System.Object;
@@ -88,12 +89,18 @@ public class FlagScript : MonoBehaviour
         UIHandler.LastClickedFlag = gameObject;
 
         // Temporary
-        ItemScript item = Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>();
-        item.currentFlag = this;
-        AddItem(item);
+
         if (this != GameHandler.HomeFlag)
         {
-            ItemHandler.ItemSuppliers[0].Add(this);
+            if(!ItemHandler.ItemSuppliers[0].Contains(this))
+            {
+                ItemHandler.ItemSuppliers[0].Add(this);
+
+            }
+            ItemScript item = Instantiate(ItemHandler.ItemPrefabs[0]).GetComponent<ItemScript>();
+            item.currentFlag = this;
+            AddAvailableItem(item);
+            AddItem(item);
         }
     }
 
@@ -235,12 +242,16 @@ public class FlagScript : MonoBehaviour
                 transform1.up = _itemAlignments[i];
                 transform1.Rotate(0, 360 * (i / maxItems), 0);
                 Items[i] = item;
-                AvailableItems[item.itemID].Add(item);
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void AddAvailableItem(ItemScript item)
+    {
+        AvailableItems[item.itemID].Add(item);
     }
 
     /// <summary>

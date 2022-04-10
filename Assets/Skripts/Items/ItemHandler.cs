@@ -65,13 +65,23 @@ public class ItemHandler : MonoBehaviour
         
         // TODO Maybe some weighting for the paths? e.g. weigh direct suppliers (e.g. stone-cutter) more than the generic suppliers (e.g. warehouse)
         int itemsToSend = numberOfItems;
+        List<ItemScript> toRemove;
         for (int i = 0; i < supplierpaths.Count; i++)
         {
-            for (int j = 0; j < Math.Min(itemsToSend,supplierpaths[i].Item2.AvailableItems[itemID].Count); j++)
+            toRemove = new List<ItemScript>();
+            int min = Math.Min(itemsToSend, supplierpaths[i].Item2.AvailableItems[itemID].Count);
+            for (int j = 0; j < min; j++)
             {
-                supplierpaths[i].Item2.AvailableItems[itemID][itemID].GetTransportedToFlag(flag,supplierpaths[i].Item1);
+                supplierpaths[i].Item2.AvailableItems[itemID][j].GetTransportedToFlag(flag,supplierpaths[i].Item1);
+                toRemove.Add(supplierpaths[i].Item2.AvailableItems[itemID][j]);
                 itemsToSend--;
             }
+
+            foreach (var x in toRemove)
+            {
+                supplierpaths[i].Item2.AvailableItems[itemID].Remove(x);
+            }
+            
         }
 
         return itemsToSend;

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/SettlerScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +152,7 @@
       <workItem from="1648317258447" duration="3749000" />
       <workItem from="1648364249929" duration="11216000" />
       <workItem from="1648476680210" duration="1238000" />
-      <workItem from="1649614031412" duration="1277000" />
+      <workItem from="1649614031412" duration="1989000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -436,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649609108460</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Settler walk home when they carry an item and the road is destroyed">
+      <created>1649615342440</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1649615342441</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +475,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Raod Grid Pathfinding" />
     <MESSAGE value="Road Grid pathfinding" />
     <MESSAGE value="Settler walking Stuff" />
     <MESSAGE value="UI Handler + DOK" />
@@ -495,6 +499,7 @@
     <MESSAGE value="Demand items" />
     <MESSAGE value="Demand multiple items" />
     <MESSAGE value="Items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Items" />
+    <MESSAGE value="Settler walk home when they carry an item and the road is destroyed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Settler walk home when they carry an item and the road is destroyed" />
   </component>
 </project>

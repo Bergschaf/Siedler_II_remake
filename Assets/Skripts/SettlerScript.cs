@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,6 +43,7 @@ public class SettlerScript : MonoBehaviour
     /// </summary>
     public bool transporting;
 
+    private Coroutine _movementCoroutine;
     // Start is called before the first frame update
     void Awake()
     {
@@ -64,6 +67,7 @@ public class SettlerScript : MonoBehaviour
         {
             while (interpolation < 1)
             {
+
                 Vector3 lerpPos = Vector3.Lerp(pathToTravel[i], pathToTravel[i + 1], interpolation);
                 transform.position = new Vector3(lerpPos.x, GameHandler.ActiveTerrain.SampleHeight(lerpPos), lerpPos.z);
                 interpolation += interpolationStepSize * Time.deltaTime;
@@ -172,15 +176,21 @@ public class SettlerScript : MonoBehaviour
         Path.Add(roadToAssign.MiddlePos);
 
         Vector3[] pathToTravel = GameHandler.MakeSmoothCurve(Path.ToArray());
-        StartCoroutine(TravelAlongPath(pathToTravel));
+        _movementCoroutine = StartCoroutine(TravelAlongPath(pathToTravel));
         currentFlag = null;
     }
 
     public void GoBackToHomeFlag()
     {
         // TODO Check if settler could go to a nearby road and carry stuff there
-
+        StopCoroutine(_movementCoroutine);
         AssignedRoad = null;
+
+        if (_item != null)
+        {
+            Destroy(_item);
+        }
+        
         List<Vector3> Path = new List<Vector3>();
         FlagScript flag = Grid.ClosestFlagToWorldPoint(transform.position);
         Road[] roadPath = GameHandler.GetRoadGridPath(flag, GameHandler.HomeFlag);
@@ -233,7 +243,7 @@ public class SettlerScript : MonoBehaviour
             pathToTravel = GameHandler.MakeSmoothCurve(pathToTravel);
         }
 
-        StartCoroutine(TravelAlongPath(pathToTravel));
+        _movementCoroutine = StartCoroutine(TravelAlongPath(pathToTravel));
     }
 
     /// <summary>
@@ -251,7 +261,10 @@ public class SettlerScript : MonoBehaviour
             yield return new WaitUntil((() => !transporting));
         }
         transporting = true;
-
+        if (AssignedRoad == null)
+        {
+            yield break;
+        }
 
         Vector3[] pathToTravel = new Vector3[AssignedRoad.SmoothRoadPoints.Length / 2];
 
@@ -312,7 +325,7 @@ public class SettlerScript : MonoBehaviour
 
         coroutines.Add(TravelAlongPath(pathToTravel3));
         coroutines.Add(EndTransport());
-        yield return GameHandler.ExecuteCoroutines(coroutines);
+        _movementCoroutine = StartCoroutine(GameHandler.ExecuteCoroutines(coroutines));
     }
 
     private IEnumerator EndTransport()

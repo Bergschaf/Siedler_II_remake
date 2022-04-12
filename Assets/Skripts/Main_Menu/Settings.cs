@@ -43,13 +43,11 @@ public class Settings : MonoBehaviour
         {
             FullScreenMode fullScreenMode = FullScreenMode.ExclusiveFullScreen;
             Screen.fullScreenMode = fullScreenMode;
-            //Screen.SetResolution(Convert.ToInt32(subs[0]), Convert.ToInt32(subs[2]), true);
         }
         else if (subsvollbild[0] == "Fenstermodus")
         {
             FullScreenMode fullScreenMode = FullScreenMode.Windowed;
             Screen.fullScreenMode = fullScreenMode;
-            //Screen.SetResolution(Convert.ToInt32(subs[0]), Convert.ToInt32(subs[2]), false);
         }
     }
 

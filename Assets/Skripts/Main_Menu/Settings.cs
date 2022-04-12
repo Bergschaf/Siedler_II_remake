@@ -11,6 +11,8 @@ public class Settings : MonoBehaviour
 
     GameObject MuteButton;
     GameObject Settings_UI;
+    Dropdown DropdownResolution;
+    Dropdown DropdownVollbild;
     AudioSource audioSrc;
     Slider MusicVolume;
 
@@ -29,6 +31,35 @@ public class Settings : MonoBehaviour
     public void Setting_UI_Show()
     {
         Settings_UI.SetActive(true);
+    }
+
+    public void Change_Window()
+    {
+        string vollbild = DropdownVollbild.options[DropdownVollbild.value].text;
+
+        string[] subsvollbild = vollbild.Split(' ');
+
+        if (subsvollbild[0] == "Vollbild")
+        {
+            FullScreenMode fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            Screen.fullScreenMode = fullScreenMode;
+            //Screen.SetResolution(Convert.ToInt32(subs[0]), Convert.ToInt32(subs[2]), true);
+        }
+        else if (subsvollbild[0] == "Fenstermodus")
+        {
+            FullScreenMode fullScreenMode = FullScreenMode.Windowed;
+            Screen.fullScreenMode = fullScreenMode;
+            //Screen.SetResolution(Convert.ToInt32(subs[0]), Convert.ToInt32(subs[2]), false);
+        }
+    }
+
+    public void Change_Resolution()
+    {
+        string s = DropdownResolution.options[DropdownResolution.value].text;
+
+        string[] subs = s.Split(' ');
+
+        SceneManager.LoadScene("MainMenu(" + subs[0] + "x" + subs[2] + ")");     
     }
 
     public void Change_Volume()
@@ -94,6 +125,8 @@ public class Settings : MonoBehaviour
     {
         Settings_UI = GameObject.Find("Settings_UI");
         MuteButton = GameObject.Find("Mute");
+        DropdownResolution = GameObject.Find("Auflösung").GetComponent<Dropdown>();
+        DropdownVollbild = GameObject.Find("Anzeigemodus").GetComponent<Dropdown>();
         audioSrc = GameObject.FindGameObjectWithTag("AudioSource").GetComponent<AudioSource>();
         MusicVolume = GameObject.Find("MusicVolume").GetComponent<Slider>();
     }

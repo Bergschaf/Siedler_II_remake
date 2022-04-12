@@ -6,9 +6,51 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/MainMenu(1920x1080).unity
     guid: 996f5258b03992647838b54a257c2ffc
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(800x600).unity
+    guid: b7d231a59b09d0746ab5b5c681a7c59a
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1024x768).unity
+    guid: 7da91d788c201214b90c1733e5077012
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1152x864).unity
+    guid: e026a8b122f0c284d8b12ee813df6dd4
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1176x664).unity
+    guid: ce15d58854c022241badb5420bae9ab2
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1280x720).unity
+    guid: 6646809f3d1d5cb4f93e7f5bc6b107b2
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1280x768).unity
+    guid: d4976f7e573008b449e90ffa364aa1c2
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1280x800).unity
+    guid: d39cedf381a21624c97953a75d01243f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1280x960).unity
+    guid: d55a71ae42a8b5045b343d5aaca691e5
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1280x1024).unity
+    guid: 51fa6f2a53542e14389580d9a88f1ccb
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1360x768).unity
+    guid: cb852c58cebe8194397b0e338377fecc
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1366x768).unity
+    guid: 76166390bb4def24ca3696b306715ce7
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1600x900).unity
+    guid: 803600566824f94439e73ba0ea6fe175
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1600x1024).unity
+    guid: 222052fb933e04f489526c470c98dbb0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu(1680x1050).unity
+    guid: 206c7c92d53e9ff419a27e06b380df9b
   m_configObjects: {}

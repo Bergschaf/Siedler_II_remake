@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Commit">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="origin/MainMenu" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RESET_MODE" value="MIXED" />
@@ -153,6 +153,7 @@
       <workItem from="1648364249929" duration="11216000" />
       <workItem from="1648476680210" duration="1238000" />
       <workItem from="1649614031412" duration="1989000" />
+      <workItem from="1649694409728" duration="700000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -441,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649615342441</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Commit">
+      <created>1649694433891</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1649694433891</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +483,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Road Grid pathfinding" />
     <MESSAGE value="Settler walking Stuff" />
     <MESSAGE value="UI Handler + DOK" />
     <MESSAGE value="Dok Gamehandler" />
@@ -500,6 +507,7 @@
     <MESSAGE value="Demand multiple items" />
     <MESSAGE value="Items" />
     <MESSAGE value="Settler walk home when they carry an item and the road is destroyed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Settler walk home when they carry an item and the road is destroyed" />
+    <MESSAGE value="Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>

@@ -902,9 +902,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildableFlag: {fileID: 48130188394479579, guid: ea67cb9f2d567e04ca657d6d73ac9742, type: 3}
-  buildableHouse1: {fileID: 0}
-  buildableHouse2: {fileID: 0}
-  buildableHouse3: {fileID: 0}
+  buildableHouse1: {fileID: 2462932874573780012, guid: 3df2b637ef347d646bdd0fa6b8242697, type: 3}
+  buildableHouse2: {fileID: 220679913821950735, guid: dece581323727254991c6a5ddb705fe9, type: 3}
+  buildableHouse3: {fileID: 4108846202074066630, guid: 34e0ad20c08773e48b3985cee4d1002c, type: 3}
   buildableHarbour: {fileID: 0}
   flagPrefab: {fileID: 875304959690009848, guid: 9fdd39c6044a318428331e6532469aa6, type: 3}
   dirtRoadPrefab: {fileID: 5457993618964081888, guid: d1e000fd900e968408b8a3570c5a070d, type: 3}

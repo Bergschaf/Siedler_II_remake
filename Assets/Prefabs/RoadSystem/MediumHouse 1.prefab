@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 602307637771209141}
   - component: {fileID: 6487715196401591664}
   - component: {fileID: 7146875728768330109}
+  - component: {fileID: -4931663009700046114}
   m_Layer: 0
   m_Name: MediumHouse 1
   m_TagString: Untagged
@@ -66,6 +67,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4931663009700046114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220679913821950735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a039e425ef9614e85856a624c56dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildableType: 2
 --- !u!1 &314417906331212858
 GameObject:
   m_ObjectHideFlags: 0

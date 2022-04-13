@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Buildable 3D models">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D-Models/SmallHouse.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D-Models/SmallHouse.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/BigHouse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/BigHouse.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/MediumHouse 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/MediumHouse 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/SmallHouse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/SmallHouse.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/FlagBuildableScript.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/RoadPathfinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +146,7 @@
       <workItem from="1648040483931" duration="6012000" />
       <workItem from="1648127015035" duration="14600000" />
       <workItem from="1649859461571" duration="34000" />
-      <workItem from="1649859519025" duration="1223000" />
+      <workItem from="1649859519025" duration="5209000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -345,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648149059672</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Buildable 3D models">
+      <created>1649862579429</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1649862579429</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +399,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Grid + Nodes + Camera y Offset from Terrain" />
     <MESSAGE value="UI" />
     <MESSAGE value="Flag Buildable GUi Setup" />
     <MESSAGE value="Spawn Flags" />
@@ -404,6 +423,7 @@
     <MESSAGE value="Typos + performance fixes" />
     <MESSAGE value="Add new renamed files" />
     <MESSAGE value="No road overlap + Texture Length fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="No road overlap + Texture Length fix" />
+    <MESSAGE value="Buildable 3D models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Buildable 3D models" />
   </component>
 </project>

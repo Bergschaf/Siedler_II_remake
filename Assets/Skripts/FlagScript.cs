@@ -70,6 +70,7 @@ public class FlagScript : MonoBehaviour
         {
             AvailableItems[i] = new List<ItemScript>();
         }
+        Grid.NodeFromWorldPoint(transform.position).CalculateBuildableTypeAround();
     }
 
     private void OnMouseDown()
@@ -196,7 +197,7 @@ public class FlagScript : MonoBehaviour
         Destroy(gameObject);
         UIHandler.EndGUI();
         var position = transform.position;
-        Grid.NodeFromWorldPoint(position).Type = "Buildable";
+        Grid.NodeFromWorldPoint(position).Type = "Buildable0";
         Grid.NodeFromWorldPoint(position).CalculateBuildableType();
     }
 

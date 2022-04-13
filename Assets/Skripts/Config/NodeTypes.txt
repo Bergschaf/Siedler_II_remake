@@ -1,4 +1,7 @@
-﻿Buildable
-BuildableFlag
+﻿Buildable0  # FLag
+Buildable1  # Small House
+Buildable2  # Medium House
+Buildable3  # Large House
+Building
 Flag
 Road

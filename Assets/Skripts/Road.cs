@@ -82,7 +82,7 @@ public class Road
         FlagScript flag = null;
         if (end)
         {
-            flag = Grid.NodeFromWorldPoint(point).BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
+            flag = Grid.NodeFromWorldPoint(point).BuildableIcon.GetComponent<BuildableScript>().ReplaceWithFlag();
         }
 
         List<Node> path = RoadPathfinding.FindPath(Pos2, point);
@@ -184,11 +184,13 @@ public class Road
         bool destroyed = false;
         for (int i = 1; i < Nodes.Count - 1; i++)
         {
+            
             if (Nodes[i].Type == "Flag")
             {
                 if(GameHandler.PlaceFlagInRoad(Nodes[i].Flag)) {
                 }
             }
+            Nodes[i].CalculateBuildableTypeAround();
         }
         SettlerHandler.OnRoadPlacement(this);
         Flag1 = Grid.NodeFromWorldPoint(Pos1).Flag;
@@ -204,9 +206,10 @@ public class Road
     {
         for (int i = 0; i < Nodes.Count; i++)
         {
+            Nodes[i].Type = "Buildable0";
             Nodes[i].Road = null;
 
-            Nodes[i].CalculateBuildableType();
+            Nodes[i].CalculateBuildableTypeAround();
         }
 
         if (Settler != null) Settler.GoBackToHomeFlag();

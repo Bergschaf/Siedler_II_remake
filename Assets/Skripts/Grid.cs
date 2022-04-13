@@ -81,10 +81,10 @@ public class Grid : MonoBehaviour
                 // Check if the point is obstructed or not
                 //bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unbuildableMask));
                 bool walkable = true;
-                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y, "BuildableFlag",Instantiate(GameHandler.BuildableFlag, worldPoint, rotation));
+                NodeGrid[x, y] = new Node(walkable, worldPoint, x, y, "BuildableFlag",Instantiate(GameHandler.BuildableHouse3, worldPoint,rotation));
 
                 // TODO Calculate where what building size can go
-
+    
             }
         }
     }

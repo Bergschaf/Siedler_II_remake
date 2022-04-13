@@ -156,7 +156,7 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        HomeFlag = Grid.NodeGrid[1, 1].BuildableIcon.GetComponent<FlagBuildableScript>().ReplaceWithFlag();
+        HomeFlag = Grid.NodeGrid[1, 1].BuildableIcon.GetComponent<BuildableScript>().ReplaceWithFlag();
     }
 
     /// <summary>

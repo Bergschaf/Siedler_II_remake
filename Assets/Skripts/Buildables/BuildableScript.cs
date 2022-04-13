@@ -3,16 +3,16 @@ using UnityEngine;
 /// <summary>
 /// Script for the buildable Flag GameObject TODO Change buildable Flag to UI icon
 /// </summary>
-public class FlagBuildableScript : MonoBehaviour
+public class BuildableScript : MonoBehaviour
 {
+
     /// <summary>
-    /// Is the mouse currently over the icon
+    /// 0: Flag, 1: small house, 2: medium house, 3: large house
     /// </summary>
-    private bool _mouseOver;
+    public int buildableType;
 
     void Start()
     {
-        _mouseOver = false;
         // The position is updated, so every buildable flag has the same distance to the ground
         var position = transform.position;
         position = new Vector3(position.x,
@@ -53,19 +53,27 @@ public class FlagBuildableScript : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!_mouseOver)
+        if(buildableType == 0)
         {
             transform.localScale += new Vector3(1, 1, 1);
-            _mouseOver = true;
         }
+        else
+        {
+            transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+        }
+        
     }
 
     private void OnMouseExit()
     {
-        if (_mouseOver)
+        if(buildableType == 0)
         {
             transform.localScale -= new Vector3(1, 1, 1);
-            _mouseOver = false;
         }
+        else
+        {
+            transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
+        }
+        
     }
 }

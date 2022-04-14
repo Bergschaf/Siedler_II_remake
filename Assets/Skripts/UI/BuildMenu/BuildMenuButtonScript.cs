@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class BuildMenuButtonScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int buttonID;
+    
+    public void Click()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,1 +1,26 @@
-﻿0: Woodcutter
+﻿-1: Flag # not a real building, just for the build menu
+0: Lumberjack
+1: Forester 
+2: Stone cutter
+3: Hunter
+4: Fisherman
+5: Fountain
+6: Barack
+7: Guardroom
+8: Sawmill
+9: Depot
+10: Windmill
+11: Bakery
+12: Iron melt
+13: Locksmith
+14: Blacksmith
+15: Butcher
+16: Brewery
+17: Shipyard
+18: Goldsmith
+19: Catapult
+20: Watch Tower
+21: Farm
+22: Pig farm
+23: Donkey farm
+24: Fortress

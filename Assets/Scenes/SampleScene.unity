@@ -319,6 +319,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &678710638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 678710639}
+  - component: {fileID: 678710640}
+  m_Layer: 0
+  m_Name: BuildingHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &678710639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678710638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1822336796}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678710640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678710638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4cbb1063c94017a179f3a72e8d585a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingPrefabs:
+  - {fileID: 5432892151045591425, guid: a7feefdf724bdb640a2a5ecde6f19967, type: 3}
 --- !u!1 &703665467
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,13 +577,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
   m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1501053648}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!1 &1362112655
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +949,7 @@ MonoBehaviour:
   buildableFlag: {fileID: 48130188394479579, guid: ea67cb9f2d567e04ca657d6d73ac9742, type: 3}
   buildableHouse1: {fileID: 2462932874573780012, guid: 3df2b637ef347d646bdd0fa6b8242697, type: 3}
   buildableHouse2: {fileID: 220679913821950735, guid: dece581323727254991c6a5ddb705fe9, type: 3}
-  buildableHouse3: {fileID: 4108846202074066630, guid: 34e0ad20c08773e48b3985cee4d1002c, type: 3}
+  buildableHouse3: {fileID: 8449305122261627850, guid: fa717a14a9cadde42b882a2177c3b079, type: 3}
   buildableHarbour: {fileID: 0}
   flagPrefab: {fileID: 875304959690009848, guid: 9fdd39c6044a318428331e6532469aa6, type: 3}
   dirtRoadPrefab: {fileID: 5457993618964081888, guid: d1e000fd900e968408b8a3570c5a070d, type: 3}
@@ -932,6 +977,7 @@ Transform:
   - {fileID: 1384989139}
   - {fileID: 962970407}
   - {fileID: 264039625}
+  - {fileID: 678710639}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

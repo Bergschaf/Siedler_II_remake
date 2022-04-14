@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Calculate Buildable Type">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="scene">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D-Models/BigHouse.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D-Models/BigHouse.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/BigHouse.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RoadSystem/BigHouse.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/SourceSerifPro-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/SourceSerifPro-Regular SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +39,7 @@
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Flag.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road_builder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/7a/e4288ffe/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Buildables/Flag_buildable_skript.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -139,7 +136,8 @@
       <workItem from="1648127015035" duration="14600000" />
       <workItem from="1649859461571" duration="34000" />
       <workItem from="1649859519025" duration="6038000" />
-      <workItem from="1649916508421" duration="6457000" />
+      <workItem from="1649916508421" duration="9671000" />
+      <workItem from="1649951392714" duration="1548000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -365,7 +363,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649866856993</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="3d Models + terrain flattenign">
+      <created>1649927658514</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1649927658514</updated>
+    </task>
+    <task id="LOCAL-00034" summary="scene">
+      <created>1649929088203</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1649929088203</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,8 +411,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Flag Buildable GUi Setup" />
-    <MESSAGE value="Spawn Flags" />
     <MESSAGE value="Road mesh" />
     <MESSAGE value="Road" />
     <MESSAGE value="Roads" />
@@ -424,6 +434,8 @@
     <MESSAGE value="No road overlap + Texture Length fix" />
     <MESSAGE value="Buildable 3D models" />
     <MESSAGE value="Calculate Buildable Type" />
-    <option name="LAST_COMMIT_MESSAGE" value="Calculate Buildable Type" />
+    <MESSAGE value="3d Models + terrain flattenign" />
+    <MESSAGE value="scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="scene" />
   </component>
 </project>

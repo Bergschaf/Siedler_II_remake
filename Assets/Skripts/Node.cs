@@ -165,7 +165,7 @@ public class Node
         }
         else if (buildableID == 3)
         {
-            BuildableIcon = Object.Instantiate(GameHandler.BuildableHouse3, WorldPosition, Quaternion.identity);
+            BuildableIcon = Object.Instantiate(GameHandler.BuildableHouse3, WorldPosition, GameHandler.BuildableHouse3.transform.rotation);
         }
     }
 

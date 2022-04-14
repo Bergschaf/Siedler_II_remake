@@ -71,7 +71,7 @@ public class Grid : MonoBehaviour
         NodeGrid = new Node[GridSizeX, GridSizeY];
 
         Vector3 worldBottomLeft = Vector3.zero; // Grid Game Object has to be on the bottom left of the terrain 
-        Quaternion rotation = Quaternion.Euler(0, 0, 0);
+        Quaternion rotation = GameHandler.BuildableHouse3.transform.rotation;
         for (int x = 0; x < GridSizeX; x++)
         {
             for (int y = 0; y < GridSizeY; y++)

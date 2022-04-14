@@ -90,23 +90,10 @@ public class FlagScript : MonoBehaviour
         UIHandler.LastClickedFlag = gameObject;
 
         // Temporary
+        Vector3[] corners = {transform.position + Vector3.left * 10,transform.position + Vector3.right * 10 + Vector3.forward * 20};
 
-        if (this != GameHandler.HomeFlag)
-        {
-
-            for (int i = 0; i < 3; i++)
-            {
-                ItemScript item = Instantiate(ItemHandler.ItemPrefabs[i]).GetComponent<ItemScript>();
-                item.currentFlag = this;
-                AddAvailableItem(item);
-                AddItem(item);
-                if (!ItemHandler.ItemSuppliers[i].Contains(this))
-                {
-                    ItemHandler.ItemSuppliers[i].Add(this);
-                }
-
-            }
-        }
+        GameObject temp = Instantiate(BuildingHandler.BuildingPrefabs[0], transform.position + Vector3.forward * 10, BuildingHandler.BuildingPrefabs[0].transform.rotation);
+        temp.GetComponent<BuildingScript>().corners = corners;
     }
 
     private void GenerateDirtCrossing()

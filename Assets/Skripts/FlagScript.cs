@@ -88,12 +88,7 @@ public class FlagScript : MonoBehaviour
         }
 
         UIHandler.LastClickedFlag = gameObject;
-
-        // Temporary
-        Vector3[] corners = {transform.position + Vector3.left * 10,transform.position + Vector3.right * 10 + Vector3.forward * 20};
-
-        GameObject temp = Instantiate(BuildingHandler.BuildingPrefabs[0], transform.position + Vector3.forward * 10, BuildingHandler.BuildingPrefabs[0].transform.rotation);
-        temp.GetComponent<BuildingScript>().corners = corners;
+        
     }
 
     private void GenerateDirtCrossing()

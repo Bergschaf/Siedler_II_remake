@@ -45,9 +45,15 @@ public class BuildableScript : MonoBehaviour
         }
         else if (!UIHandler.GUIActive)
         {
-            UIHandler.StartFlagCreationGUI(transform.position);
-            UIHandler.GUIActive = true;
-            UIHandler.ClickedBuildableFlag = gameObject;
+            if(buildableType == 0)
+            {
+                UIHandler.StartFlagCreationGUI(transform.position);
+                UIHandler.ClickedBuildableFlag = gameObject;
+            }
+            else
+            {
+                UIHandler.StartBuildingGUI(transform.position, buildableType);
+            }
         }
     }
 

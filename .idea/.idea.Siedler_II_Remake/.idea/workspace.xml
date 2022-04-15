@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="Build Menu Start">
+    <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Config/BuildingTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/BuildingTypes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +40,8 @@
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Flag.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Road_builder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a2009c85b134970925993880e2ecb2e29fa00/87/9991c9e2/Socket.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/7a/e4288ffe/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Siedler_II_Remake-backup/Siedler_II_Remake-master/Assets/Skripts/Buildables/Flag_buildable_skript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Christian/Unity/Siedler_II_Remake/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -140,7 +137,8 @@
       <workItem from="1649859461571" duration="34000" />
       <workItem from="1649859519025" duration="6038000" />
       <workItem from="1649916508421" duration="9671000" />
-      <workItem from="1649951392714" duration="6742000" />
+      <workItem from="1649951392714" duration="7504000" />
+      <workItem from="1650008037750" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -387,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649953100986</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Building Types + Building UI">
+      <created>1649961671238</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1649961671238</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Road" />
     <MESSAGE value="Roads" />
     <MESSAGE value="Abort Road Build" />
     <MESSAGE value="Road Building Stuff + additional files" />
@@ -446,6 +450,7 @@
     <MESSAGE value="3d Models + terrain flattenign" />
     <MESSAGE value="scene" />
     <MESSAGE value="Build Menu Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build Menu Start" />
+    <MESSAGE value="Building Types + Building UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Building Types + Building UI" />
   </component>
 </project>

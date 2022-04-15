@@ -26,6 +26,8 @@ public class UIHandler : MonoBehaviour
     /// </summary>
     public GameObject flagMenuPrefab;
 
+    public GameObject buildingMenuPrefab;
+
     // GUI
     public Canvas mainCanvas;
 
@@ -35,6 +37,7 @@ public class UIHandler : MonoBehaviour
     public static GameObject FlagCreationMenuPrefab;
     public static GameObject RoadMenuPrefab;
     public static GameObject FlagMenuPrefab;
+    public static GameObject BuildingMenuPrefab;
 
     // GUI
 
@@ -81,6 +84,7 @@ public class UIHandler : MonoBehaviour
         FlagCreationMenuPrefab = flagCreationMenuPrefab;
         RoadMenuPrefab = roadMenuPrefab;
         FlagMenuPrefab = flagMenuPrefab;
+        BuildingMenuPrefab = buildingMenuPrefab;
 
         // GUI
         MainCanvas = mainCanvas;
@@ -148,6 +152,23 @@ public class UIHandler : MonoBehaviour
     {
         MainGUIWindow = Instantiate(FlagCreationMenuPrefab, MainCamera.WorldToScreenPoint(worldPos),
             Quaternion.identity, MainCanvas.transform);
+        GUIActive = true;
+        MainGUIWorldPos = worldPos;
+    }
+    
+    public static void StartBuildingGUI(Vector3 worldPos, int buildableID)
+    {
+        MainGUIWindow = Instantiate(BuildingMenuPrefab, MainCamera.WorldToScreenPoint(worldPos),
+            Quaternion.identity, MainCanvas.transform);
+        TabButtonScript[] tabButtons = MainGUIWindow.GetComponentsInChildren<TabButtonScript>();
+        foreach (var t in tabButtons)
+        {
+            if(t.tabIndex >= buildableID)
+            {
+                t.gameObject.SetActive(false);
+            }
+        }
+        
         GUIActive = true;
         MainGUIWorldPos = worldPos;
     }

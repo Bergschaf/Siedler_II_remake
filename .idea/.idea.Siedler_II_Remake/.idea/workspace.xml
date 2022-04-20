@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingFloorMeshScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/LumberJackHouse.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/LumberJackHouse.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +152,11 @@
       <workItem from="1649859519025" duration="6038000" />
       <workItem from="1649916508421" duration="9671000" />
       <workItem from="1649951392714" duration="7504000" />
-      <workItem from="1650008037750" duration="613000" />
+      <workItem from="1650008037750" duration="6409000" />
+      <workItem from="1650040218509" duration="534000" />
+      <workItem from="1650195424761" duration="3360000" />
+      <workItem from="1650219377613" duration="612000" />
+      <workItem from="1650482326244" duration="942000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>
@@ -392,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649961671238</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Building UI script">
+      <created>1650008876120</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1650008876120</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +451,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Roads" />
     <MESSAGE value="Abort Road Build" />
     <MESSAGE value="Road Building Stuff + additional files" />
     <MESSAGE value="Version Change to 2020.3.21f1 + Road Pathfinding beginning" />
@@ -451,6 +475,7 @@
     <MESSAGE value="scene" />
     <MESSAGE value="Build Menu Start" />
     <MESSAGE value="Building Types + Building UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Building Types + Building UI" />
+    <MESSAGE value="Building UI script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Building UI script" />
   </component>
 </project>

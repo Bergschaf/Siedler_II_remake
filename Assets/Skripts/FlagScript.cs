@@ -58,7 +58,7 @@ public class FlagScript : MonoBehaviour
         }
 
         temp.Type = "Flag";
-
+        temp.Buildable = false;
         temp.Flag = this;
         temp.BuildableIcon.SetActive(false);
 
@@ -180,7 +180,7 @@ public class FlagScript : MonoBehaviour
         UIHandler.EndGUI();
         var position = transform.position;
         Grid.NodeFromWorldPoint(position).Type = "Buildable0";
-        Grid.NodeFromWorldPoint(position).CalculateBuildableType();
+        Grid.NodeFromWorldPoint(position).CalculateBuildableTypeAround();
     }
 
     /// <summary>
@@ -272,5 +272,10 @@ public class FlagScript : MonoBehaviour
 
 
         return false;
+    }
+
+    public void PlaceBuildingAtFlag(int buildingID)
+    {
+        
     }
 }

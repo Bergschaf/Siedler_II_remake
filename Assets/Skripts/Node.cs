@@ -74,7 +74,7 @@ public class Node
             {
                 if (i < Grid.GridSizeX && j < Grid.GridSizeY && i >= 0 && j >= 0)
                 {
-                    Grid.NodeGrid[i,j].CalculateBuildableType();
+                    Grid.NodeGrid[i, j].CalculateBuildableType();
                 }
             }
         }
@@ -85,65 +85,82 @@ public class Node
     /// </summary>
     public void CalculateBuildableType()
     {
-        //TODO Calculate Buildable type
+        if (Physics.CheckSphere(WorldPosition, Grid.nodeRadius, Grid.UnbuildableMask))
+        {
+            Type = "Obstructed";
+            Buildable = false;
+            BuildableIcon.SetActive(false);
+            return;
+        }
+
         if (Type != "Flag" && Type != "Building" && Type != "Road")
         {
-            Type = "Buildable0";
-            Buildable = true;
             BuildableIcon.SetActive(true);
+            // TODO Check Terrain height and angle here
+            if (GridY == 0)
+            {
+                Type = "Buildable0";
+                ChangeBuildableIcon(0);
+                return;
+            }
 
-            // distance 10 to not buildable -> Small House
-            // distance 20 to not buildable -> Medium House
-            // distance 30 to not buildable -> Big House
+            if (!Grid.NodeGrid[GridX, GridY - 1].Buildable && Grid.NodeGrid[GridX, GridY - 1].Type != "Flag")
+            {
+                Type = "Buildable0";
+                ChangeBuildableIcon(0);
+                return;
+            }
 
-            int shortestDistance = int.MaxValue;
-
+            int dist = Int32.MaxValue;
             for (int i = GridX - 3; i < GridX + 3; i++)
             {
-                for (int j = GridY - 3; j < GridY + 3; j++)
+                for (int j = GridY; j < GridY + 3; j++)
                 {
-                    if (i < Grid.GridSizeX && j < Grid.GridSizeY && i >= 0 && j >= 0)
+                    if (i >= 0 && j >= 0 && i < Grid.GridSizeX && j < Grid.GridSizeY)
                     {
                         if (!Grid.NodeGrid[i, j].Buildable)
                         {
-                            if (shortestDistance > RoadPathfinding.GetDistance(this, Grid.NodeGrid[i, j]))
+                            if (RoadPathfinding.GetDistance(this, Grid.NodeGrid[i, j]) < dist)
                             {
-                                shortestDistance = RoadPathfinding.GetDistance(this, Grid.NodeGrid[i, j]);
+                                dist = RoadPathfinding.GetDistance(this, Grid.NodeGrid[i, j]);
                             }
                         }
                     }
                 }
             }
 
-            if (shortestDistance < 20)
+            Buildable = true;
+            if (dist < 10)
             {
-                Buildable = true;
+                Type = "Buildable0";
+                ChangeBuildableIcon(0);
+            }
+            else if (dist < 20)
+            {
                 Type = "Buildable1";
                 ChangeBuildableIcon(1);
             }
-            else if (shortestDistance < 30)
+            else if (dist < 30)
             {
-                Buildable = true;
-
                 Type = "Buildable2";
                 ChangeBuildableIcon(2);
+                
             }
             else
             {
-                Buildable = true;
-
                 Type = "Buildable3";
-
                 ChangeBuildableIcon(3);
             }
         }
         else if (Type == "Road")
         {
             ChangeBuildableIcon(0);
+            Buildable = true;
         }
         else
         {
             BuildableIcon.SetActive(false);
+            Buildable = false;
         }
     }
 
@@ -165,7 +182,8 @@ public class Node
         }
         else if (buildableID == 3)
         {
-            BuildableIcon = Object.Instantiate(GameHandler.BuildableHouse3, WorldPosition, GameHandler.BuildableHouse3.transform.rotation);
+            BuildableIcon = Object.Instantiate(GameHandler.BuildableHouse3, WorldPosition,
+                GameHandler.BuildableHouse3.transform.rotation);
         }
     }
 

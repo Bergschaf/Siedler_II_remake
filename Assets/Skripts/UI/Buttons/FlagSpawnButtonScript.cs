@@ -9,7 +9,7 @@ public class FlagSpawnButtonScript : MonoBehaviour
 {
     public void click()
     {
-        FlagScript tempflag = UIHandler.ClickedBuildableFlag.GetComponent<BuildableScript>().ReplaceWithFlag();
+        FlagScript tempflag = UIHandler.ClickedBuildable.GetComponent<BuildableScript>().ReplaceWithFlag();
         GameHandler.EndBuildingRoad(tempflag);
     }
 }

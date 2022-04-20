@@ -1,4 +1,5 @@
-﻿Buildable0  # FLag
+﻿Obstructed  # e.g. a tree is at the node
+Buildable0  # FLag
 Buildable1  # Small House
 Buildable2  # Medium House
 Buildable3  # Large House

@@ -182,6 +182,8 @@ public class Road
     public void EndRoadBuild()
     {
         bool destroyed = false;
+        Nodes[0].CalculateBuildableTypeAround();
+        Nodes[Nodes.Count - 1].CalculateBuildableTypeAround();
         for (int i = 1; i < Nodes.Count - 1; i++)
         {
             

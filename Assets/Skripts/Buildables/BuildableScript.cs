@@ -39,7 +39,7 @@ public class BuildableScript : MonoBehaviour
 
             if (GameHandler.CurrentRoad.add_point(position))
             {
-                UIHandler.ClickedBuildableFlag = gameObject;
+                UIHandler.ClickedBuildable = gameObject;
                 UIHandler.UpdateGUIWorldPos(position);
             }
         }
@@ -48,11 +48,13 @@ public class BuildableScript : MonoBehaviour
             if(buildableType == 0)
             {
                 UIHandler.StartFlagCreationGUI(transform.position);
-                UIHandler.ClickedBuildableFlag = gameObject;
+                UIHandler.ClickedBuildable = gameObject;
             }
             else
             {
                 UIHandler.StartBuildingGUI(transform.position, buildableType);
+                UIHandler.ClickedBuildable = gameObject;
+
             }
         }
     }

@@ -54,7 +54,7 @@ public class UIHandler : MonoBehaviour
     /// <summary>
     /// The last clicked buildable Flag TODO change when buildable Flags becomes UI
     /// </summary>
-    public static GameObject ClickedBuildableFlag; // Important for RoadBuilding
+    public static GameObject ClickedBuildable; // Important for RoadBuilding
 
     /// <summary>
     /// The last clicked Flag

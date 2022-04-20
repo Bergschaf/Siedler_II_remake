@@ -16,6 +16,7 @@ public class Grid : MonoBehaviour
     /// </summary>
     public LayerMask unbuildableMask;
 
+    public static LayerMask UnbuildableMask;
     // Paramters
     /// <summary>
     /// The world size of the Grid
@@ -44,6 +45,7 @@ public class Grid : MonoBehaviour
 
     private void Start()
     {
+        UnbuildableMask = unbuildableMask;
         if (NodeGrid == null)
         {
             start();
@@ -52,6 +54,7 @@ public class Grid : MonoBehaviour
 
     private static void start()
     {
+        
         // Parameters
         GridWorldSize = new Vector2(GameHandler.ActiveTerrainTerrainData.size.x,
             GameHandler.ActiveTerrainTerrainData.size.z);

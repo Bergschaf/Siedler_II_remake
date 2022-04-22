@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96d142bf-4cff-4554-8f68-58d5519a39e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingFloorMeshScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Siedler_II_Remake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/LumberJackHouse.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/LumberJackHouse.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildables/BuildableScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Config/NodeTypes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingFloorMeshScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingFloorMeshScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Buildings/BuildingScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/FlagScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Node.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/Road.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/Road.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/GameHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuButtonScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/BuildMenu/BuildMenuHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/Buttons/FlagSpawnButtonScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Skripts/UI/UIHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +146,9 @@
       <workItem from="1650195424761" duration="3360000" />
       <workItem from="1650219377613" duration="612000" />
       <workItem from="1650482326244" duration="942000" />
+      <workItem from="1650562203236" duration="510000" />
+      <workItem from="1650647315294" duration="348000" />
+      <workItem from="1650647725294" duration="4905000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1647104464644</created>

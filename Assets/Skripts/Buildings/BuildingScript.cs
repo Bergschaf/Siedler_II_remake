@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class BuildingScript : MonoBehaviour
 {
+    // The corners of the building // TODO Make smooth outline maybe
     public Vector3[] corners; //0 = bottom left, 2 = top right
 
     public int buildingID;
+    
+    private BuildingFloorMeshScript _buildingFloorMesh;
+    
+    /// <summary>
+    /// The Nodes that are part of this building
+    /// </summary>
+    private Node[] _nodes;
     void Start()
     {
         UpdateTerrainHeight();
+        _buildingFloorMesh = Instantiate(BuildingHandler.BuildingFloorPrefab).GetComponent<BuildingFloorMeshScript>();
+        _buildingFloorMesh.DrawBuildingFloor(corners);
+
     }
     
     private void UpdateTerrainHeight()

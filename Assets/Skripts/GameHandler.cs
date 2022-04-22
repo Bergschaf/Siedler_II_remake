@@ -46,6 +46,7 @@ public class GameHandler : MonoBehaviour
     // Materials
     public Material dirtRoadMaterial;
     public Material dirtCrossingMaterial;
+    public Material buildingFloorMaterial;
 
     // Building Parameters
 
@@ -79,6 +80,7 @@ public class GameHandler : MonoBehaviour
     // Materials
     public static Material DirtRoadMaterial;
     public static Material DirtCrossingMaterial;
+    public static Material BuildingFloorMaterial;
 
     // Building Parameters
     public static float FlagBuildableYOffset;
@@ -141,6 +143,7 @@ public class GameHandler : MonoBehaviour
         // Materials
         DirtRoadMaterial = dirtRoadMaterial;
         DirtCrossingMaterial = dirtCrossingMaterial;
+        BuildingFloorMaterial = buildingFloorMaterial;
 
         // Building Parameters
         FlagBuildableYOffset = flagBuildableYOffset;

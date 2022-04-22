@@ -263,7 +263,7 @@ public class FlagScript : MonoBehaviour
         {
             if (i == itemScript)
             {
-                // TODO Have a settler transport the item out of the building to the flag if it isN#t at the flag
+                // TODO Have a settler transport the item out of the building to the flag if it isn't at the flag
 
                 AvailableItems[itemScript.itemID].Remove(itemScript);
                 return true;

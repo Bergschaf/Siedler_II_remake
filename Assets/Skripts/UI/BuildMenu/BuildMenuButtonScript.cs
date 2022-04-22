@@ -14,7 +14,6 @@ public class BuildMenuButtonScript : MonoBehaviour
                 .GetComponent<BuildableScript>().ReplaceWithFlag();
             return;
         }
-        
         Node newFlagNode = Grid.NodeGrid[Grid.NodeFromWorldPoint(UIHandler.ClickedBuildable.transform.position).GridX, Grid.NodeFromWorldPoint(UIHandler.ClickedBuildable.transform.position).GridY - 1];
         FlagScript flag;
 
